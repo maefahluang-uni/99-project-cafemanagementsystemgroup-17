@@ -1,8 +1,8 @@
-package com.newagain.project;
+package th.mfu;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.newagain.project.domain.User;
+import th.mfu.domain.User;
 
 public interface UserRepository extends CrudRepository <User,Long> {
     

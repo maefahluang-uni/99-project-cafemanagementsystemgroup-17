@@ -1,4 +1,4 @@
-package com.newagain.project.domain;
+package th.mfu.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

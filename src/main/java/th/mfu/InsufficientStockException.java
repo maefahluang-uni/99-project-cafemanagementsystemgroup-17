@@ -1,4 +1,4 @@
-package com.newagain.project;
+package th.mfu;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

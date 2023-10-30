@@ -1,5 +1,4 @@
-package com.newagain.project.domain;
-
+package th.mfu.domain;
 import java.sql.Date;
 
 import javax.persistence.Entity;

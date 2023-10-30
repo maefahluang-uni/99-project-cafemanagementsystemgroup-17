@@ -1,8 +1,8 @@
-package com.newagain.project;
+package th.mfu;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.newagain.project.domain.InvoiceItem;
+import  th.mfu.domain.InvoiceItem;
 public interface InvoiceItemRepository extends CrudRepository <InvoiceItem,Long>{
     
 }

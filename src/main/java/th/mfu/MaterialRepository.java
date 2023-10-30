@@ -1,8 +1,8 @@
-package com.newagain.project;
+package th.mfu;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.newagain.project.domain.Material;
+import  th.mfu.domain.Material;
 
 public interface MaterialRepository extends CrudRepository <Material,Long> {
     

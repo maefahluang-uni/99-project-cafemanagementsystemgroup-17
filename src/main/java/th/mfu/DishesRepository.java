@@ -1,4 +1,4 @@
-package com.newagain.project;
+package th.mfu;
 
 import javax.transaction.Transactional;
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.newagain.project.domain.Dishes;
+import  th.mfu.domain.Dishes;
 
 public interface DishesRepository extends CrudRepository<Dishes, Long> {
 

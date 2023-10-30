@@ -1,8 +1,8 @@
-package com.newagain.project;
+package th.mfu;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.newagain.project.domain.Payment;
+import  th.mfu.domain.Payment;
 
 public interface PaymentRepository extends CrudRepository <Payment,Long>{
     
