@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Cart</title>
+</head>
+<body>
+    <h1>User Cart</h1>
+    
+    <!-- Form to add items -->
+    <form action="/products/add" method="post">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+        <button type="submit">Add to Cart</button>
+    </form>
+    
+    <!-- List of items in the cart -->
+    <h2>Cart Contents</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block th:each="product : ${products}">
+                <tr>
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.quantity}"></td>
+                    <td>
+                        <form action="/products/reduce/{productId}" method="post">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit">Reduce by 1</button>
+                        </form>
+                    </td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+</body>
+</html>

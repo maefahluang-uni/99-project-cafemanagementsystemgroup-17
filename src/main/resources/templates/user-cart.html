@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Cart</title>
+</head>
+
+<body>
+    <h1> InvoiceItem </h1>
+    <h2>My cart</h2>
+    <h2>Menu</h2>
+    <table>
+        <tr th:each="InvoiceItem : ${invoiceitem}">
+            <td th:text="${InvoiceItem.id}"></td>
+            <td th:text="${InvoiceItem.dish_amout}"></td>
+            <td th:text="${InvoiceItem.invoice}"></td>
+            <td th:text="${InvoiceItem.dishes}"></td>
+        </tr>
+    </table>
+</body>
+
+</html>

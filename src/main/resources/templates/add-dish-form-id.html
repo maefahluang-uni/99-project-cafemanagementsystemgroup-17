@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cafe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for yellow and white theme */
+        body
+    
+        h1 {
+            color: #f0ad4e; /* Yellow text color */
+        }
+        .form-group label {
+            color: #f0ad4e; /* Yellow label text color */
+        }
+
+        .btn-warning {
+            background-color: #f0ad4e; /* Yellow background for the "Save Order" button */
+            border-color: #f0ad4e; /* Yellow border color for the button */
+        }
+        .btn-warning:hover {
+            background-color: #eea236; /* Darker yellow background on hover */
+            border-color: #eea236; /* Darker yellow border on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Update Dish</h1>
+        
+        <form th:action="@{/admin_update_dish}" th:object="${dishes}" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="dish_name">dish_name</label>
+                <input type="text" id="dish_name" class="form-control" th:field="*{dish_name}" required>
+
+                <!-- Add a hidden input field for dishes.id -->
+                <input type="hidden" th:field="*{id}" />
+            </div>
+            
+            <div class="form-group">
+                <label for="dish_price">dish_price</label>
+                <input type="text" id="dish_price" class="form-control" th:field="*{dish_price}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="dish_type">dish_type</label>
+                <input type="text" id="dish_type" class="form-control" th:field="*{dish_type}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dish_stock">dish_stock</label>
+                <input type="text" id="dish_stock" class="form-control" th:field="*{dish_stock}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dish_picture">picture:</label>
+                <input type="text" id="dish_picture" class="form-control" th:field="*{dish_picture}" required>
+            </div>
+            <button type="submit" class="btn btn-warning">Confirm Update</button>
+        </form>
+    </div>
+</body>
+</html>
