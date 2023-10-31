@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import th.mfu.domain.Dishes;
-import  th.mfu.domain.InvoiceItem;
+import th.mfu.domain.InvoiceItem;
 
 @Controller
 public class CafeController {
@@ -112,7 +112,7 @@ public class CafeController {
 
     /// cart user go to new form ///
     @GetMapping("/add-to-cart/{id}")
-    public String addtocart(Model model, @PathVariable Long id) {
+    public String addtocart(Model model, @PathVariable Long id ) {
 
         Dishes dishyy = dishesRepo.findById(id).get();
         InvoiceItem invoiceitem = new InvoiceItem();
