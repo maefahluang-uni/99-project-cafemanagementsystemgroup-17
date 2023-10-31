@@ -56,7 +56,7 @@ public class CafeController {
     @GetMapping("/admin")
     public String dishesListAdmin(Model model) {
         model.addAttribute("dishes", dishesRepo.findAll());
-        return "list-cafe";
+        return "list-for-admin";
     }
 
     @GetMapping("/add-dish")
