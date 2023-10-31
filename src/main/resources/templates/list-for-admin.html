@@ -133,7 +133,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <td>name</td>
+                                <th>name</th>
                                 <th>type</th>
                                 <th>Price</th>
                                 <th>stock</th>
@@ -173,11 +173,40 @@
                 <div class="reminders">
                     <div class="header">
                         <i class='bx bx-note'></i>
-                        <h3>Remiders</h3>
+                        <h3>Material</h3>
                         <i class='bx bx-filter'></i>
                         <i class='bx bx-plus'></i>
                     </div>
-                        
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>mat-name</th>
+                                <th>mat-amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <a href="#" class="btn btn-primary mt-3 mb-3">Add New Material</a>
+                            <tr>
+                                <td>
+                            <tr th:each="Material : ${material}">
+                                <td th:text="${Material.id}"></td>
+                                <td th:text="${Material.mat-name}"></td>
+                                <td th:text="${Material.mat-amount}"></td>
+                                <td>
+                                    <a th:href="#"
+                                        class="btn btn-primary mt-3 mb-3">Delete</a>
+                                </td>
+                                <td>
+                                    <a th:href="#"
+                                        class="btn btn-primary mt-3 mb-3">update</a>
+                                </td>
+                            </tr>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="/delete-dish" class="btn btn-primary mt-3 mb-3">Delete All</a>
                 </div>
                 <!-- End of Reminders-->
             </div>
