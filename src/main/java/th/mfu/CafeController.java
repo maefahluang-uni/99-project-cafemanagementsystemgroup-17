@@ -31,18 +31,21 @@ public class CafeController {
     PaymentRepository paymentRepo;
     @Autowired
     UserRepository userRepo;
+    @Autowired
+    MaterialRepository matRepo;
 
     private final DishesService dishesService;
 
     public CafeController(DishesRepository dishesRepo, InvoiceRepository invoiceRepo,
             InvoiceItemRepository invoiceItemRepo, PaymentRepository paymentRepo, UserRepository userRepo,
-            DishesService dishesService) {
+            DishesService dishesService, MaterialRepository matRepo) {
         this.dishesRepo = dishesRepo;
         this.invoiceRepo = invoiceRepo;
         this.invoiceItemRepo = invoiceItemRepo;
         this.paymentRepo = paymentRepo;
         this.userRepo = userRepo;
         this.dishesService = dishesService;
+        this.matRepo = matRepo;
 
     }
 
@@ -112,7 +115,7 @@ public class CafeController {
 
     /// cart user go to new form ///
     @GetMapping("/add-to-cart/{id}")
-    public String addtocart(Model model, @PathVariable Long id ) {
+    public String addtocart(Model model, @PathVariable Long id) {
 
         Dishes dishyy = dishesRepo.findById(id).get();
         InvoiceItem invoiceitem = new InvoiceItem();
@@ -170,5 +173,6 @@ public class CafeController {
     }
 
     // select number of dishes_stock and reduce dishes in dishes_stock ////
-
+    /// material controller ///
+    
 }

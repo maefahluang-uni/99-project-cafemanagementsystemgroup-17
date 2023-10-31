@@ -12,6 +12,12 @@ public class Material {
     private String mat_name;
     private Integer mat_amount;
 
+    public Material(Long id, String mat_name, Integer mat_amount) {
+        this.id = id;
+        this.mat_name = mat_name;
+        this.mat_amount = mat_amount;
+    }
+
     public Material(){}
 
     public Long getId() {

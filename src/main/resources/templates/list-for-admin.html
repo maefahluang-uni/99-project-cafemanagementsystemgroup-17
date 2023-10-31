@@ -189,10 +189,10 @@
                             <a href="#" class="btn btn-primary mt-3 mb-3">Add New Material</a>
                             <tr>
                                 <td>
-                            <tr th:each="Material : ${material}">
+                            <tr th:each="Material : ${materials}">
                                 <td th:text="${Material.id}"></td>
-                                <td th:text="${Material.mat-name}"></td>
-                                <td th:text="${Material.mat-amount}"></td>
+                                <td th:text="${Material.mat_name}"></td>
+                                <td th:text="${Material.mat_amount}"></td>
                                 <td>
                                     <a th:href="#"
                                         class="btn btn-primary mt-3 mb-3">Delete</a>
@@ -206,7 +206,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="/delete-dish" class="btn btn-primary mt-3 mb-3">Delete All</a>
+                    <a href="#" class="btn btn-primary mt-3 mb-3">Delete All</a>
                 </div>
                 <!-- End of Reminders-->
             </div>
