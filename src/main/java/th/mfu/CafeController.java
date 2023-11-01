@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import th.mfu.domain.Dishes;
 import th.mfu.domain.InvoiceItem;
+import th.mfu.domain.Material;
 
 @Controller
 public class CafeController {
@@ -77,10 +78,11 @@ public class CafeController {
         model.addAttribute("dishID", id);
         return "add-dish-form-id";
     }
-
+    
     @PostMapping("/admin")
-    public String saveDish(@ModelAttribute Dishes newdishes) {
+    public String saveDish(@ModelAttribute Dishes newdishes,@ModelAttribute Material newmaterials) {
         dishesRepo.save(newdishes);
+        matRepo.save(newmaterials);
         return "redirect:/admin";
     }
 
@@ -173,5 +175,21 @@ public class CafeController {
 
     // select number of dishes_stock and reduce dishes in dishes_stock ////
     /// material controller ///
+    @GetMapping("/delete-mat/{id}")
+    public String deleteMat(@PathVariable Long id) {
+        matRepo.deleteById(id);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/delete-mat")
+    public String removeAllMat() {
+        matRepo.deleteAll();
+        return "redirect:/admin";
+    }
+    @GetMapping("/add-mat")
+    public String addMatForm(Model model) {
+        model.addAttribute("materials", new Material());
+        return "add-mat-form";
+    }
 
 }

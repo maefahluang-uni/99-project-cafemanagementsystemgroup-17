@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cafe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for yellow and white theme */
+        body h1 {
+            color: #f0ad4e;
+            /* Yellow text color */
+        }
+
+        .form-group label {
+            color: #f0ad4e;
+            /* Yellow label text color */
+        }
+
+        .btn-warning {
+            background-color: #f0ad4e;
+            /* Yellow background for the "Save Order" button */
+            border-color: #f0ad4e;
+            /* Yellow border color for the button */
+        }
+
+        .btn-warning:hover {
+            background-color: #eea236;
+            /* Darker yellow background on hover */
+            border-color: #eea236;
+            /* Darker yellow border on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-4">Add Material</h1>
+
+        <form th:action="@{/admin}" th:object="${materials}" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="mat_name">Name:</label>
+                <input type="text" id="mat_name" class="form-control" th:field="*{mat_name}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mat_amount">Amount:</label>
+                <input type="text" id="mat_amount" class="form-control" th:field="*{mat_amount}" required>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Confirm Order</button>
+        </form>
+    </div>
+</body>
+
+</html>
