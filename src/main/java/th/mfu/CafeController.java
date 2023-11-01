@@ -175,10 +175,5 @@ public class CafeController {
 
     // select number of dishes_stock and reduce dishes in dishes_stock ////
     /// material controller ///
-    @GetMapping("/admin/materials")
-    public String matListadmin(Model model) {
-        model.addAttribute("materials", matRepo.findAll());
-        return "material-for-admin";
-    }
 
 }
