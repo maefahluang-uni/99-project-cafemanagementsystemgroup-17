@@ -132,6 +132,7 @@ public class CafeController {
 
             // Reduce the dish_stock by 1
             dish.setDish_stock(dish.getDish_stock() - 1);
+            invoiceitem.setDish_amount(1);
             dishesRepo.save(dish);
         } else if (dish.getDish_stock() == 0) {
             invoiceitem.setDishes(dish);

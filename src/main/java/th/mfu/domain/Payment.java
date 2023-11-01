@@ -20,6 +20,9 @@ public class Payment {
         this.pay_total = pay_total;
     }
 
+        public Payment() {
+    }
+
     public Long getId() {
         return id;
     }
