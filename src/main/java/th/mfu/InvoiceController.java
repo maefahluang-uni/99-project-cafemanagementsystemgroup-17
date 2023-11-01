@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import th.mfu.domain.Invoice;
 import th.mfu.domain.InvoiceItem;
@@ -50,8 +52,8 @@ public class InvoiceController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
-    @GetMapping("/confirm_cart")
-    public String confirmCart(Model model) {
+    @PostMapping("/confirm_cart")
+    public String confirmCart(@RequestParam("invoiceNote") String invoiceNote, Model model) {
 
         //find all invoiceitem
         var invoiceItemlist = invoiceItemRepo.findAll();
@@ -66,7 +68,7 @@ public class InvoiceController {
         // set invoice date
         temp_invoice.setInvoice_date(date);
         // set invoice note
-        temp_invoice.setInvoice_note("note in invoice kub");
+        temp_invoice.setInvoice_note(invoiceNote);
         // finally save it
         invoiceRepo.save(temp_invoice);
         // --------------------------------------------------------------------------
