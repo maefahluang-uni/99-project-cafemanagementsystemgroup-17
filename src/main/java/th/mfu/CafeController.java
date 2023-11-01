@@ -112,7 +112,9 @@ public class CafeController {
     @GetMapping("/user")
     public String listforUser(Model model) {
         model.addAttribute("dishes", dishesRepo.findAll());
-        model.addAttribute("invoiceitem", invoiceItemRepo.findAll());
+
+        //only show InvoiceItem that invoice = null
+        model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
         return "user";
     }
 

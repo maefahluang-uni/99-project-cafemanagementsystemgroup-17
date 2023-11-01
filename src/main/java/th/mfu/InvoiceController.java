@@ -99,6 +99,7 @@ public class InvoiceController {
         Payment temppay = paymentRepo.findTopByOrderByIdDesc();
         tempinvoice.setPayment(temppay);
         invoiceRepo.save(tempinvoice);
+        paymentRepo.save(temppay);
 
         return "redirect:/user";
     }
