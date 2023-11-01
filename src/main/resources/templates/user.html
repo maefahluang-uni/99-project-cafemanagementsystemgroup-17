@@ -79,7 +79,11 @@
                 </td>
             </tr>
         </table>
-        <a href="/confirm_cart" class="btn btn-primary mt-3 mb-3">Confirm Cart</a>
+        <form action="/confirm_cart" method="post">
+            <label for="invoiceNote">Invoice Note:</label>
+            <input type="text" id="invoiceNote" name="invoiceNote">
+            <button type="submit">Confirm Cart</button>
+        </form>
         
     </div>
 
