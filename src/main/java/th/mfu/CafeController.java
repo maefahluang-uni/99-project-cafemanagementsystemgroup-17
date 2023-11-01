@@ -142,7 +142,7 @@ public class CafeController {
             // Handle the scenario where there is insufficient stock
             // You can redirect the user to an error page or display a message
             model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
-            return "redirect:/user/alert";
+            return "error";
         }
 
         return "redirect:/user";
