@@ -53,42 +53,52 @@ public class InvoiceController {
     @GetMapping("/confirm_cart")
     public String confirmCart(Model model) {
 
-        // create empty invoice
-        var temp_invoice = new Invoice();
+        //find all invoiceitem
         var invoiceItemlist = invoiceItemRepo.findAll();
-
-        // add user id to invoice
-        temp_invoice.setUser(userRepo.findById((long) 1).get());
-
-        // add current date to invoice
+        //create date
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
+
+        //invoice-------------------------------------------------------------------
+        var temp_invoice = new Invoice();
+        // set invoice user
+        temp_invoice.setUser(userRepo.findById((long) 1).get());
+        // set invoice date
         temp_invoice.setInvoice_date(date);
-
-        // create payment
-        var temp_payment = new Payment();
-        //set pay date
-        temp_payment.setPay_Date(date);
-
-        // total price counter
-        Integer totalprice = 0;
+        // set invoice note
+        temp_invoice.setInvoice_note("note in invoice kub");
+        // finally save it
+        invoiceRepo.save(temp_invoice);
+        // --------------------------------------------------------------------------
 
         // add all invoiceitem to invoice
+        // also calculate total price
+        Integer totalprice = 0;
         for (InvoiceItem InvoiceItem : invoiceItemlist) {
 
             if (InvoiceItem.getInvoice() == null) {
-                InvoiceItem.setInvoice(temp_invoice);
-                //total price = dish_amount * dish_price
+                InvoiceItem.setInvoice(invoiceRepo.findTopByOrderByIdDesc());
+                // total price = dish_amount * dish_price
                 totalprice += (InvoiceItem.getDish_amount()) *
                         (InvoiceItem.getDishes().getDish_price());
+
+                invoiceItemRepo.save(InvoiceItem);
             }
         }
 
+        //payment-------------------------------------------------------------------
+        var temp_payment = new Payment();
+        temp_payment.setPay_Date(date);
         temp_payment.setPay_total(totalprice);
-        temp_invoice.setPayment(temp_payment);
-        
-        invoiceRepo.save(temp_invoice);
         paymentRepo.save(temp_payment);
+
+        // ---------------------------------------------------------------------------------
+
+        // set last payment to last invoice
+        Invoice tempinvoice = invoiceRepo.findTopByOrderByIdDesc();
+        Payment temppay = paymentRepo.findTopByOrderByIdDesc();
+        tempinvoice.setPayment(temppay);
+        invoiceRepo.save(tempinvoice);
 
         return "redirect:/user";
     }

@@ -66,14 +66,14 @@
                 <th>ID</th>
                 <td>dish_amount</td>
                 <th>dishes</th>
-                <th>invoice</th>
+                <th>invoice ID</th>
             </tr>
             <!--show list in sql and new add list-->
             <tr th:each="InvoiceItem : ${invoiceitem}">
                 <td th:text="${InvoiceItem.id}"></td>
                 <td th:text="${InvoiceItem.dish_amount}"></td>
                 <td th:text="${InvoiceItem.dishes.dish_name}"></td>
-                <td th:text="${InvoiceItem.invoice}"></td>
+                <td th:text="${InvoiceItem.invoice.id}"></td>
                 <td>
                     <a th:href="@{/delete-cart/{id}(id=${InvoiceItem.id})}" class="btn btn-primary mt-3 mb-3">Delete</a>
                 </td>
