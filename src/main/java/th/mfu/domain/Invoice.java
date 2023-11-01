@@ -22,7 +22,7 @@ public class Invoice {
     private Payment payment;
 
     public Invoice() {
-
+        
     }
 
     public Invoice(Long id, Date invoice_date, String invoice_note, User user, Payment payment) {

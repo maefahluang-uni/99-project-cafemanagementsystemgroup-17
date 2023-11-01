@@ -60,6 +60,8 @@ public class CafeController {
     public String dishesListAdmin(Model model) {
         model.addAttribute("dishes", dishesRepo.findAll());
         model.addAttribute("materials", matRepo.findAll());
+        model.addAttribute("invoice",invoiceRepo.findAll());
+        model.addAttribute("payment", paymentRepo.findAll());
         return "list-for-admin";
     }
 

@@ -73,7 +73,7 @@
                 <td th:text="${InvoiceItem.id}"></td>
                 <td th:text="${InvoiceItem.dish_amount}"></td>
                 <td th:text="${InvoiceItem.dishes.dish_name}"></td>
-                <td th:text="${InvoiceItem.invoice.id}"></td>
+                <td th:text="${InvoiceItem.Invoice}"></td>
                 <td>
                     <a th:href="@{/delete-cart/{id}(id=${InvoiceItem.id})}" class="btn btn-primary mt-3 mb-3">Delete</a>
                 </td>
