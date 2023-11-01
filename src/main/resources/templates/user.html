@@ -35,23 +35,15 @@
                 <td th:text="${Dishes.dish_stock}"></td>
                 <td th:text="${Dishes.dish_price}"></td>
                 <td>
-                    <form method="get" action="/add-to-cart/{id}">
+                    <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post">
                         <label for="quantity">Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="10" required>
                         <input type="submit" value="Add to Cart">
                     </form>
 
-                </td>
-                <td onclick="callAlert();">
-                    <a th:href="@{/add-to-cart/{id}(id=${Dishes.id})}" class="btn btn-primary mt-3 mb-3">add cart</a>
-                </td>
             </tr>
         </table>
         <table>
-            <!-- <h1 class="mt-5">Cart List</h1>
-            <tr th:each="InvoiceItem : ${invoiceitem}">
-                <td th:text="${InvoiceItem.Dishes.dish_name}"></td>
-                <h1>Form</h1>-->
             <form action="#" th:action="@{/add-to-cart}" modelAttributes="newinvoiceitem" method="post">
                 <form:input path="dish_name" value="1" type="text" />
             </form>
@@ -68,7 +60,6 @@
                 <th>dishes</th>
                 <th>invoice ID</th>
             </tr>
-            <!--show list in sql and new add list-->
             <tr th:each="InvoiceItem : ${invoiceitem}">
                 <td th:text="${InvoiceItem.id}"></td>
                 <td th:text="${InvoiceItem.dish_amount}"></td>
@@ -80,8 +71,8 @@
             </tr>
         </table>
         <form action="/confirm_cart" method="post">
-            <label for="invoiceNote">Invoice Note:</label>
-            <input type="text" id="invoiceNote" name="invoiceNote">
+            <label for="invoiceNote">Please put your name</label>
+            <input type="text" id="invoiceNote" name="invoiceNote" required>
             <button type="submit">Confirm Cart</button>
         </form>
         

@@ -119,8 +119,8 @@ public class CafeController {
     }
 
     /// cart user go to new form ///
-    @GetMapping("/add-to-cart/{id}")
-    public String addtocart(Model model, @PathVariable Long id) {
+    @PostMapping("/add-to-cart/{id}")
+    public String addtocart(Model model, @PathVariable Long id, @RequestParam("quantity") Integer quantity) {
 
         Dishes dishyy = dishesRepo.findById(id).get();
         InvoiceItem invoiceitem = new InvoiceItem();
@@ -129,22 +129,15 @@ public class CafeController {
         /// gpt gen ///
         Dishes dish = dishesRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
 
-        if (dish.getDish_stock() > 0) {
+        if (dish.getDish_stock() - quantity >= 0) {
             // There is sufficient stock, so add the item to the cart
             invoiceitem.setDishes(dish);
             invoiceItemRepo.save(invoiceitem);
 
-            // Reduce the dish_stock by 1
-            dish.setDish_stock(dish.getDish_stock() - 1);
-            invoiceitem.setDish_amount(1);
+            // Reduce the dish_stock by quantity
+            dish.setDish_stock(dish.getDish_stock() - quantity);
+            invoiceitem.setDish_amount(quantity);
             dishesRepo.save(dish);
-        } else if (dish.getDish_stock() == 0) {
-            invoiceitem.setDishes(dish);
-            invoiceItemRepo.delete(invoiceitem);
-            // Reduce the dish_stock by 1
-            model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
-            dishesRepo.save(dish);
-            return "redirect:/user/alert";
         } else {
             // Handle the scenario where there is insufficient stock
             // You can redirect the user to an error page or display a message
