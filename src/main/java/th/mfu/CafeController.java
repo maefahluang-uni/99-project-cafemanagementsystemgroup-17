@@ -138,12 +138,12 @@ public class CafeController {
             // Reduce the dish_stock by 1
             model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
             dishesRepo.save(dish);
-            return "redirect:/user";
+            return "redirect:/user/alert";
         } else {
             // Handle the scenario where there is insufficient stock
             // You can redirect the user to an error page or display a message
             model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
-            return "redirect:/user";
+            return "redirect:/user/alert";
         }
 
         return "redirect:/user";
