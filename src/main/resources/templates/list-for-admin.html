@@ -121,6 +121,7 @@
             </ul>
             <!-- End of Insights -->
 
+<!-- Menu List -->    
             <div class="bottom-data">
                 <div class="orders">
                     <div class="header">
@@ -168,45 +169,42 @@
                         </tbody>
                     </table>
                     <a href="/delete-dish" class="btn btn-primary mt-3 mb-3">Delete All</a>
-
                 </div>
-                <!-- Reminders -->
-            <div class="reminders">
-                <div class="header">
-                    <i class='bx bx-note'></i>
-                    <h3>Remiders</h3>
-                    <i class='bx bx-filter'></i>
-                    <i class='bx bx-plus'></i>
-                </div>
-                <ul class="task-list">
-                    <li class="completed">
-                        <div class="task-title">
-                            <i class='bx bx-check-circle'></i>
-                            <p>Start Our Meeting</p>
-                        </div>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
-                    <li class="completed">
-                        <div class="task-title">
-                            <i class='bx bx-check-circle'></i>
-                            <p>Analyse Our Site</p>
-                        </div>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
-                    <li class="not-completed">
-                        <div class="task-title">
-                            <i class='bx bx-x-circle'></i>
-                            <p>Play Footbal</p>
-                        </div>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
-                </ul>
             </div>
 
-            <!-- End of Reminders-->
-
+<!-- Mat List -->  
+            <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-receipt'></i>
+                        <h3>Menu List</h3>
+                        <i class='bx bx-filter'></i>
+                        <i class='bx bx-search'></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>name</th>
+                                <th>amount</th>
+                             
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                            <tr th:each="Material : ${materials}">
+                                <td th:text="${Material.id}"></td>
+                                <td th:text="${Material.mat_name}"></td>
+                                <td th:text="${Material.mat_amount}"></td>
+                            </tr>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            
+
         </main>
     </div>
 

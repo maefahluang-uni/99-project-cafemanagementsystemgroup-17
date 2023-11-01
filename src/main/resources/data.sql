@@ -20,3 +20,9 @@ INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (13, 'pineapple', 
 INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (14, 'banana', 2);
 INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (15, 'strawberry', 6);
 INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (16, 'sugar', 8);
+
+INSERT IGNORE INTO user (id, userName) VALUES (1, 'table01');
+INSERT IGNORE INTO user (id, userName) VALUES (2, 'table02');
+INSERT IGNORE INTO user (id, userName) VALUES (3, 'table03');
+INSERT IGNORE INTO user (id, userName) VALUES (4, 'table04');
+INSERT IGNORE INTO user (id, userName) VALUES (5, 'table05');

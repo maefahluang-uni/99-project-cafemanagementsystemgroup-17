@@ -59,6 +59,7 @@ public class CafeController {
     @GetMapping("/admin")
     public String dishesListAdmin(Model model) {
         model.addAttribute("dishes", dishesRepo.findAll());
+        model.addAttribute("materials", matRepo.findAll());
         return "list-for-admin";
     }
 
@@ -175,9 +176,9 @@ public class CafeController {
     // select number of dishes_stock and reduce dishes in dishes_stock ////
     /// material controller ///
     @GetMapping("/admin/materials")
-    public String matListadmin(Model model){
+    public String matListadmin(Model model) {
         model.addAttribute("materials", matRepo.findAll());
-        return "redirect:/admin";
+        return "material-for-admin";
     }
-    
+
 }
