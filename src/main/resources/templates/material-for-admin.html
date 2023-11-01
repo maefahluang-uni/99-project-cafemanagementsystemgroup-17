@@ -16,6 +16,8 @@
 </head>
 
 <body>
+    <!-- home -->
+    
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
@@ -120,46 +122,36 @@
                 </li>
             </ul>
             <!-- End of Insights -->
-
-            <div class="bottom-data">
-                <div class="orders">
+                <!-- Reminders -->
+                <div class="reminders">
                     <div class="header">
-                        <i class='bx bx-receipt'></i>
-                        <h3>Menu List</h3>
+                        <i class='bx bx-note'></i>
+                        <h3>Material</h3>
                         <i class='bx bx-filter'></i>
-                        <i class='bx bx-search'></i>
+                        <i class='bx bx-plus'></i>
                     </div>
                     <table>
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>name</th>
-                                <th>type</th>
-                                <th>Price</th>
-                                <th>stock</th>
-                                <th>price</th>
-                                <th>delete</th>
-                                <th>update</th>
+                                <th>amount</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <a href="/add-dish/" class="btn btn-primary mt-3 mb-3">Add New Dishes</a>
+                            <a href="#" class="btn btn-primary mt-3 mb-3">Add New Material</a>
                             <tr>
                                 <td>
-                            <tr th:each="Dishes : ${dishes}">
-                                <td th:text="${Dishes.id}"></td>
-                                <td th:text="${Dishes.dish_name}"></td>
-                                <td th:text="${Dishes.dish_type}"></td>
-                                <td th:text="${Dishes.dish_picture}"></td>
-                                <td th:text="${Dishes.dish_stock}"></td>
-                                <td th:text="${Dishes.dish_price}"></td>
+                            <tr th:each="Material : ${materials}">
+                                <td th:text="${Material.id}"></td>
+                                <td th:text="${Material.mat_name}"></td>
+                                <td th:text="${Material.mat_amount}"></td>
                                 <td>
-                                <td>
-                                    <a th:href="@{/delete-dish/{id}(id=${Dishes.id})}"
+                                    <a th:href="#"
                                         class="btn btn-primary mt-3 mb-3">Delete</a>
                                 </td>
                                 <td>
-                                    <a th:href="@{/update-dish/{id}(id=${Dishes.id})}"
+                                    <a th:href="#"
                                         class="btn btn-primary mt-3 mb-3">update</a>
                                 </td>
                             </tr>
@@ -167,8 +159,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="/delete-dish" class="btn btn-primary mt-3 mb-3">Delete All</a>
+                    <a href="#" class="btn btn-primary mt-3 mb-3">Delete All</a>
                 </div>
+                <!-- End of Reminders-->
             </div>
         </main>
     </div>

@@ -138,12 +138,12 @@ public class CafeController {
             // Reduce the dish_stock by 1
             model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
             dishesRepo.save(dish);
-            return "error";
+            return "redirect:/user";
         } else {
             // Handle the scenario where there is insufficient stock
             // You can redirect the user to an error page or display a message
             model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
-            return "error";
+            return "redirect:/user";
         }
 
         return "redirect:/user";
@@ -174,5 +174,10 @@ public class CafeController {
 
     // select number of dishes_stock and reduce dishes in dishes_stock ////
     /// material controller ///
+    @GetMapping("/admin/materials")
+    public String matListadmin(Model model){
+        model.addAttribute("materials", matRepo.findAll());
+        return "redirect:/admin";
+    }
     
 }
