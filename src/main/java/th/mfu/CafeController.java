@@ -36,10 +36,11 @@ public class CafeController {
     MaterialRepository matRepo;
 
     private final DishesService dishesService;
+    private final MaterialService materialService;
 
     public CafeController(DishesRepository dishesRepo, InvoiceRepository invoiceRepo,
             InvoiceItemRepository invoiceItemRepo, PaymentRepository paymentRepo, UserRepository userRepo,
-            DishesService dishesService, MaterialRepository matRepo) {
+            DishesService dishesService, MaterialRepository matRepo, MaterialService materialService) {
         this.dishesRepo = dishesRepo;
         this.invoiceRepo = invoiceRepo;
         this.invoiceItemRepo = invoiceItemRepo;
@@ -47,6 +48,7 @@ public class CafeController {
         this.userRepo = userRepo;
         this.dishesService = dishesService;
         this.matRepo = matRepo;
+        this.materialService = materialService;
 
     }
 
@@ -61,7 +63,7 @@ public class CafeController {
     public String dishesListAdmin(Model model) {
         model.addAttribute("dishes", dishesRepo.findAll());
         model.addAttribute("materials", matRepo.findAll());
-        model.addAttribute("invoice",invoiceRepo.findAll());
+        model.addAttribute("invoice", invoiceRepo.findAll());
         model.addAttribute("payment", paymentRepo.findAll());
         return "list-for-admin";
     }
@@ -78,9 +80,10 @@ public class CafeController {
         model.addAttribute("dishID", id);
         return "add-dish-form-id";
     }
-    
+
+    // @model and use mat repo////
     @PostMapping("/admin")
-    public String saveDish(@ModelAttribute Dishes newdishes,@ModelAttribute Material newmaterials) {
+    public String saveDish(@ModelAttribute Dishes newdishes, @ModelAttribute Material newmaterials) {
         dishesRepo.save(newdishes);
         matRepo.save(newmaterials);
         return "redirect:/admin";
@@ -115,7 +118,7 @@ public class CafeController {
     public String listforUser(Model model) {
         model.addAttribute("dishes", dishesRepo.findAll());
 
-        //only show InvoiceItem that invoice = null
+        // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
         return "user";
     }
@@ -186,10 +189,24 @@ public class CafeController {
         matRepo.deleteAll();
         return "redirect:/admin";
     }
+
     @GetMapping("/add-mat")
     public String addMatForm(Model model) {
         model.addAttribute("materials", new Material());
         return "add-mat-form";
     }
 
+    @GetMapping("/update-mat/{id}")
+    public String updateMatForm(Model model, @PathVariable Long id) {
+        model.addAttribute("materials", matRepo.findById(id));
+        return "add-mat-form-id";
+    }
+
+    @PostMapping("/admin_update_mat")
+    public String updateMat(@ModelAttribute("materials") Material materials, @RequestParam("id") Long id) {
+        materialService.updateMat(id,
+                materials.getMat_name(),
+                materials.getMat_amount());
+        return "redirect:/admin";
+    }
 }
