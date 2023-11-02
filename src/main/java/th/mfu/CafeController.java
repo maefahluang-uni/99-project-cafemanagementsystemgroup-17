@@ -143,7 +143,17 @@ public class CafeController {
             dish.setDish_stock(dish.getDish_stock() - quantity);
             invoiceitem.setDish_amount(quantity);
             dishesRepo.save(dish);
-        } else {
+            // don't deleted else if because when dishes_stock = 0 user can't add more dishes //
+            ///and will go to error page and no dishes in invoiceitem that mean bug when add dished when dishes_stock = 0 is fixed///
+            ///poonyawat warning!!!!///
+        } else if (dish.getDish_stock() == 0) {
+            invoiceitem.setDishes(dish);
+            invoiceItemRepo.delete(invoiceitem);
+            // Reduce the dish_stock by 1
+            model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
+            dishesRepo.save(dish);
+            return "error";
+        }else {
             // Handle the scenario where there is insufficient stock
             // You can redirect the user to an error page or display a message
             model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
