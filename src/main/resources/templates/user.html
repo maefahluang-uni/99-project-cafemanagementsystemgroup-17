@@ -13,6 +13,32 @@
 </head>
 
 <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Your Logo or Brand</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end of navbar -->
 <!--show dishes list-->
     <div class="container" id="Menu">
         <h1 class="mt-5">Menu List</h1>
@@ -36,11 +62,22 @@
                 <td th:text="${Dishes.dish_price}"></td>
                 <td>
                     <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="10" required>
+                        <div class="input-group">
+                            <label for="quantity" class="input-group-text">Quantity:</label>
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                            <span class="input-group-text">
+                                <button type="button" class="btn btn-outline-secondary" onclick="decrementQuantity()">-</button>
+                            </span>
+                            <input type="text" id="quantityDisplay" class="form-control text-center" value="1" readonly>
+                            <span class="input-group-text">
+                                <button type="button" class="btn btn-outline-secondary" onclick="incrementQuantity()">+</button>
+                            </span>
+                        </div>
                         <input class="btn btn-primary mt-3 mb-3" type="submit" value="Add to Cart">
                     </form>
                 </td>
+                
+                
             </tr>
         </table>
         <table>

@@ -170,8 +170,6 @@ public String deletedIncart(@PathVariable Long id) {
     return "redirect:/user";
 }
 
-
-    // select number of dishes_stock and reduce dishes in dishes_stock ////
     /// material controller ///
     @GetMapping("/delete-mat/{id}")
     public String deleteMat(@PathVariable Long id) {
@@ -204,4 +202,14 @@ public String deletedIncart(@PathVariable Long id) {
                 materials.getMat_amount());
         return "redirect:/admin";
     }
+
+/// login controller ///
+
+
+
+
+
+
+
+
 }
