@@ -125,66 +125,51 @@ public class CafeController {
 
     /// cart user go to new form ///
     @PostMapping("/add-to-cart/{id}")
-    public String addtocart(Model model, @PathVariable Long id, @RequestParam("quantity") Integer quantity) {
+public String addtocart(Model model, @PathVariable Long id, @RequestParam("quantity") Integer quantity) {
 
-        Dishes dishyy = dishesRepo.findById(id).get();
+    Dishes dish = dishesRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
+
+    if (dish.getDish_stock() >= quantity) {
+        // There is sufficient stock, so add the item to the cart
         InvoiceItem invoiceitem = new InvoiceItem();
-        invoiceitem.setDishes(dishyy);
+        invoiceitem.setDishes(dish);
+        invoiceitem.setDish_amount(quantity);
         invoiceItemRepo.save(invoiceitem);
-        /// gpt gen ///
-        Dishes dish = dishesRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
 
-        if (dish.getDish_stock() - quantity >= 0) {
-            // There is sufficient stock, so add the item to the cart
-            invoiceitem.setDishes(dish);
-            invoiceItemRepo.save(invoiceitem);
-
-            // Reduce the dish_stock by quantity
-            dish.setDish_stock(dish.getDish_stock() - quantity);
-            invoiceitem.setDish_amount(quantity);
-            dishesRepo.save(dish);
-            // don't deleted else if because when dishes_stock = 0 user can't add more dishes //
-            ///and will go to error page and no dishes in invoiceitem that mean bug when add dished when dishes_stock = 0 is fixed///
-            ///poonyawat warning!!!!///
-        } else if (dish.getDish_stock() == 0) {
-            invoiceitem.setDishes(dish);
-            invoiceItemRepo.delete(invoiceitem);
-            // Reduce the dish_stock by 1
-            model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
-            dishesRepo.save(dish);
-            return "error";
-        }else {
-            // Handle the scenario where there is insufficient stock
-            // You can redirect the user to an error page or display a message
-            model.addAttribute("errorMessage", "Sorry, this item is out of stock.");
-            return "error";
-        }
+        // Reduce the dish_stock by quantity
+        dish.setDish_stock(dish.getDish_stock() - quantity);
+        dishesRepo.save(dish);
 
         return "redirect:/user";
+    } else {
+        // Handle the scenario where there is insufficient stock
+        model.addAttribute("errorMessage", "Sorry, there is not enough stock for this item.");
+        return "error";
     }
+}
+
 
     // deleted in cart ///
     @GetMapping("/delete-cart/{id}")
-    public String deletedIncart(@PathVariable Long id) {
-        // invoiceItemRepo.deleteById(id);
-        InvoiceItem invoiceItem = invoiceItemRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
+public String deletedIncart(@PathVariable Long id) {
+    InvoiceItem invoiceItem = invoiceItemRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
 
-        // Retrieve the dish associated with the invoice item
-        Dishes dish = invoiceItem.getDishes();
+    // Retrieve the dish associated with the invoice item
+    Dishes dish = invoiceItem.getDishes();
 
-        // Retrieve the quantity of the item being deleted
-        int quantityRemoved = 1; // Assuming you are deleting one item at a time
-        // You can modify this logic if you need to delete more than one item at a time
+    // Retrieve the quantity of the item being deleted
+    int quantityRemoved = invoiceItem.getDish_amount(); // Get the original quantity added to the cart
 
-        // Increase the dish_stock by the quantity removed from the cart
-        dish.setDish_stock(dish.getDish_stock() + quantityRemoved);
-        dishesRepo.save(dish);
+    // Increase the dish_stock by the quantity removed from the cart
+    dish.setDish_stock(dish.getDish_stock() + quantityRemoved);
+    dishesRepo.save(dish);
 
-        // Delete the item from the cart
-        invoiceItemRepo.delete(invoiceItem);
+    // Delete the item from the cart
+    invoiceItemRepo.delete(invoiceItem);
 
-        return "redirect:/user";
-    }
+    return "redirect:/user";
+}
+
 
     // select number of dishes_stock and reduce dishes in dishes_stock ////
     /// material controller ///
