@@ -1,5 +1,7 @@
 package th.mfu;
 
+
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -7,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import  th.mfu.domain.Dishes;
+import th.mfu.domain.Dishes;
 
 public interface DishesRepository extends CrudRepository<Dishes, Long> {
 
@@ -34,5 +36,7 @@ public interface DishesRepository extends CrudRepository<Dishes, Long> {
 
         // gpt gen //
         Long findQuantityById(Long dishesId);
+
+
 
 }
