@@ -1,23 +1,28 @@
-function incrementQuantity() {
-    var quantityInput = document.getElementById("quantity");
-    var quantityDisplay = document.getElementById("quantityDisplay");
-    var currentQuantity = parseInt(quantityInput.value);
-    if (currentQuantity < 10) {
-        quantityInput.value = currentQuantity + 1;
-        quantityDisplay.value = currentQuantity + 1;
+function incrementCounter(button) {
+    var form = button.closest("form");
+    var counter = form.querySelector(".form-control");
+    var quantityInput = form.querySelector("input[name='quantity']");
+
+    var currentCounter = parseInt(counter.textContent);
+    if (currentCounter < 10) {
+        counter.textContent = currentCounter + 1;
+        quantityInput.value = currentCounter + 1;
     }
 }
 
-function decrementQuantity() {
-    var quantityInput = document.getElementById("quantity");
-    var quantityDisplay = document.getElementById("quantityDisplay");
-    var currentQuantity = parseInt(quantityInput.value);
-    if (currentQuantity > 1) {
-        quantityInput.value = currentQuantity - 1;
-        quantityDisplay.value = currentQuantity - 1;
+function decrementCounter(button) {
+    var form = button.closest("form");
+    var counter = form.querySelector(".form-control");
+    var quantityInput = form.querySelector("input[name='quantity']");
+
+    var currentCounter = parseInt(counter.textContent);
+    if (currentCounter > 1) {
+        counter.textContent = currentCounter - 1;
+        quantityInput.value = currentCounter - 1;
     }
 }
-//notification///
+
+//Show cart///
 function showCartNotification() {
     var notification = document.getElementById('cart-notification');
     notification.style.display = 'block';

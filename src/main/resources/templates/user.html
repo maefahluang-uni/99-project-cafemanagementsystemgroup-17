@@ -103,7 +103,8 @@
     <!-- end of navbar -->
     <!-- search bar -->
     <form class="d-flex" method="get" action="/search-dishes">
-        <input class="form-control me-2" type="text" id="keyword" name="keyword" placeholder="Search by Dish Name" aria-label="Search">
+        <input class="form-control me-2" type="text" id="keyword" name="keyword" placeholder="Search by Dish Name"
+            aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">
             <i class="bi bi-search"></i>
         </button>
@@ -131,29 +132,24 @@
                 <td th:text="${Dishes.dish_stock}"></td>
                 <td th:text="${Dishes.dish_price}"></td>
                 <td>
+                    <!-- Repeat this structure for each form with unique Dishes.id -->
                     <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post">
-                        <div class="input-group">
-                            <label for="quantity" class="input-group-text">Quantity:</label>
-                            <input type="hidden" id="quantity" name="quantity" value="1">
-                            <span class="input-group-text">
-                                <button type="button" class="btn btn-outline-secondary"
-                                    onclick="decrementQuantity()">-</button>
-                            </span>
-                            <input type="text" id="quantityDisplay" class="form-control text-center" value="1" readonly>
-                            <span class="input-group-text">
-                                <button type="button" class="btn btn-outline-secondary"
-                                    onclick="incrementQuantity()">+</button>
-                            </span>
-                        </div>
+                        <label for="quantity">Quantity:</label>
+                        <button type="button" class="btn btn-outline-secondary"
+                            onclick="decrementCounter(this)">-</button>
+                        <span class="form-control text-center">1</span>
+                        <button type="button" class="btn btn-outline-secondary"
+                            onclick="incrementCounter(this)">+</button>
+                        <input type="hidden" id="quantity" name="quantity" value="1">
+                        <!-- Hidden input field for submission -->
                         <input class="btn btn-primary mt-3 mb-3" type="submit" value="Add to Cart">
                     </form>
+
                 </td>
-
-
             </tr>
         </table>
         <table>
-            <form action="#" th:action="@{/add-to-cart}" modelAttributes="newinvoiceitem" method="post">
+            <form action="#" th:action="@{/add-to-cart/{id}}" modelAttributes="newinvoiceitem" method="post">
                 <form:input path="dish_name" value="1" type="text" />
             </form>
         </table>
@@ -195,4 +191,5 @@
     <!--java script here -->
     <script src="app.js"></script>
 </body>
+
 </html>
