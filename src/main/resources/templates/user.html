@@ -23,12 +23,13 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="nav-link" href="#"><i class="bi bi-list"></i></a>
-            <a class="navbar-brand" href="#">Makarah Logo</a>
+            <a class="nav-link d-none d-sm-block" href="#"><i class="bi bi-list"></i></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <a class="navbar-brand" href="#">Makarah Logo</a>
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -95,16 +96,11 @@
                 </ul>
             </div>
             <!-- Button to open the cart modal (separately on large screens) -->
-            <button id="cartButtonLarge" type="button" class="btn btn-link ml-auto d-lg-inline d-none"
+            <button id="cartButtonLarge" type="button" class="btn btn-link ml-auto d-none d-lg-inline"
                 data-toggle="modal" data-target="#cartModal">
                 <i class="bi bi-cart3"></i>
             </button>
         </div>
-        <!-- Button to open the cart modal (visible inside nav toggle on small screens) -->
-        <button id="cartButton" type="button" class="btn btn-link d-lg-none" data-toggle="modal"
-            data-target="#cartModal">
-            <i class="bi bi-cart3"></i>
-        </button>
     </nav>
     <!-- end of navbar -->
     <!-- search bar -->
@@ -128,50 +124,51 @@
 
         <!--show top 3 dishes-->
         <div th:if="${top3dishes != null}">
-        <h1 class="mt-5">Best seller</h1>
-        <table class="table">
-            <tr>
-                <th>Name</th>
-                <td>MenuType</td>
-                <th>Picture</th>
-                <th>Stock</th>
-                <th>Price</th>
-                <th>select</th>
-            </tr>
-            <!--show list in sql and new add list-->
-            <tr th:each="Dishes : ${top3dishes}">
-                <td th:text="${Dishes.dish_name}"></td>
-                <td th:text="${Dishes.dishtype}"></td>
-                <td th:text="${Dishes.dish_picture}"></td>
-                <td th:text="${Dishes.dish_stock}"></td>
-                <td th:text="${Dishes.dish_price}"></td>
-                <td>
-                    <!-- Repeat this structure for each form with unique Dishes.id -->
-                    <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post" class="product-form">
-                        <label for="quantity">Quantity:</label>
-                        <div class="quantity-control">
-                            <button type="button" class="btn btn-secondary quantity-button"
-                                onclick="decrementCounter(this)">-</button>
-                            <span class="form-control text-center quantity-display">1</span>
-                            <button type="button" class="btn btn-secondary quantity-button"
-                                onclick="incrementCounter(this)">+</button>
-                            <input type="hidden" id="quantity" name="quantity" value="1">
-                        </div>
-                        <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit" value="Add to Cart">
-                    </form>
+            <h1 class="mt-5">Best seller</h1>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <td>MenuType</td>
+                    <th>Picture</th>
+                    <th>Stock</th>
+                    <th>Price</th>
+                    <th>select</th>
+                </tr>
+                <!--show list in sql and new add list-->
+                <tr th:each="Dishes : ${top3dishes}">
+                    <td th:text="${Dishes.dish_name}"></td>
+                    <td th:text="${Dishes.dishtype}"></td>
+                    <td th:text="${Dishes.dish_picture}"></td>
+                    <td th:text="${Dishes.dish_stock}"></td>
+                    <td th:text="${Dishes.dish_price}"></td>
+                    <td>
+                        <!-- Repeat this structure for each form with unique Dishes.id -->
+                        <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post" class="product-form">
+                            <label for="quantity">Quantity:</label>
+                            <div class="quantity-control">
+                                <button type="button" class="btn btn-secondary quantity-button"
+                                    onclick="decrementCounter(this)">-</button>
+                                <span class="form-control text-center quantity-display">1</span>
+                                <button type="button" class="btn btn-secondary quantity-button"
+                                    onclick="incrementCounter(this)">+</button>
+                                <input type="hidden" id="quantity" name="quantity" value="1">
+                            </div>
+                            <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit"
+                                value="Add to Cart">
+                        </form>
 
-                </td>
-            </tr>
-        </table>
-        <table>
-            <form action="#" th:action="@{/add-to-cart/{id}}" modelAttributes="newinvoiceitem" method="post">
-                <form:input path="dish_name" value="1" type="text" />
-            </form>
-        </table>
-    </div>
-    
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <form action="#" th:action="@{/add-to-cart/{id}}" modelAttributes="newinvoiceitem" method="post">
+                    <form:input path="dish_name" value="1" type="text" />
+                </form>
+            </table>
+        </div>
 
-       <!--show dishes list--> 
+
+        <!--show dishes list-->
         <h1 class="mt-5">Menu List</h1>
         <table class="table">
             <tr>
