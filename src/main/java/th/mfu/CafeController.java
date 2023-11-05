@@ -201,7 +201,6 @@ public class CafeController {
                 materials.getMat_amount());
         return "redirect:/admin";
     }
-
     /// login controller ///
 
 }
