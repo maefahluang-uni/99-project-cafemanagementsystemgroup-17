@@ -62,13 +62,13 @@
                                         <table class="table">
                                             <tr>
                                                 <th>ID</th>
-                                                <td>dish_amount</td>
+                                                <td>dishAmount</td>
                                                 <th>dishes</th>
                                                 <th>invoice ID</th>
                                             </tr>
                                             <tr th:each="InvoiceItem : ${invoiceitem}">
                                                 <td th:text="${InvoiceItem.id}"></td>
-                                                <td th:text="${InvoiceItem.dish_amount}"></td>
+                                                <td th:text="${InvoiceItem.dishAmount}"></td>
                                                 <td th:text="${InvoiceItem.dishes.dish_name}"></td>
                                                 <td th:text="${InvoiceItem.Invoice}"></td>
                                                 <td>
@@ -108,26 +108,73 @@
     </nav>
     <!-- end of navbar -->
     <!-- search bar -->
-    <form class="d-flex" method="get" action="/search-dishes">
+    <!-- <form class="d-flex" method="get" action="/search-dishes">
         <input class="form-control me-2" type="text" id="keyword" name="keyword" placeholder="Search by Dish Name"
             aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">
             <i class="bi bi-search"></i>
         </button>
-    </form>
+    </form> -->
     <!-- end of search bar -->
     <!--show dishes list-->
     <div class="container" id="Menu">
 
+        <!--menu botton-->
+        <a th:href="@{/user}" class="btn btn-primary mt-3 mb-3">All</a>
         <a th:href="@{/user-search-tea}" class="btn btn-primary mt-3 mb-3">Tea</a>
         <a th:href="@{/user-search-coffee}" class="btn btn-primary mt-3 mb-3">Coffee</a>
         <a th:href="@{/user-search-smoothie}" class="btn btn-primary mt-3 mb-3">Smoothie</a>
         <a th:href="@{/user-search-dessert}" class="btn btn-primary mt-3 mb-3">Dessert</a>
 
+        <!--show top 3 dishes-->
+        <div th:if="${top3dishes != null}">
+        <h1 class="mt-5">Best seller</h1>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <td>MenuType</td>
+                <th>Picture</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>select</th>
+            </tr>
+            <!--show list in sql and new add list-->
+            <tr th:each="Dishes : ${top3dishes}">
+                <td th:text="${Dishes.dish_name}"></td>
+                <td th:text="${Dishes.dishtype}"></td>
+                <td th:text="${Dishes.dish_picture}"></td>
+                <td th:text="${Dishes.dish_stock}"></td>
+                <td th:text="${Dishes.dish_price}"></td>
+                <td>
+                    <!-- Repeat this structure for each form with unique Dishes.id -->
+                    <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post" class="product-form">
+                        <label for="quantity">Quantity:</label>
+                        <div class="quantity-control">
+                            <button type="button" class="btn btn-secondary quantity-button"
+                                onclick="decrementCounter(this)">-</button>
+                            <span class="form-control text-center quantity-display">1</span>
+                            <button type="button" class="btn btn-secondary quantity-button"
+                                onclick="incrementCounter(this)">+</button>
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                        </div>
+                        <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit" value="Add to Cart">
+                    </form>
+
+                </td>
+            </tr>
+        </table>
+        <table>
+            <form action="#" th:action="@{/add-to-cart/{id}}" modelAttributes="newinvoiceitem" method="post">
+                <form:input path="dish_name" value="1" type="text" />
+            </form>
+        </table>
+    </div>
+    
+
+       <!--show dishes list--> 
         <h1 class="mt-5">Menu List</h1>
         <table class="table">
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <td>MenuType</td>
                 <th>Picture</th>
@@ -137,7 +184,6 @@
             </tr>
             <!--show list in sql and new add list-->
             <tr th:each="Dishes : ${dishes}">
-                <td th:text="${Dishes.id}"></td>
                 <td th:text="${Dishes.dish_name}"></td>
                 <td th:text="${Dishes.dishtype}"></td>
                 <td th:text="${Dishes.dish_picture}"></td>
@@ -168,19 +214,20 @@
         </table>
     </div>
 
+    </div>
     <!-- show InvoiceItem list
     <div class="container" id="Cart">
         <h1 class="mt-5">Cart List</h1>
         <table class="table">
             <tr>
                 <th>ID</th>
-                <td>dish_amount</td>
+                <td>dishAmount</td>
                 <th>dishes</th>
                 <th>invoice ID</th>
             </tr>
             <tr th:each="InvoiceItem : ${invoiceitem}">
                 <td th:text="${InvoiceItem.id}"></td>
-                <td th:text="${InvoiceItem.dish_amount}"></td>
+                <td th:text="${InvoiceItem.dishAmount}"></td>
                 <td th:text="${InvoiceItem.dishes.dish_name}"></td>
                 <td th:text="${InvoiceItem.Invoice}"></td>
                 <td>

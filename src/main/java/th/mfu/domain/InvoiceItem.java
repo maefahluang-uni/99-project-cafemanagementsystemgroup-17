@@ -12,7 +12,7 @@ public class InvoiceItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer dish_amount;
+    private Integer dishAmount;
     @ManyToOne(cascade = CascadeType.MERGE)
     private Invoice invoice;
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -22,9 +22,9 @@ public class InvoiceItem {
 
     }
 
-    public InvoiceItem(Long id, Integer dish_amount, Invoice invoice, Dishes dishes) {
+    public InvoiceItem(Long id, Integer dishAmount, Invoice invoice, Dishes dishes) {
         this.id = id;
-        this.dish_amount = dish_amount;
+        this.dishAmount = dishAmount;
         this.invoice = invoice;
         this.dishes = dishes;
     }
@@ -37,12 +37,12 @@ public class InvoiceItem {
         this.id = id;
     }
 
-    public Integer getDish_amount() {
-        return dish_amount;
+    public Integer getDishAmount() {
+        return dishAmount;
     }
 
-    public void setDish_amount(Integer dish_amout) {
-        this.dish_amount = dish_amout;
+    public void setDishAmount(Integer dish_amout) {
+        this.dishAmount = dish_amout;
     }
 
     public Invoice getInvoice() {
