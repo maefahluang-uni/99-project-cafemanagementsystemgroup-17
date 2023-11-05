@@ -35,3 +35,24 @@ function hideCartNotification() {
     var notification = document.getElementById('cart-notification');
     notification.style.display = 'none';
 }
+//button to open cart modal /
+$(document).ready(function () {
+    // Function to show/hide the cart button when the navigation bar is collapsed
+    function toggleCartButton() {
+        if ($(".navbar-collapse").hasClass("show")) {
+            // Navigation bar is expanded
+            $("#cartButton").addClass("d-none");
+        } else {
+            // Navigation bar is collapsed
+            $("#cartButton").removeClass("d-none");
+        }
+    }
+
+    // Initial toggle
+    toggleCartButton();
+
+    // Listen for Bootstrap collapse events on the navigation toggle
+    $(".navbar-toggler").on("click", function () {
+        toggleCartButton();
+    });
+});

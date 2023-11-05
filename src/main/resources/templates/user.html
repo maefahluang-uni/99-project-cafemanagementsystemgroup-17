@@ -94,11 +94,17 @@
                             </div>
                 </ul>
             </div>
-            <!-- Button to open the cart modal -->
-            <button type="button" class="btn btn-link ml-auto" data-toggle="modal" data-target="#cartModal">
+            <!-- Button to open the cart modal (separately on large screens) -->
+            <button id="cartButtonLarge" type="button" class="btn btn-link ml-auto d-lg-inline d-none"
+                data-toggle="modal" data-target="#cartModal">
                 <i class="bi bi-cart3"></i>
             </button>
         </div>
+        <!-- Button to open the cart modal (visible inside nav toggle on small screens) -->
+        <button id="cartButton" type="button" class="btn btn-link ml-auto d-lg-none " data-toggle="modal"
+            data-target="#cartModal">
+            <i class="bi bi-cart3"></i>
+        </button>
     </nav>
     <!-- end of navbar -->
     <!-- search bar -->
@@ -139,16 +145,17 @@
                 <td th:text="${Dishes.dish_price}"></td>
                 <td>
                     <!-- Repeat this structure for each form with unique Dishes.id -->
-                    <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post">
+                    <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post" class="product-form">
                         <label for="quantity">Quantity:</label>
-                        <button type="button" class="btn btn-outline-secondary"
-                            onclick="decrementCounter(this)">-</button>
-                        <span class="form-control text-center">1</span>
-                        <button type="button" class="btn btn-outline-secondary"
-                            onclick="incrementCounter(this)">+</button>
-                        <input type="hidden" id="quantity" name="quantity" value="1">
-                        <!-- Hidden input field for submission -->
-                        <input class="btn btn-primary mt-3 mb-3" type="submit" value="Add to Cart">
+                        <div class="quantity-control">
+                            <button type="button" class="btn btn-secondary quantity-button"
+                                onclick="decrementCounter(this)">-</button>
+                            <span class="form-control text-center quantity-display">1</span>
+                            <button type="button" class="btn btn-secondary quantity-button"
+                                onclick="incrementCounter(this)">+</button>
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                        </div>
+                        <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit" value="Add to Cart">
                     </form>
 
                 </td>
