@@ -10,7 +10,7 @@ public class Dishes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
     private String dish_name;
-    private String dish_type;
+    private String dishtype;
     private String dish_picture;
     private Integer  dish_stock;
     private Integer  dish_price;
@@ -18,11 +18,11 @@ public class Dishes {
         
         
     }
-    public Dishes(Long id, String dish_name, String dish_type, String dish_picture, Integer dish_stock,
+    public Dishes(Long id, String dish_name, String dishtype, String dish_picture, Integer dish_stock,
             Integer dish_price) {
         this.id = id;
         this.dish_name = dish_name;
-        this.dish_type = dish_type;
+        this.dishtype = dishtype;
         this.dish_picture = dish_picture;
         this.dish_stock = dish_stock;
         this.dish_price = dish_price;
@@ -39,11 +39,11 @@ public class Dishes {
     public void setDish_name(String dish_name) {
         this.dish_name = dish_name;
     }
-    public String getDish_type() {
-        return dish_type;
+    public String getDishtype() {
+        return dishtype;
     }
-    public void setDish_type(String dish_type) {
-        this.dish_type = dish_type;
+    public void setDishtype(String dishtype) {
+        this.dishtype = dishtype;
     }
     public String getDish_picture() {
         return dish_picture;

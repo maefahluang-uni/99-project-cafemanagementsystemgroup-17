@@ -93,7 +93,7 @@ public class CafeController {
     public String updateDish(@ModelAttribute("dishes") Dishes dishes, @RequestParam("id") Long id) {
         dishesService.updateDish(id,
                 dishes.getDish_name(),
-                dishes.getDish_type(),
+                dishes.getDishtype(),
                 dishes.getDish_picture(),
                 dishes.getDish_stock(),
                 dishes.getDish_price());
@@ -125,50 +125,49 @@ public class CafeController {
 
     /// cart user go to new form ///
     @PostMapping("/add-to-cart/{id}")
-public String addtocart(Model model, @PathVariable Long id, @RequestParam("quantity") Integer quantity) {
+    public String addtocart(Model model, @PathVariable Long id, @RequestParam("quantity") Integer quantity) {
 
-    Dishes dish = dishesRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
+        Dishes dish = dishesRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
 
-    if (dish.getDish_stock() >= quantity) {
-        // There is sufficient stock, so add the item to the cart
-        InvoiceItem invoiceitem = new InvoiceItem();
-        invoiceitem.setDishes(dish);
-        invoiceitem.setDish_amount(quantity);
-        invoiceItemRepo.save(invoiceitem);
+        if (dish.getDish_stock() >= quantity) {
+            // There is sufficient stock, so add the item to the cart
+            InvoiceItem invoiceitem = new InvoiceItem();
+            invoiceitem.setDishes(dish);
+            invoiceitem.setDish_amount(quantity);
+            invoiceItemRepo.save(invoiceitem);
 
-        // Reduce the dish_stock by quantity
-        dish.setDish_stock(dish.getDish_stock() - quantity);
-        dishesRepo.save(dish);
+            // Reduce the dish_stock by quantity
+            dish.setDish_stock(dish.getDish_stock() - quantity);
+            dishesRepo.save(dish);
 
-        return "redirect:/user";
-    } else {
-        // Handle the scenario where there is insufficient stock
-        model.addAttribute("errorMessage", "Sorry, there is not enough stock for this item.");
-        return "error";
+            return "redirect:/user";
+        } else {
+            // Handle the scenario where there is insufficient stock
+            model.addAttribute("errorMessage", "Sorry, there is not enough stock for this item.");
+            return "error";
+        }
     }
-}
-
 
     // deleted in cart ///
     @GetMapping("/delete-cart/{id}")
-public String deletedIncart(@PathVariable Long id) {
-    InvoiceItem invoiceItem = invoiceItemRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
+    public String deletedIncart(@PathVariable Long id) {
+        InvoiceItem invoiceItem = invoiceItemRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
 
-    // Retrieve the dish associated with the invoice item
-    Dishes dish = invoiceItem.getDishes();
+        // Retrieve the dish associated with the invoice item
+        Dishes dish = invoiceItem.getDishes();
 
-    // Retrieve the quantity of the item being deleted
-    int quantityRemoved = invoiceItem.getDish_amount(); // Get the original quantity added to the cart
+        // Retrieve the quantity of the item being deleted
+        int quantityRemoved = invoiceItem.getDish_amount(); // Get the original quantity added to the cart
 
-    // Increase the dish_stock by the quantity removed from the cart
-    dish.setDish_stock(dish.getDish_stock() + quantityRemoved);
-    dishesRepo.save(dish);
+        // Increase the dish_stock by the quantity removed from the cart
+        dish.setDish_stock(dish.getDish_stock() + quantityRemoved);
+        dishesRepo.save(dish);
 
-    // Delete the item from the cart
-    invoiceItemRepo.delete(invoiceItem);
+        // Delete the item from the cart
+        invoiceItemRepo.delete(invoiceItem);
 
-    return "redirect:/user";
-}
+        return "redirect:/user";
+    }
 
     /// material controller ///
     @GetMapping("/delete-mat/{id}")
@@ -203,15 +202,6 @@ public String deletedIncart(@PathVariable Long id) {
         return "redirect:/admin";
     }
 
-/// login controller ///
+    /// login controller ///
 
 }
-
-
-
-
-
-
-
-
-

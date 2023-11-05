@@ -112,6 +112,12 @@
     <!-- end of search bar -->
     <!--show dishes list-->
     <div class="container" id="Menu">
+
+        <a th:href="@{/user-search-tea}" class="btn btn-primary mt-3 mb-3">Tea</a>
+        <a th:href="@{/user-search-coffee}" class="btn btn-primary mt-3 mb-3">Coffee</a>
+        <a th:href="@{/user-search-smoothie}" class="btn btn-primary mt-3 mb-3">Smoothie</a>
+        <a th:href="@{/user-search-dessert}" class="btn btn-primary mt-3 mb-3">Dessert</a>
+
         <h1 class="mt-5">Menu List</h1>
         <table class="table">
             <tr>
@@ -127,7 +133,7 @@
             <tr th:each="Dishes : ${dishes}">
                 <td th:text="${Dishes.id}"></td>
                 <td th:text="${Dishes.dish_name}"></td>
-                <td th:text="${Dishes.dish_type}"></td>
+                <td th:text="${Dishes.dishtype}"></td>
                 <td th:text="${Dishes.dish_picture}"></td>
                 <td th:text="${Dishes.dish_stock}"></td>
                 <td th:text="${Dishes.dish_price}"></td>
