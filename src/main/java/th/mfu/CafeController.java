@@ -1,7 +1,9 @@
 package th.mfu;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,6 +122,26 @@ public class CafeController {
 
         // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
+
+        // show top 3 sale
+        List<Object[]> top3PopularDishes = invoiceItemRepo.findTop3Sale();
+        if (!top3PopularDishes.isEmpty() && top3PopularDishes.size() >= 3) {
+            List<Dishes> top3dishes = new ArrayList<>();
+            int count = 0;
+            for (Object[] result : top3PopularDishes) {
+                Dishes dishes = (Dishes) result[1];
+                // Long totalAmount = (Long) result[0];
+                // System.out.println("Dishes " + dishes.getDish_name() + ", Total Amount: " +
+                //         totalAmount);
+                count++;
+                top3dishes.add(dishes);
+                if (count >= 3) {
+                    model.addAttribute("top3dishes",top3dishes);
+                    break;
+                }
+            }
+        }
+
         return "user";
     }
 
@@ -133,7 +155,7 @@ public class CafeController {
             // There is sufficient stock, so add the item to the cart
             InvoiceItem invoiceitem = new InvoiceItem();
             invoiceitem.setDishes(dish);
-            invoiceitem.setDish_amount(quantity);
+            invoiceitem.setDishAmount(quantity);
             invoiceItemRepo.save(invoiceitem);
 
             // Reduce the dish_stock by quantity
@@ -157,7 +179,7 @@ public class CafeController {
         Dishes dish = invoiceItem.getDishes();
 
         // Retrieve the quantity of the item being deleted
-        int quantityRemoved = invoiceItem.getDish_amount(); // Get the original quantity added to the cart
+        int quantityRemoved = invoiceItem.getDishAmount(); // Get the original quantity added to the cart
 
         // Increase the dish_stock by the quantity removed from the cart
         dish.setDish_stock(dish.getDish_stock() + quantityRemoved);

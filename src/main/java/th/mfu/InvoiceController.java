@@ -78,8 +78,8 @@ public class InvoiceController {
 
             if (InvoiceItem.getInvoice() == null) {
                 InvoiceItem.setInvoice(invoiceRepo.findTopByOrderByIdDesc());
-                // total price = dish_amount * dish_price
-                totalprice += (InvoiceItem.getDish_amount()) *
+                // total price = dishAmount * dish_price
+                totalprice += (InvoiceItem.getDishAmount()) *
                         (InvoiceItem.getDishes().getDish_price());
 
                 invoiceItemRepo.save(InvoiceItem);
