@@ -38,7 +38,7 @@
     <div class="container">
         <h1 class="mt-4">Add Material</h1>
 
-        <form th:action="@{/admin}" th:object="${materials}" method="post" class="mt-4">
+        <form th:action="@{/admin_saveMat}" th:object="${materials}" method="post" class="mt-4">
             <div class="form-group">
                 <label for="mat_name">Name:</label>
                 <input type="text" id="mat_name" class="form-control" th:field="*{mat_name}" required>

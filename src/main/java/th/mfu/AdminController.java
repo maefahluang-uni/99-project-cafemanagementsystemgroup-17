@@ -4,6 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import th.mfu.domain.Dishes;
+import th.mfu.domain.Material;
 
 @Controller
 public class AdminController {
@@ -44,5 +49,16 @@ public class AdminController {
         model.addAttribute("invoice", invoiceRepo.findAll());
         model.addAttribute("payment", paymentRepo.findAll());
         return "list-for-admin";
+    }
+
+    @PostMapping("/admin")
+    public String saveDish(@ModelAttribute Dishes newdishes) {
+        dishesRepo.save(newdishes);
+        return "redirect:/admin";
+    }
+    @PostMapping("/admin_saveMat")
+    public String saveMat(@ModelAttribute Material newmaterials) {
+        matRepo.save(newmaterials);
+        return "redirect:/admin";
     }
 }

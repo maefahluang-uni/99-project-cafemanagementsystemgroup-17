@@ -71,12 +71,11 @@ public class DishesController {
     }
 
     // @model and use mat repo////
-    @PostMapping("/admin")
-    public String saveDish(@ModelAttribute Dishes newdishes) {
-        dishesRepo.save(newdishes);
-        
-        return "redirect:/admin";
-    }
+    // @PostMapping("/admin")
+    // public String saveDish(@ModelAttribute Dishes newdishes) {
+    //     dishesRepo.save(newdishes);
+    //     return "redirect:/admin";
+    // }
 
     @PostMapping("/admin_update_dish")
     public String updateDish(@ModelAttribute("dishes") Dishes dishes, @RequestParam("id") Long id) {
