@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import th.mfu.domain.Material;
@@ -75,9 +76,10 @@ public class MaterialController {
                 materials.getMat_amount());
         return "redirect:/admin";
     }
-    // @PostMapping("/admin")
-    // public String saveAll(@ModelAttribute Material newmaterials) {
-    //     matRepo.save(newmaterials);
-    //     return "redirect:/admin";
-    // }
+    @RequestMapping
+    @PostMapping("/admin")
+    public String saveMat(@ModelAttribute Material newmaterials) {
+        matRepo.save(newmaterials);
+        return "redirect:/admin";
+    }
 }

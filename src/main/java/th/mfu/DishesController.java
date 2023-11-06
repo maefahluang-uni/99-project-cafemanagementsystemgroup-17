@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import th.mfu.domain.Dishes;
-import th.mfu.domain.Material;
 
 @Controller
 public class DishesController {
@@ -73,9 +72,9 @@ public class DishesController {
 
     // @model and use mat repo////
     @PostMapping("/admin")
-    public String saveDish(@ModelAttribute Dishes newdishes,@ModelAttribute Material newmaterials) {
+    public String saveDish(@ModelAttribute Dishes newdishes) {
         dishesRepo.save(newdishes);
-        matRepo.save(newmaterials);
+        
         return "redirect:/admin";
     }
 
