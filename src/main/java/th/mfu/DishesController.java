@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import th.mfu.domain.Dishes;
+import th.mfu.domain.Material;
 
 @Controller
 public class DishesController {
@@ -57,15 +58,6 @@ public class DishesController {
     }
 
     // admin controller dish///
-    @GetMapping("/admin")
-    public String dishesListAdmin(Model model) {
-        model.addAttribute("dishes", dishesRepo.findAll());
-        model.addAttribute("materials", matRepo.findAll());
-        model.addAttribute("invoice", invoiceRepo.findAll());
-        model.addAttribute("payment", paymentRepo.findAll());
-        return "list-for-admin";
-    }
-
     @GetMapping("/add-dish")
     public String addDishForm(Model model) {
         model.addAttribute("dishes", new Dishes());
@@ -81,8 +73,9 @@ public class DishesController {
 
     // @model and use mat repo////
     @PostMapping("/admin")
-    public String saveDish(@ModelAttribute Dishes newdishes) {
+    public String saveDish(@ModelAttribute Dishes newdishes,@ModelAttribute Material newmaterials) {
         dishesRepo.save(newdishes);
+        matRepo.save(newmaterials);
         return "redirect:/admin";
     }
 
