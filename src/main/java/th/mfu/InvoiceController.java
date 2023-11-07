@@ -9,10 +9,13 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import th.mfu.domain.Dishes;
 import th.mfu.domain.Invoice;
 import th.mfu.domain.InvoiceItem;
 import th.mfu.domain.Payment;
@@ -100,6 +103,27 @@ public class InvoiceController {
         tempinvoice.setPayment(temppay);
         invoiceRepo.save(tempinvoice);
         paymentRepo.save(temppay);
+
+        return "redirect:/user";
+    }
+    
+    // deleted in cart ///
+    @GetMapping("/delete-cart/{id}")
+    public String deletedIncart(@PathVariable Long id) {
+        InvoiceItem invoiceItem = invoiceItemRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
+
+        // Retrieve the dish associated with the invoice item
+        Dishes dish = invoiceItem.getDishes();
+
+        // Retrieve the quantity of the item being deleted
+        int quantityRemoved = invoiceItem.getDishAmount(); // Get the original quantity added to the cart
+
+        // Increase the dish_stock by the quantity removed from the cart
+        dish.setDish_stock(dish.getDish_stock() + quantityRemoved);
+        dishesRepo.save(dish);
+
+        // Delete the item from the cart
+        invoiceItemRepo.delete(invoiceItem);
 
         return "redirect:/user";
     }

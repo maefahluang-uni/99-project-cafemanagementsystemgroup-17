@@ -75,9 +75,10 @@ public class MaterialController {
                 materials.getMat_amount());
         return "redirect:/admin";
     }
-    // @PostMapping("/admin_saveMat")
-    // public String saveMat(@ModelAttribute Material newmaterials) {
-    //     matRepo.save(newmaterials);
-    //     return "redirect:/admin";
-    // }
+
+    @PostMapping("/admin_saveMat")
+    public String saveMat(@ModelAttribute Material newmaterials) {
+        matRepo.save(newmaterials);
+        return "redirect:/admin";
+    }
 }

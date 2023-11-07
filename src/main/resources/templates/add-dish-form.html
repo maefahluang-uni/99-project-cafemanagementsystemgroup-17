@@ -38,7 +38,7 @@
     <div class="container">
         <h1 class="mt-4">Add Cafe</h1>
 
-        <form th:action="@{/admin}" th:object="${dishes}" method="post" class="mt-4">
+        <form th:action="@{/admin_saveDishes}" th:object="${dishes}" method="post" class="mt-4">
             <div class="form-group">
                 <label for="dish_name">MenuName:</label>
                 <input type="text" id="dish_name" class="form-control" th:field="*{dish_name}" required>

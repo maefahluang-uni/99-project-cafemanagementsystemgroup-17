@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import th.mfu.domain.Dishes;
+import th.mfu.domain.InvoiceItem;
 
 @Controller
 public class DishesController {
@@ -70,12 +71,11 @@ public class DishesController {
         return "add-dish-form-id";
     }
 
-    // @model and use mat repo////
-    // @PostMapping("/admin")
-    // public String saveDish(@ModelAttribute Dishes newdishes) {
-    //     dishesRepo.save(newdishes);
-    //     return "redirect:/admin";
-    // }
+    @PostMapping("/admin_saveDishes")
+    public String saveDish(@ModelAttribute Dishes newdishes) {
+        dishesRepo.save(newdishes);
+        return "redirect:/admin";
+    }
 
     @PostMapping("/admin_update_dish")
     public String updateDish(@ModelAttribute("dishes") Dishes dishes, @RequestParam("id") Long id) {
@@ -99,4 +99,30 @@ public class DishesController {
         dishesRepo.deleteAll();
         return "redirect:/admin";
     }
+
+    /// add dishes to cart ///
+    @PostMapping("/add-to-cart/{id}")
+    public String addtocart(Model model, @PathVariable Long id, @RequestParam("quantity") Integer quantity) {
+
+        Dishes dish = dishesRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
+
+        if (dish.getDish_stock() >= quantity) {
+            // There is sufficient stock, so add the item to the cart
+            InvoiceItem invoiceitem = new InvoiceItem();
+            invoiceitem.setDishes(dish);
+            invoiceitem.setDishAmount(quantity);
+            invoiceItemRepo.save(invoiceitem);
+
+            // Reduce the dish_stock by quantity
+            dish.setDish_stock(dish.getDish_stock() - quantity);
+            dishesRepo.save(dish);
+
+            return "redirect:/user";
+        } else {
+            // Handle the scenario where there is insufficient stock
+            model.addAttribute("errorMessage", "Sorry, there is not enough stock for this item.");
+            return "error";
+        }
+    }
+
 }
