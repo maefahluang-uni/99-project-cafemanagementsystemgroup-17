@@ -57,7 +57,7 @@ public class ViewController {
         return "list-for-admin";
     }
 
-    @PostMapping("/admin")
+    @PostMapping("/admin_saveDishes")
     public String saveDish(@ModelAttribute Dishes newdishes) {
         dishesRepo.save(newdishes);
         return "redirect:/admin";
