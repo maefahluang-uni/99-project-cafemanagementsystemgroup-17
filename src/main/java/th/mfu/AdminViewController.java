@@ -1,14 +1,11 @@
 package th.mfu;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/secure")
 public class AdminViewController {
     @Autowired
     DishesRepository dishesRepo;
@@ -39,9 +36,7 @@ public class AdminViewController {
         this.materialService = materialService;
 
     }
-
     @GetMapping("/admin")
-    @PreAuthorize("hasRole('ADMIN')")
     public String dishesListAdmin(Model model) {
         model.addAttribute("dishes", dishesRepo.findAll());
         model.addAttribute("materials", matRepo.findAll());
