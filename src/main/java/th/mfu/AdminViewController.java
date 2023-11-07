@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ViewAdminController {
+public class AdminViewController {
     @Autowired
     DishesRepository dishesRepo;
     @Autowired
@@ -23,7 +23,7 @@ public class ViewAdminController {
     private final DishesService dishesService;
     private final MaterialService materialService;
 
-    public ViewAdminController(DishesRepository dishesRepo, InvoiceRepository invoiceRepo,
+    public AdminViewController(DishesRepository dishesRepo, InvoiceRepository invoiceRepo,
             InvoiceItemRepository invoiceItemRepo, PaymentRepository paymentRepo, UserRepository userRepo,
             DishesService dishesService, MaterialRepository matRepo, MaterialService materialService) {
         this.dishesRepo = dishesRepo;
