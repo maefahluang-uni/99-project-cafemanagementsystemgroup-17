@@ -1,17 +1,15 @@
-package th.mfu;
+// package th.mfu;
 
-import java.security.Principal;
+// import org.springframework.stereotype.Controller;
+// import org.springframework.web.bind.annotation.GetMapping;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+// @Controller
+// public class LoginController {
 
-@Controller
-public class LoginController {
-    @GetMapping("/login")
-    public String login(Principal principal) {
-        if (principal != null) {
-            return "redirect:/admin";
-        }
-        return "/login";
-    }
-}
+//     @GetMapping("/login")
+//     public String login() {
+//         return "login"; // Return the name of your login template (e.g., "login.html")
+//     }
+// }
+
+

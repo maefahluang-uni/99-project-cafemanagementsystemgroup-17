@@ -121,7 +121,7 @@ public class DishesController {
         } else {
             // Handle the scenario where there is insufficient stock
             model.addAttribute("errorMessage", "Sorry, there is not enough stock for this item.");
-            return "error";
+            return "showerror";
         }
     }
 
