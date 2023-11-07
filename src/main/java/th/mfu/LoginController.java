@@ -14,4 +14,8 @@ public class LoginController {
         }
         return "/login";
     }
+    // @GetMapping("/login?logout")
+    // public String logoutSuccess() {
+    //     return "logout-success"; // You can define a custom logout success template
+    // }
 }

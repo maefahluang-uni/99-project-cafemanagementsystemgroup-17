@@ -1,36 +1,41 @@
 // package th.mfu;
 
-// import org.springframework.beans.factory.annotation.Autowired;
+// import static org.springframework.security.config.Customizer.*;
+
+// import org.springframework.context.annotation.Bean;
 // import org.springframework.context.annotation.Configuration;
 // import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 // import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-// import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+// import org.springframework.security.core.userdetails.User;
+// import org.springframework.security.core.userdetails.UserDetails;
+// import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+// import org.springframework.security.web.SecurityFilterChain;
 
 // @Configuration
 // @EnableWebSecurity
-// public class SecurityConfig extends WebSecurityConfigurerAdapter {
+// public class SecurityConfig {
 
-//     @Autowired
-//     private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
-
-//     @Override
-//     protected void configure(HttpSecurity http) throws Exception {
-//         http
-//             .authorizeRequests()
-//                 .antMatchers("/admin/**").hasRole("ADMIN") // Requires "ADMIN" role for /admin and its sub-paths
-//                 .anyRequest().authenticated()
-//                 .and()
-//             .formLogin()
-//                 .loginPage("/login") // Set your custom login page
-//                 .successHandler(authenticationSuccessHandler) // Use the custom success handler
-//                 .permitAll()
-//                 .and()
-//             .httpBasic()
-//                 .and()
-//             .logout()
-//                 .logoutSuccessUrl("/login?logout")
-//                 .permitAll();
+//     @Bean
+//     public InMemoryUserDetailsManager userDetailsService() {
+//         UserDetails admin = User.withDefaultPasswordEncoder()
+//                 .username("admin")
+//                 .password("password")
+//                 .roles("ADMIN")
+//                 .build();
+//         return new InMemoryUserDetailsManager(admin);
 //     }
+
+//     @Bean
+//     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
+//         return http
+//                 .csrf(csrf -> csrf.disable())
+//                 .authorizeRequests(auth -> {
+//                     auth.antMatchers("/").permitAll();
+//                     auth.antMatchers("/admin").hasRole("ADMIN");
+//                 })
+//                 .httpBasic(withDefaults())
+//                 .build();
+                
+//     }
+
 // }
-
-
