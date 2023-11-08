@@ -13,6 +13,8 @@ public class InvoiceItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer dishAmount;
+    private String itemNote;
+
     @ManyToOne(cascade = CascadeType.MERGE)
     private Invoice invoice;
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -61,4 +63,11 @@ public class InvoiceItem {
         this.dishes = dishes;
     }
 
+    public String getItemNote() {
+        return itemNote;
+    }
+
+    public void setItemNote(String itemNote) {
+        this.itemNote = itemNote;
+    }
 }

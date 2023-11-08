@@ -111,13 +111,41 @@ public class DishesController {
 
     /// add dishes to cart ///
     @PostMapping("/add-to-cart/{id}")
-    public String addtocart(Model model, @PathVariable Long id, @RequestParam("quantity") Integer quantity) {
+    public String addtocart(Model model, @PathVariable Long id,
+            @RequestParam("quantity") Integer quantity,
+            @RequestParam("sweetness") String sweetness,
+            @RequestParam("type") String type,
+            @RequestParam("roast") String roast,
+            @RequestParam("add") String add) {
 
         Dishes dish = dishesRepo.findById(id).orElseThrow(() -> new DishNotEnoughException(id));
 
         if (dish.getDish_stock() >= quantity) {
             // There is sufficient stock, so add the item to the cart
             InvoiceItem invoiceitem = new InvoiceItem();
+
+
+            // set itemNote
+            String note = "none";
+            String typetemp = dish.getDishtype();
+
+            switch (typetemp) {
+                case "coffee":
+                    note = "Sweetness: "+sweetness+" Type: "+type+" Roast: "+roast+" Add: "+add;
+                    break;
+                case "tea":
+                    note = "Sweetness: "+sweetness+" Type: "+type;
+                    break;
+                case "smoothie": 
+                    note = "Sweetness: "+sweetness;
+                    break;
+                default:
+                    System.out.println("error naja");
+                    break;
+            }
+
+            System.out.println(note);
+            invoiceitem.setItemNote(note);
             invoiceitem.setDishes(dish);
             invoiceitem.setDishAmount(quantity);
             invoiceItemRepo.save(invoiceitem);
