@@ -1,4 +1,4 @@
-package th.mfu;
+package th.mfu.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import th.mfu.domain.Dishes;
+import th.mfu.repository.DishesRepository;
+import th.mfu.repository.InvoiceItemRepository;
+import th.mfu.repository.InvoiceRepository;
+import th.mfu.repository.MaterialRepository;
+import th.mfu.repository.PaymentRepository;
+import th.mfu.repository.UserRepository;
+import th.mfu.service.DishesService;
+import th.mfu.service.MaterialService;
 
 @Controller
 public class UserViewController {

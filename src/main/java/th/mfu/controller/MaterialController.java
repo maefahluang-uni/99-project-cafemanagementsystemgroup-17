@@ -1,4 +1,4 @@
-package th.mfu;
+package th.mfu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import th.mfu.domain.Material;
+import th.mfu.repository.DishesRepository;
+import th.mfu.repository.InvoiceItemRepository;
+import th.mfu.repository.InvoiceRepository;
+import th.mfu.repository.MaterialRepository;
+import th.mfu.repository.PaymentRepository;
+import th.mfu.repository.UserRepository;
+import th.mfu.service.DishesService;
+import th.mfu.service.MaterialService;
 
 @Controller
 public class MaterialController {

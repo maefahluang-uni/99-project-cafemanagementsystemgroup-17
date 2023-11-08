@@ -1,4 +1,4 @@
-package th.mfu;
+package th.mfu.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,6 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+
+import th.mfu.repository.DishesRepository;
+import th.mfu.repository.InvoiceItemRepository;
+import th.mfu.repository.InvoiceRepository;
+import th.mfu.repository.MaterialRepository;
+import th.mfu.repository.UserRepository;
 
 
 

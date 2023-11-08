@@ -1,4 +1,4 @@
-package th.mfu;
+package th.mfu.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
