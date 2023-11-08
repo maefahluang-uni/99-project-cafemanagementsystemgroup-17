@@ -1,8 +1,8 @@
 -- tea
-INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price) VALUES (1, 'Green Milk Tea', 'tea', 'pic', 50,40);
-INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price) VALUES (2, 'Oolong Tea', 'tea', 'pic', 60,35);
-INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price) VALUES (3, 'Jasmine Tea', 'tea', 'pic', 70,35);
-INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price) VALUES (4, 'Taiwanese Milk tea', 'tea', 'pic', 80,40);
+INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price) VALUES (1, 'Green Milk Tea', 'tea', 'imageGreenTea.png', 50,40);
+INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price) VALUES (2, 'Oolong Tea', 'tea', 'imageOolong.png', 60,35);
+INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price) VALUES (3, 'Jasmine Tea', 'tea', 'imageJasmine.png', 70,35);
+INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price) VALUES (4, 'Taiwanese Milk tea', 'tea', 'imageTaiwanese.png', 80,40);
 
 -- dessert
 INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price) VALUES (5, 'Croffle', 'dessert', 'pic', 50,35);

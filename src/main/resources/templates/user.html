@@ -171,7 +171,7 @@
             </table>
         </div>
 
-
+        
         <!--show dishes list-->
         <h1 class="mt-5">Menu List</h1>
         <table class="table">
@@ -187,7 +187,9 @@
             <tr th:each="Dishes : ${dishes}">
                 <td th:text="${Dishes.dish_name}"></td>
                 <td th:text="${Dishes.dishtype}"></td>
-                <td th:text="${Dishes.dish_picture}"></td>
+                <td>
+                    <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image"/>
+                </td>
                 <td th:text="${Dishes.dish_stock}"></td>
                 <td th:text="${Dishes.dish_price}"></td>
                 <td>
