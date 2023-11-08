@@ -142,7 +142,9 @@
                 <tr th:each="Dishes : ${top3dishes}">
                     <td th:text="${Dishes.dish_name}"></td>
                     <td th:text="${Dishes.dishtype}"></td>
-                    <td th:text="${Dishes.dish_picture}"></td>
+                    <td>
+                        <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image" class="center"/>
+                    </td>
                     <td th:text="${Dishes.dish_stock}"></td>
                     <td th:text="${Dishes.dish_price}"></td>
                     <td>
@@ -188,7 +190,7 @@
                 <td th:text="${Dishes.dish_name}"></td>
                 <td th:text="${Dishes.dishtype}"></td>
                 <td>
-                    <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image"/>
+                    <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image" class="center"/>
                 </td>
                 <td th:text="${Dishes.dish_stock}"></td>
                 <td th:text="${Dishes.dish_price}"></td>
