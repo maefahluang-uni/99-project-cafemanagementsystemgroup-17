@@ -180,7 +180,7 @@
                     </div>
                 </div>
             </div>
-
+  
             <!-- invoice List -->
             <div class="bottom-data"  id = "invoice">
                 <div class="orders">
@@ -290,6 +290,29 @@
                     <a href="/delete-mat" class="btn btn-primary mt-3 mb-3">Delete All</a>
                 </div>
             </div>
+
+
+            <!-- Invoice item List -->
+            <div class="container" id="Cart">
+                <h1 class="mt-5">Your Cart List</h1>
+                <table class="table">
+                    <tr>
+                        <th>Invoice ID</th>
+                        <th>dishes</th>
+                        <td>dishAmount</td>
+                        <th>Note</th>
+                    </tr>
+                    <tr th:each="InvoiceItem : ${invoiceitem}">
+                        <td th:text="${InvoiceItem.invoice.id}"></td>
+                        <td th:text="${InvoiceItem.dishes.dish_name}"></td>
+                        <td th:text="${InvoiceItem.dishAmount}"></td>
+                        <td th:text="${InvoiceItem.itemNote}"></td>
+
+                    </tr>
+                </table>
+              
+            </div>
+
         </main>
     </div>
 

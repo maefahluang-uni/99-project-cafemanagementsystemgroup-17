@@ -51,6 +51,7 @@ public class AdminViewController {
         model.addAttribute("materials", matRepo.findAll());
         model.addAttribute("invoice", invoiceRepo.findAll());
         model.addAttribute("payment", paymentRepo.findAll());
+        model.addAttribute("invoiceitem", invoiceItemRepo.findAll());
         return "list-for-admin";
     }
 
