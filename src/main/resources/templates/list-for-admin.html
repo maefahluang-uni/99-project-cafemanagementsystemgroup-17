@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style-for-admin.css" />
+    <!-- bootstrap icon don't deleted -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <title>Responsive Dashboard Design #2 | AsmrProg</title>
 </head>
 
@@ -27,16 +29,19 @@
                 <a href="#home"><i class="bx bxs-dashboard"></i>Home</a>
             </li>
             <li>
-                <a href="#menu"><i class="bx bx-store-alt"></i>Menu-List</a>
+                <a href="#menu"><i class="bx bx-bi bi-cup-straw"></i>Menu-List</a>
             </li>
             <li>
-                <a href="#mat"><i class="bx bx-analyse"></i>Material-List</a>
+                <a href="#mat"><i class="bx bx-store-alt"></i>Material-List</a>
             </li>
             <li>
-                <a href="#invoice"><i class="bx bx-message-square-dots"></i>Invoice</a>
+                <a href="#invoice"><i class="bx bx-bi bi-receipt-cutoff"></i>Invoice</a>
             </li>
             <li>
-                <a href="#pay"><i class="bx bx-group"></i>Payment</a>
+                <a href="#pay"><i class="bx bx-bi bi-credit-card"></i>Payment</a>
+            </li>
+            <li>
+                <a href="#Cart"><i class="bx bx-bi bi-basket"></i>InvoiceItem</a>
             </li>
             <li>
                 <a href="#"><i class="bx bx-cog"></i>Settings</a>
@@ -54,7 +59,7 @@
     <!-- End of Sidebar -->
 
     <!-- Main Content -->
-    <div class="content"  id = "home">
+    <div class="content" id="home">
         <!-- Navbar -->
         <nav>
             <i class="bx bx-menu"></i>
@@ -129,11 +134,11 @@
             <!-- End of Insights -->
 
             <!-- Menu List -->
-            <div class="Menu-List" id = "menu">
+            <div class="Menu-List" id="menu">
                 <div class="bottom-data">
                     <div class="orders">
                         <div class="header">
-                            <i class="bx bx-receipt"></i>
+                            <i class="bx bx-bi bi-cup-straw"></i>
                             <h3>Menu List</h3>
                             <i class="bx bx-filter"></i>
                             <i class="bx bx-search"></i>
@@ -180,12 +185,12 @@
                     </div>
                 </div>
             </div>
-  
+
             <!-- invoice List -->
-            <div class="bottom-data"  id = "invoice">
+            <div class="bottom-data" id="invoice">
                 <div class="orders">
                     <div class="header">
-                        <i class="bx bx-receipt"></i>
+                        <i class="bx bx-bi bi-receipt-cutoff"></i>
                         <h3>Invoice List</h3>
                         <i class="bx bx-filter"></i>
                         <i class="bx bx-search"></i>
@@ -218,10 +223,10 @@
             </div>
 
             <!-- payment List -->
-            <div class="bottom-data"  id = "pay">
+            <div class="bottom-data" id="pay">
                 <div class="orders">
                     <div class="header">
-                        <i class="bx bx-receipt"></i>
+                        <i class="bx bx-bi bi-credit-card"></i>
                         <h3>Payment List</h3>
                         <i class="bx bx-filter"></i>
                         <i class="bx bx-search"></i>
@@ -250,10 +255,10 @@
             </div>
 
             <!-- Mat List -->
-            <div class="bottom-data"  id = "mat">
+            <div class="bottom-data" id="mat">
                 <div class="orders">
                     <div class="header">
-                        <i class="bx bx-receipt"></i>
+                        <i class="bx bx-store-alt"></i>
                         <h3>Material List</h3>
                         <i class="bx bx-filter"></i>
                         <i class="bx bx-search"></i>
@@ -291,31 +296,37 @@
                 </div>
             </div>
 
-
             <!-- Invoice item List -->
-            <div class="container" id="Cart">
-                <h1 class="mt-5">InvoiceItem List</h1>
-                <table class="table">
-                    <tr>
-                        <th>Invoice ID</th>
-                        <th>Dishes</th>
-                        <th>DishAmount</th>
-                        <th>Note</th>
-                    </tr>
-                    <tr th:each="InvoiceItem : ${invoiceitem}">
-                        <td th:text="${InvoiceItem.invoice.id}"></td>
-                        <td th:text="${InvoiceItem.dishes.dish_name}"></td>
-                        <td th:text="${InvoiceItem.dishAmount}"></td>
-                        <td th:text="${InvoiceItem.itemNote}"></td>
-
-                    </tr>
-                </table>
-              
+            <div class="bottom-data" id="Cart">
+                <div class="orders">
+                    <div class="header">
+                        <i class="bx bx-bi bi-basket"></i>
+                        <h3>InvoiceItem List</h3>
+                        <i class="bx bx-filter"></i>
+                        <i class="bx bx-search"></i>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Invoice ID</th>
+                            <th>Dishes</th>
+                            <th>DishAmount</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="InvoiceItem : ${invoiceitem}">
+                            <td th:text="${InvoiceItem.invoice.id}"></td>
+                            <td th:text="${InvoiceItem.dishes.dish_name}"></td>
+                            <td th:text="${InvoiceItem.dishAmount}"></td>
+                            <td th:text="${InvoiceItem.itemNote}"></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
             </div>
-
         </main>
     </div>
-
     <!--java script here -->
     <!-- Add Bootstrap JS and Popper.js for Bootstrap functionality -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
