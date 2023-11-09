@@ -7,9 +7,9 @@ import th.mfu.repository.DishesRepository;
 
 @Service
 public class DishesService {
-    /// get gen //
+    
     @Autowired
-    /// get gen //
+    
     private final DishesRepository dishesRepository;
     
 
@@ -34,11 +34,11 @@ public class DishesService {
         dishesRepository.NumberOfthis(dishStock);
     }
 
-    /// gpt gen //
+    
     public Long getQuantityForDishes(Long dishesId) {
         return dishesRepository.findQuantityById(dishesId);
     }
 
-///gpt gen 2 //
+
 
 }

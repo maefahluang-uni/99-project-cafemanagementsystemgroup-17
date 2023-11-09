@@ -309,6 +309,8 @@
                         <thead>
                         <tr>
                             <th>Invoice ID</th>
+                            <th>User</th>
+                            <th>Invoice Note</th>
                             <th>Dishes</th>
                             <th>DishAmount</th>
                             <th>Note</th>
@@ -317,6 +319,8 @@
                     <tbody>
                         <tr th:each="InvoiceItem : ${invoiceitem}">
                             <td th:text="${InvoiceItem.invoice.id}"></td>
+                            <td th:text="${InvoiceItem.invoice.user.userName}"></td>
+                            <td th:text="${InvoiceItem.invoice.invoice_note}"></td>
                             <td th:text="${InvoiceItem.dishes.dish_name}"></td>
                             <td th:text="${InvoiceItem.dishAmount}"></td>
                             <td th:text="${InvoiceItem.itemNote}"></td>
