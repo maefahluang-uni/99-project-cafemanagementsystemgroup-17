@@ -17,7 +17,7 @@
 
 <body>
     <!-- home -->
-    
+
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
@@ -123,47 +123,45 @@
             </ul>
             <!-- End of Insights -->
 
-                <div class="bottom-data">
-                    <div class="header">
-                        <i class='bx bx-note'></i>
-                        <h3>Material</h3>
-                        <i class='bx bx-filter'></i>
-                        <i class='bx bx-plus'></i>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>name</th>
-                                <th>amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <a href="#" class="btn btn-primary mt-3 mb-3">Add New Material</a>
-                            <tr>
-                                <td>
-                            <tr th:each="Material : ${materials}">
-                                <td th:text="${Material.id}"></td>
-                                <td th:text="${Material.mat_name}"></td>
-                                <td th:text="${Material.mat_amount}"></td>
-                                <td>
-                                    <a th:href="#"
-                                        class="btn btn-primary mt-3 mb-3">Delete</a>
-                                </td>
-                                <td>
-                                    <a th:href="#"
-                                        class="btn btn-primary mt-3 mb-3">update</a>
-                                </td>
-                            </tr>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <a href="#" class="btn btn-primary mt-3 mb-3">Delete All</a>
+            <div class="bottom-data">
+                <div class="header">
+                    <i class='bx bx-note'></i>
+                    <h3>Material</h3>
+                    <i class='bx bx-filter'></i>
+                    <i class='bx bx-plus'></i>
                 </div>
-
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>name</th>
+                            <th>amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <a href="#" class="btn btn-primary mt-3 mb-3">Add New Material</a>
+                        <tr>
+                            <td>
+                        <tr th:each="Material : ${materials}">
+                            <td th:text="${Material.id}"></td>
+                            <td th:text="${Material.mat_name}"></td>
+                            <td th:text="${Material.mat_amount}"></td>
+                            <td>
+                                <a th:href="#" class="btn btn-primary mt-3 mb-3">Delete</a>
+                            </td>
+                            <td>
+                                <a th:href="#" class="btn btn-primary mt-3 mb-3">update</a>
+                            </td>
+                        </tr>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#" class="btn btn-primary mt-3 mb-3">Delete All</a>
             </div>
-        </main>
+
+    </div>
+    </main>
     </div>
     <!--java script here -->
     <!-- Add Bootstrap JS and Popper.js for Bootstrap functionality -->

@@ -39,8 +39,8 @@
                         <a class="nav-link" href="/menu">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="cartButtonLarge" type="button"
-                        data-toggle="modal" data-target="#cartModal">Cart</a> 
+                        <a class="nav-link" id="cartButtonLarge" type="button" data-toggle="modal"
+                            data-target="#cartModal">Cart</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
@@ -63,13 +63,13 @@
                                         <h1 class="mt-5">Your Cart List</h1>
                                         <table class="table">
                                             <tr>
-                                                
+
                                                 <td>dishAmount</td>
                                                 <th>dishes</th>
                                                 <th>Note</th>
                                             </tr>
                                             <tr th:each="InvoiceItem : ${invoiceitem}">
-                                                
+
                                                 <td th:text="${InvoiceItem.dishAmount}"></td>
                                                 <td th:text="${InvoiceItem.dishes.dish_name}"></td>
                                                 <td th:text="${InvoiceItem.itemNote}"></td>
@@ -143,84 +143,87 @@
                     <td th:text="${Dishes.dish_name}"></td>
                     <td th:text="${Dishes.dishtype}"></td>
                     <td>
-                        <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image" class="center"/>
+                        <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image" class="center" />
                     </td>
                     <td th:text="${Dishes.dish_stock}"></td>
                     <td th:text="${Dishes.dish_price}"></td>
                     <td>
-                       <!-- Repeat this structure for each form with unique Dishes.id -->
-                    <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post" class="product-form">
-                        <label for="quantity">Quantity:</label>
-                        <div class="quantity-control">
-                            <button type="button" class="btn btn-secondary quantity-button"
-                                onclick="decrementCounter(this)">-</button>
-                            <span class="form-control text-center quantity-display">1</span>
-                            <button type="button" class="btn btn-secondary quantity-button"
-                                onclick="incrementCounter(this)">+</button>
-                            <input type="hidden" id="quantity" name="quantity" value="1">
-                        </div>
+                        <!-- Repeat this structure for each form with unique Dishes.id -->
+                        <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post" class="product-form">
+                            <label for="quantity">Quantity:</label>
+                            <div class="quantity-control">
+                                <button type="button" class="btn btn-secondary quantity-button"
+                                    onclick="decrementCounter(this)">-</button>
+                                <span class="form-control text-center quantity-display">1</span>
+                                <button type="button" class="btn btn-secondary quantity-button"
+                                    onclick="incrementCounter(this)">+</button>
+                                <input type="hidden" id="quantity" name="quantity" value="1">
+                            </div>
 
-      <!-- Sweetness, Type, Roast, and Add fields conditionally based on dishtype -->
-      <div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
-        <label>Sweetness:</label>
-        <div class="radio-buttons">
-            <label><input type="radio" name="sweetness" value="0%" required> 0%</label>
-            <label><input type="radio" name="sweetness" value="50%" required> 50%</label>
-            <label><input type="radio" name="sweetness" value="100%" required> 100%</label>
+                            <!-- Sweetness, Type, Roast, and Add fields conditionally based on dishtype -->
+                            <div
+                                th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
+                                <label>Sweetness:</label>
+                                <div class="radio-buttons">
+                                    <label><input type="radio" name="sweetness" value="0%" required> 0%</label>
+                                    <label><input type="radio" name="sweetness" value="50%" required> 50%</label>
+                                    <label><input type="radio" name="sweetness" value="100%" required> 100%</label>
+                                </div>
+                            </div>
+                            <div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
+                                <label>Type:</label>
+                                <div class="radio-buttons">
+                                    <label><input type="radio" name="type" value="Hot" required> Hot</label>
+                                    <label><input type="radio" name="type" value="Iced" required> Iced</label>
+                                    <label><input type="radio" name="type" value="Frappe" required> Frappe</label>
+                                </div>
+                            </div>
+                            <div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
+                                <!-- Provide a default value for Roast when not applicable -->
+                                <input type="hidden" name="type" value="None">
+                            </div>
+                            <div
+                                th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
+                                <!-- Provide a default value for Roast when not applicable -->
+                                <input type="hidden" name="sweetness" value="None">
+                            </div>
+
+
+
+                            <div th:if="${Dishes.dishtype == 'coffee'}">
+                                <label>Roast:</label>
+                                <div class="radio-buttons">
+                                    <label><input type="radio" name="roast" value="Light" required> Light</label>
+                                    <label><input type="radio" name="roast" value="Medium" required> Medium</label>
+                                    <label><input type="radio" name="roast" value="Dark" required> Dark</label>
+                                </div>
+                                <label for="add">Add:</label>
+                                <select name="add" id="add">
+                                    <option value="None">None</option>
+                                    <option value="Shot +$10">Shot +$10</option>
+                                </select>
+                            </div>
+                            <div th:unless="${Dishes.dishtype == 'coffee'}">
+                                <!-- Provide a default value for Roast when not applicable -->
+                                <input type="hidden" name="roast" value="None">
+                                <input type="hidden" name="add" value="None">
+                            </div>
+
+                            <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit"
+                                value="Add to Cart">
+                        </form>
+
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <form action="#" th:action="@{/add-to-cart/{id}}" modelAttributes="newinvoiceitem" method="post">
+                    <form:input path="dish_name" value="1" type="text" />
+                </form>
+            </table>
         </div>
-      </div>
-      <div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
-        <label>Type:</label>
-        <div class="radio-buttons">
-            <label><input type="radio" name="type" value="Hot" required> Hot</label>
-            <label><input type="radio" name="type" value="Iced" required> Iced</label>
-            <label><input type="radio" name="type" value="Frappe" required> Frappe</label>
-        </div>
-      </div>
-    <div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
-        <!-- Provide a default value for Roast when not applicable -->
-        <input type="hidden" name="type" value="None">
-    </div>
-    <div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
-        <!-- Provide a default value for Roast when not applicable -->
-        <input type="hidden" name="sweetness" value="None">
-    </div>
 
-    
 
-    <div th:if="${Dishes.dishtype == 'coffee'}">
-        <label>Roast:</label>
-        <div class="radio-buttons">
-            <label><input type="radio" name="roast" value="Light" required> Light</label>
-            <label><input type="radio" name="roast" value="Medium" required> Medium</label>
-            <label><input type="radio" name="roast" value="Dark" required> Dark</label>
-        </div>
-        <label for="add">Add:</label>
-        <select name="add" id="add">
-            <option value="None">None</option>
-            <option value="Shot +$10">Shot +$10</option>
-        </select>
-    </div>
-    <div th:unless="${Dishes.dishtype == 'coffee'}">
-        <!-- Provide a default value for Roast when not applicable -->
-        <input type="hidden" name="roast" value="None">
-        <input type="hidden" name="add" value="None">
-    </div>
-
-    <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit" value="Add to Cart">
-    </form>
-
-                </td>
-            </tr>
-        </table>
-        <table>
-            <form action="#" th:action="@{/add-to-cart/{id}}" modelAttributes="newinvoiceitem" method="post">
-                <form:input path="dish_name" value="1" type="text" />
-            </form>
-        </table>
-    </div>
-
-        
         <!--show dishes list-->
         <h1 class="mt-5">Menu List</h1>
         <table class="table">
@@ -237,7 +240,7 @@
                 <td th:text="${Dishes.dish_name}"></td>
                 <td th:text="${Dishes.dishtype}"></td>
                 <td>
-                    <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image" class="center"/>
+                    <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image" class="center" />
                 </td>
                 <td th:text="${Dishes.dish_stock}"></td>
                 <td th:text="${Dishes.dish_price}"></td>
@@ -254,55 +257,57 @@
                             <input type="hidden" id="quantity" name="quantity" value="1">
                         </div>
 
-      <!-- Sweetness, Type, Roast, and Add fields conditionally based on dishtype -->
-      <div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
-        <label>Sweetness:</label>
-        <div class="radio-buttons">
-            <label><input type="radio" name="sweetness" value="0%" required> 0%</label>
-            <label><input type="radio" name="sweetness" value="50%" required> 50%</label>
-            <label><input type="radio" name="sweetness" value="100%" required> 100%</label>
-        </div>
-      </div>
-      <div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
-        <label>Type:</label>
-        <div class="radio-buttons">
-            <label><input type="radio" name="type" value="Hot" required> Hot</label>
-            <label><input type="radio" name="type" value="Iced" required> Iced</label>
-            <label><input type="radio" name="type" value="Frappe" required> Frappe</label>
-        </div>
-      </div>
-    <div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
-        <!-- Provide a default value for Roast when not applicable -->
-        <input type="hidden" name="type" value="None">
-    </div>
-    <div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
-        <!-- Provide a default value for Roast when not applicable -->
-        <input type="hidden" name="sweetness" value="None">
-    </div>
+                        <!-- Sweetness, Type, Roast, and Add fields conditionally based on dishtype -->
+                        <div
+                            th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
+                            <label>Sweetness:</label>
+                            <div class="radio-buttons">
+                                <label><input type="radio" name="sweetness" value="0%" required> 0%</label>
+                                <label><input type="radio" name="sweetness" value="50%" required> 50%</label>
+                                <label><input type="radio" name="sweetness" value="100%" required> 100%</label>
+                            </div>
+                        </div>
+                        <div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
+                            <label>Type:</label>
+                            <div class="radio-buttons">
+                                <label><input type="radio" name="type" value="Hot" required> Hot</label>
+                                <label><input type="radio" name="type" value="Iced" required> Iced</label>
+                                <label><input type="radio" name="type" value="Frappe" required> Frappe</label>
+                            </div>
+                        </div>
+                        <div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
+                            <!-- Provide a default value for Roast when not applicable -->
+                            <input type="hidden" name="type" value="None">
+                        </div>
+                        <div
+                            th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
+                            <!-- Provide a default value for Roast when not applicable -->
+                            <input type="hidden" name="sweetness" value="None">
+                        </div>
 
-    
 
-    <div th:if="${Dishes.dishtype == 'coffee'}">
-        <label>Roast:</label>
-        <div class="radio-buttons">
-            <label><input type="radio" name="roast" value="Light" required> Light</label>
-            <label><input type="radio" name="roast" value="Medium" required> Medium</label>
-            <label><input type="radio" name="roast" value="Dark" required> Dark</label>
-        </div>
-        <label for="add">Add:</label>
-        <select name="add" id="add">
-            <option value="None">None</option>
-            <option value="Shot +$10">Shot +$10</option>
-        </select>
-    </div>
-    <div th:unless="${Dishes.dishtype == 'coffee'}">
-        <!-- Provide a default value for Roast when not applicable -->
-        <input type="hidden" name="roast" value="None">
-        <input type="hidden" name="add" value="None">
-    </div>
 
-    <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit" value="Add to Cart">
-    </form>
+                        <div th:if="${Dishes.dishtype == 'coffee'}">
+                            <label>Roast:</label>
+                            <div class="radio-buttons">
+                                <label><input type="radio" name="roast" value="Light" required> Light</label>
+                                <label><input type="radio" name="roast" value="Medium" required> Medium</label>
+                                <label><input type="radio" name="roast" value="Dark" required> Dark</label>
+                            </div>
+                            <label for="add">Add:</label>
+                            <select name="add" id="add">
+                                <option value="None">None</option>
+                                <option value="Shot +$10">Shot +$10</option>
+                            </select>
+                        </div>
+                        <div th:unless="${Dishes.dishtype == 'coffee'}">
+                            <!-- Provide a default value for Roast when not applicable -->
+                            <input type="hidden" name="roast" value="None">
+                            <input type="hidden" name="add" value="None">
+                        </div>
+
+                        <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit" value="Add to Cart">
+                    </form>
 
                 </td>
             </tr>
