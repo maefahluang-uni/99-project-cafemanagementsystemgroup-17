@@ -257,6 +257,7 @@
                             <input type="hidden" id="quantity" name="quantity" value="1">
                         </div>
 
+                        <!-- โชวกล่องให้ติ๊กเลือกตามชนิดอาหาร -->
                         <!-- Sweetness, Type, Roast, and Add fields conditionally based on dishtype -->
                         <div
                             th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
@@ -275,6 +276,8 @@
                                 <label><input type="radio" name="type" value="Frappe" required> Frappe</label>
                             </div>
                         </div>
+
+                        <!-- unless = if not ใส่ข้อมูลเข้า controller ให้ครบจะได้ไม่ error -->
                         <div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
                             <!-- Provide a default value for Roast when not applicable -->
                             <input type="hidden" name="type" value="None">
@@ -286,7 +289,7 @@
                         </div>
 
 
-
+                        <!-- โชว div นี้เมื่ออาหารเป็น coffee -->
                         <div th:if="${Dishes.dishtype == 'coffee'}">
                             <label>Roast:</label>
                             <div class="radio-buttons">
@@ -300,8 +303,10 @@
                                 <option value="Shot +$10">Shot +$10</option>
                             </select>
                         </div>
+
+                        <!-- unless = if not ใส่ข้อมูลเข้า controller ให้ครบจะได้ไม่ error -->
                         <div th:unless="${Dishes.dishtype == 'coffee'}">
-                            <!-- Provide a default value for Roast when not applicable -->
+                            <!-- Provide a default value for Roast when dish != coffee -->
                             <input type="hidden" name="roast" value="None">
                             <input type="hidden" name="add" value="None">
                         </div>
