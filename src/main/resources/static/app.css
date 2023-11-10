@@ -1,3 +1,8 @@
+/* Add this to your existing CSS file or create a new one
+.pink-background {
+    background-color: rgb(247, 200, 208);
+} */
+
 .bi-cart3 {
     color: black;
 }
@@ -5,11 +10,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f8f8f8;
     padding: 20px;
-    border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 10px;
 }
 
@@ -18,7 +20,7 @@
     align-items: center;
 }
 
-.quantity-button {
+/* .quantity-button {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -29,7 +31,7 @@
     cursor: pointer;
     margin: 0 10px;
     transition: background-color 0.3s;
-}
+} */
 
 .quantity-button:hover {
     background-color: #0056b3;
@@ -67,6 +69,9 @@
 .navbar-nav {
     font-size: 1rem; /* You can adjust the font size as needed for responsiveness */
 }
+/* .navbar-pink {
+    background-color: rgb(238, 218, 221);
+} */
 @media (max-width: 768px) {
     /* Hide the cart button on screens with a maximum width of 768px (typical mobile devices) */
     .cart-button {
