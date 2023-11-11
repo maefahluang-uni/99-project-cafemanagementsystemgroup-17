@@ -125,7 +125,7 @@
     <div>
         <h1></h1>
     </div>
-    <div class="container pink-background" id="Menu">
+    <div class="container" id="Menu">
         <!--menu botton-->
         <!-- <a th:href="@{/user}" class="btn btn-primary mt-3 mb-3">All</a>
         <a th:href="@{/user-search-tea}" class="btn btn-primary mt-3 mb-3">Tea</a>
@@ -136,7 +136,7 @@
         <!--show top 3 dishes-->
         <div th:if="${top3dishes != null}">
             <h1 class="mt-5">Best seller</h1>
-            <table>
+            <table class="table">
                 <tr>
                     <th>Name</th>
                     <th>MenuType</th>
@@ -233,7 +233,7 @@
 
         <!--show dishes list-->
         <h1 class="mt-5">Menu List</h1>
-        <table>
+        <table class="table">
             <tr>
                 <th>Name</th>
                 <th>MenuType</th>
@@ -317,10 +317,8 @@
                             <input type="hidden" name="roast" value="None">
                             <input type="hidden" name="add" value="None">
                         </div>
-
                         <input class="btn btn-success mt-3 mb-3 add-to-cart-button" type="submit" value="Add to Cart">
                     </form>
-
                 </td>
             </tr>
         </table>
@@ -331,7 +329,6 @@
         </table>
     </div>
 
-    </div>
     <!-- show InvoiceItem list
     <div class="container" id="Cart">
         <h1 class="mt-5">Cart List</h1>
@@ -358,8 +355,6 @@
             <button class="btn btn-primary mt-3 mb-3" type="submit">Confirm Cart</button>
         </form>
     </div> -->
-
-
 
     <!-- Add Bootstrap JS and Popper.js for Bootstrap functionality -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
