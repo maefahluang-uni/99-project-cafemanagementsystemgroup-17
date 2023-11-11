@@ -6,6 +6,7 @@
 .bi-cart3 {
     color: black;
 }
+
 .product-form {
     display: flex;
     flex-direction: column;
@@ -56,6 +57,7 @@
 .add-to-cart-button:hover {
     background-color: #218838;
 }
+
 .navbar {
     width: 100%;
     padding: 0;
@@ -63,16 +65,20 @@
 }
 
 .navbar-brand {
-    font-size: 1.5rem; /* You can adjust the font size as needed for responsiveness */
+    font-size: 1.5rem;
+    /* You can adjust the font size as needed for responsiveness */
 }
 
 .navbar-nav {
-    font-size: 1rem; /* You can adjust the font size as needed for responsiveness */
+    font-size: 1rem;
+    /* You can adjust the font size as needed for responsiveness */
 }
+
 /* .navbar-pink {
     background-color: rgb(238, 218, 221);
 } */
 @media (max-width: 768px) {
+
     /* Hide the cart button on screens with a maximum width of 768px (typical mobile devices) */
     .cart-button {
         display: none;
@@ -84,4 +90,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-  }
+}
+
+
+/* space for front-end */
