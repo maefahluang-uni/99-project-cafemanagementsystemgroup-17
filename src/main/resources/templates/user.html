@@ -136,14 +136,14 @@
         <!--show top 3 dishes-->
         <div th:if="${top3dishes != null}">
             <h1 class="mt-5">Best seller</h1>
-            <table class="table toggle-form active">
+            <table>
                 <tr>
                     <th>Name</th>
                     <th>MenuType</th>
                     <th>Picture</th>
                     <th>Stock</th>
                     <th>Price</th>
-                    <th class="product-form">Select</th>
+                    <th>Select</th>
                 </tr>
                 <!--show list in sql and new add list-->
                 <tr th:each="Dishes : ${top3dishes}">
@@ -233,14 +233,14 @@
 
         <!--show dishes list-->
         <h1 class="mt-5">Menu List</h1>
-        <table class="table toggle-form active">
+        <table>
             <tr>
                 <th>Name</th>
                 <th>MenuType</th>
                 <th>Picture</th>
                 <th>Stock</th>
                 <th>Price</th>
-                <th class="product-form">select</th>
+                <th>select</th>
             </tr>
             <!--show list in sql and new add list-->
             <tr th:each="Dishes : ${dishes}">

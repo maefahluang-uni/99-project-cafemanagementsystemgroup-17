@@ -57,12 +57,12 @@ $(document).ready(function () {
     });
 });
 ///hide form ///
-$(document).ready(function() {
-    // Hide the form initially
-    $('.product-form').hide();
+// $(document).ready(function() {
+//     // Hide the form initially
+//     $('.product-form').hide();
 
-    // Toggle form visibility when clicking on the picture
-    $('.toggle-form').click(function() {
-        $('.product-form').toggle();
-    });
-});
+//     // Toggle form visibility when clicking on the picture
+//     $('.toggle-form').click(function() {
+//         $('.product-form').toggle();
+//     });
+// });
