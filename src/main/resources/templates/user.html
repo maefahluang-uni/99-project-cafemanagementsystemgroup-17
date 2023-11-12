@@ -255,7 +255,7 @@
                 <td>
                     <!-- Repeat this structure for each form with unique Dishes.id -->
                     <form th:action="@{'/add-to-cart/' + ${Dishes.id}}" method="post" class="product-form">
-                        <label for="quantity">Quantity:</label>
+                        <label style="font-weight: bold;" for="quantity">Quantity:</label>
                         <div class="quantity-control">
                             <button type="button" class="btn btn-danger quantity-button text-center"
                                 onclick="decrementCounter(this)">-</button>
@@ -266,51 +266,51 @@
                         </div>
 
                         <!-- โชวกล่องให้ติ๊กเลือกตามชนิดอาหาร -->
-                        <!-- Sweetness, Type, Roast, and Add fields conditionally based on dishtype -->
-                        <div
-                            th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
-                            <label>Sweetness:</label>
-                            <div class="radio-buttons">
-                                <label><input type="radio" name="sweetness" value="0%" required> 0%</label>
-                                <label><input type="radio" name="sweetness" value="50%" required> 50%</label>
-                                <label><input type="radio" name="sweetness" value="100%" required> 100%</label>
-                            </div>
-                        </div>
-                        <div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
-                            <label>Type:</label>
-                            <div class="radio-buttons">
-                                <label><input type="radio" name="type" value="Hot" required> Hot</label>
-                                <label><input type="radio" name="type" value="Iced" required> Iced</label>
-                                <label><input type="radio" name="type" value="Frappe" required> Frappe</label>
-                            </div>
-                        </div>
+<!-- Sweetness, Type, Roast, and Add fields conditionally based on dishtype -->
+<div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
+    <label style="font-weight: bold;">Sweetness:</label>
+    <div class="radio-buttons">
+        <label><input type="radio" name="sweetness" value="0%" required> 0%</label>
+        <label><input type="radio" name="sweetness" value="50%" required> 50%</label>
+        <label><input type="radio" name="sweetness" value="100%" required> 100%</label>
+    </div>
+</div>
+<div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
+    <label style="font-weight: bold;">Type:</label>
+    <div class="radio-buttons">
+        <label><input type="radio" name="type" value="Hot" required> Hot</label>
+        <label><input type="radio" name="type" value="Iced" required> Iced</label>
+        <label><input type="radio" name="type" value="Frappe" required> Frappe</label>
+    </div>
+</div>
+<div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
+    <!-- Provide a default value for Roast when not applicable -->
+    <input type="hidden" name="type" value="None">
+</div>
+<div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
+    <!-- Provide a default value for Roast when not applicable -->
+    <input type="hidden" name="sweetness" value="None">
+</div>
 
-                        <!-- unless = if not ใส่ข้อมูลเข้า controller ให้ครบจะได้ไม่ error -->
-                        <div th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
-                            <!-- Provide a default value for Roast when not applicable -->
-                            <input type="hidden" name="type" value="None">
-                        </div>
-                        <div
-                            th:unless="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
-                            <!-- Provide a default value for Roast when not applicable -->
-                            <input type="hidden" name="sweetness" value="None">
-                        </div>
-
-
-                        <!-- โชว div นี้เมื่ออาหารเป็น coffee -->
-                        <div th:if="${Dishes.dishtype == 'coffee'}">
-                            <label>Roast:</label>
-                            <div class="radio-buttons">
-                                <label><input type="radio" name="roast" value="Light" required> Light</label>
-                                <label><input type="radio" name="roast" value="Medium" required> Medium</label>
-                                <label><input type="radio" name="roast" value="Dark" required> Dark</label>
-                            </div>
-                            <label for="add">Add Shot:</label>
-                            <select name="add" id="add">
-                                <option value="None">None</option>
-                                <option value="Shot +$10">Shot +$10</option>
-                            </select>
-                        </div>
+<!-- โชว div นี้เมื่ออาหารเป็น coffee -->
+<div th:if="${Dishes.dishtype == 'coffee'}">
+    <label style="font-weight: bold;">Roast:</label>
+    <div class="radio-buttons">
+        <label><input type="radio" name="roast" value="Light" required> Light</label>
+        <label><input type="radio" name="roast" value="Medium" required> Medium</label>
+        <label><input type="radio" name="roast" value="Dark" required> Dark</label>
+    </div>
+    <label style="font-weight: bold;" for="add">Add Shot:</label>
+    <select name="add" id="add">
+        <option value="None">None</option>
+        <option value="Shot +$10">Shot +$10</option>
+    </select>
+</div>
+<div th:unless="${Dishes.dishtype == 'coffee'}">
+    <!-- Provide a default value for Roast when dish != coffee -->
+    <input type="hidden" name="roast" value="None">
+    <input type="hidden" name="add" value="None">
+</div>
 
                         <!-- unless = if not ใส่ข้อมูลเข้า controller ให้ครบจะได้ไม่ error -->
                         <div th:unless="${Dishes.dishtype == 'coffee'}">

@@ -2,6 +2,9 @@
 .pink-background {
     background-color: rgb(247, 200, 208);
 } */
+/* .pink-background {
+    background-color: #D2B48C; /* Replace with your desired earth color tone } */
+
 
 .bi-cart3 {
     color: black;
@@ -130,6 +133,7 @@
     transform: scaleX(1);
     background-color: #007bff; /* Change the color as needed */
 }
+
 
 
 
