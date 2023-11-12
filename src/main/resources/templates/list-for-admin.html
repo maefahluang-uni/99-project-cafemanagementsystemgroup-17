@@ -314,6 +314,7 @@
                                 <th>Dishes</th>
                                 <th>DishAmount</th>
                                 <th>Note</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -324,15 +325,18 @@
                                 <td th:text="${InvoiceItem.dishes.dish_name}"></td>
                                 <td th:text="${InvoiceItem.dishAmount}"></td>
                                 <td th:text="${InvoiceItem.itemNote}"></td>
+                                <td th:text="${InvoiceItem.itemStatus}"></td>
                                 <td>
-                                    <form action="#"><button class="btn btn-success mt-3 mb-3">
+                                    <a th:href="@{/confirm-order/{id}(id=${InvoiceItem.id})}" 
+                                    class="btn btn-success mt-3 mb-3">
                                             Confirm Order
-                                        </button>
+                                    </a>
                                 </td>
                                 <td>
-                                    <form action="#"><button class="btn btn-danger mt-3 mb-3">
+                                    <a th:href="@{/cancel-order/{id}(id=${InvoiceItem.id})}" 
+                                    class="btn btn-danger mt-3 mb-3">
                                         Cancel Order
-                                        </button>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>

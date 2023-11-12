@@ -134,4 +134,24 @@ public class InvoiceController {
 
         return "redirect:/user";
     }
+
+    @GetMapping("/confirm-order/{id}")
+    public String confirmOrderbyId (@PathVariable Long id)
+    {
+        InvoiceItem tempinvoiceitem = invoiceItemRepo.findById(id).get();
+        tempinvoiceitem.setItemStatus("confirm");
+        invoiceItemRepo.save(tempinvoiceitem);
+
+        return "redirect:/admin";
+    }
+
+        @GetMapping("/cancel-order/{id}")
+    public String cancelOrderbyId (@PathVariable Long id)
+    {
+        InvoiceItem tempinvoiceitem = invoiceItemRepo.findById(id).get();
+        tempinvoiceitem.setItemStatus("cancel");
+        invoiceItemRepo.save(tempinvoiceitem);
+        
+        return "redirect:/admin";
+    }
 }

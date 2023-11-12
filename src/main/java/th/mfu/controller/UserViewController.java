@@ -55,6 +55,9 @@ public class UserViewController {
         model.addAttribute("dishes", dishesRepo.findAll());
         // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
+        //only show InvoiceItem that itemStatus not null
+        model.addAttribute("invoiceitemByStatus", invoiceItemRepo.findByItemStatusIsNotNull());
+
         // show top 3 sale
         List<Object[]> top3PopularDishes = invoiceItemRepo.findTop3Sale();
         if (!top3PopularDishes.isEmpty() && top3PopularDishes.size() >= 3) {

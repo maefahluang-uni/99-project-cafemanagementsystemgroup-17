@@ -14,6 +14,7 @@ public class InvoiceItem {
     private Long id;
     private Integer dishAmount;
     private String itemNote;
+    private String itemStatus;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     private Invoice invoice;
@@ -70,4 +71,14 @@ public class InvoiceItem {
     public void setItemNote(String itemNote) {
         this.itemNote = itemNote;
     }
+
+    public String getItemStatus() {
+        return itemStatus;
+    }
+
+    public void setItemStatus(String itemStatus) {
+        this.itemStatus = itemStatus;
+    }
+
+    
 }

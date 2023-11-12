@@ -329,32 +329,29 @@
         </table>
     </div>
 
-    <!-- show InvoiceItem list
+    <!-- show confirm/cancel InvoiceItem list -->
     <div class="container" id="Cart">
-        <h1 class="mt-5">Cart List</h1>
+        <h1 class="mt-5">confirm/cancel invoiceitem List</h1>
         <table class="table">
             <tr>
-                <th>ID</th>
-                <td>dishAmount</td>
+                <th>Invoice ID</th>
+                <th>User</th>
                 <th>dishes</th>
-                <th>invoice ID</th>
+                <td>dishAmount</td>
+                <th>Note</th>
+                <th>Status</th>
             </tr>
-            <tr th:each="InvoiceItem : ${invoiceitem}">
-                <td th:text="${InvoiceItem.id}"></td>
-                <td th:text="${InvoiceItem.dishAmount}"></td>
+            <tr th:each="InvoiceItem : ${invoiceitemByStatus}">
+                <td th:text="${InvoiceItem.invoice.id}"></td>
+                <td th:text="${InvoiceItem.invoice.user.userName}"></td>
                 <td th:text="${InvoiceItem.dishes.dish_name}"></td>
-                <td th:text="${InvoiceItem.Invoice}"></td>
-                <td>
-                    <a th:href="@{/delete-cart/{id}(id=${InvoiceItem.id})}" class="btn btn-primary mt-3 mb-3">Delete</a>
-                </td>
+                <td th:text="${InvoiceItem.dishAmount}"></td>
+                <td th:text="${InvoiceItem.itemNote}"></td>
+                <td th:text="${InvoiceItem.itemStatus}"></td>
+
             </tr>
         </table>
-        <form action="/confirm_cart" method="post">
-            <label for="invoiceNote">Please put your name</label>
-            <input type="text" id="invoiceNote" name="invoiceNote" required>
-            <button class="btn btn-primary mt-3 mb-3" type="submit">Confirm Cart</button>
-        </form>
-    </div> -->
+    </div>
 
     <!-- Add Bootstrap JS and Popper.js for Bootstrap functionality -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
