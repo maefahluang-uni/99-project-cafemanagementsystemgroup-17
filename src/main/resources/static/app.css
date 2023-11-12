@@ -30,9 +30,10 @@
     height: 30px;
     font-size: 18px;
     cursor: pointer;
-    margin: 0 10px;
+    margin: 0;
     transition: background-color 0.3s;
-} */
+}  */
+
 
 .quantity-button:hover {
     background-color: #0056b3;
@@ -40,10 +41,11 @@
 
 .quantity-display {
     font-size: 20px;
+    margin: 0 10px;
 }
 
 .add-to-cart-button {
-    width: 100px;
+    width: 120px;
     margin-top: 10px;
     background-color: #28a745;
     color: #fff;
@@ -52,6 +54,7 @@
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
+
 }
 
 .add-to-cart-button:hover {
@@ -127,3 +130,6 @@
     transform: scaleX(1);
     background-color: #007bff; /* Change the color as needed */
 }
+
+
+
