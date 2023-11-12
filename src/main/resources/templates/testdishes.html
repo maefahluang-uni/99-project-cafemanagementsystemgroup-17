@@ -7,7 +7,6 @@
 
 <body>
     <h1>User Cart</h1>
-
     <!-- Form to add items -->
     <form action="/products/add" method="post">
         <label for="name">Product Name:</label>
@@ -33,10 +32,10 @@
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.quantity}"></td>
                     <td>
-                        <form action="/products/reduce/{productId}" method="post">
+                        <!-- <form action="/products/reduce/{productId}" method="post">
                             <input type="hidden" name="quantity" value="1">
                             <button type="submit">Reduce by 1</button>
-                        </form>
+                        </form> -->
                     </td>
                 </tr>
             </th:block>
