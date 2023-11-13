@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import th.mfu.domain.Payment;
 import th.mfu.repository.DishesRepository;
 import th.mfu.repository.InvoiceItemRepository;
 import th.mfu.repository.InvoiceRepository;
@@ -52,6 +53,16 @@ public class AdminViewController {
         model.addAttribute("invoice", invoiceRepo.findAll());
         model.addAttribute("payment", paymentRepo.findAll());
         model.addAttribute("invoiceitem", invoiceItemRepo.findAll());
+
+        //total sale
+        Integer totalsale = 0;
+        Iterable<Payment> paymentlist = paymentRepo.findAll();
+        for (Payment payment : paymentlist) {
+            totalsale += payment.getPay_total();
+        }
+        model.addAttribute("totalsale", totalsale);
+        
+
         return "list-for-admin";
     }
 

@@ -343,6 +343,7 @@
         <table class="table">
             <tr>
                 <th>Invoice ID</th>
+                <th>Total price</th>
                 <th>User</th>
                 <th>dishes</th>
                 <td>dishAmount</td>
@@ -351,11 +352,12 @@
             </tr>
             <tr th:each="InvoiceItem : ${invoiceitemByStatus}">
                 <td th:text="${InvoiceItem.invoice.id}"></td>
+                <td th:text="${InvoiceItem.invoice.payment.pay_total}"></td>
                 <td th:text="${InvoiceItem.invoice.user.userName}"></td>
                 <td th:text="${InvoiceItem.dishes.dish_name}"></td>
                 <td th:text="${InvoiceItem.dishAmount}"></td>
                 <td th:text="${InvoiceItem.itemNote}"></td>
-                <td th:text="${InvoiceItem.itemStatus}"></td>
+                <td th:text="${InvoiceItem.itemStatus}"></td>             
             </tr>
         </table>
     </div>
