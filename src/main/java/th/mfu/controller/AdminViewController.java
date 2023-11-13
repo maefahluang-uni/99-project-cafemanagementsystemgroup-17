@@ -46,6 +46,7 @@ public class AdminViewController {
         this.materialService = materialService;
 
     }
+
     @GetMapping("/admin")
     public String dishesListAdmin(Model model) {
         model.addAttribute("dishes", dishesRepo.findAll());
@@ -54,15 +55,23 @@ public class AdminViewController {
         model.addAttribute("payment", paymentRepo.findAll());
         model.addAttribute("invoiceitem", invoiceItemRepo.findAll());
 
-        //total sale
+        // total sale
         Integer totalsale = 0;
         Iterable<Payment> paymentlist = paymentRepo.findAll();
         for (Payment payment : paymentlist) {
             totalsale += payment.getPay_total();
         }
         model.addAttribute("totalsale", totalsale);
-        
 
+        // Count the number of dishes
+        long numberOfDishes = dishesRepo.count();
+        model.addAttribute("numberOfDishes", numberOfDishes);
+         // Count the number of materrial
+        long numberOfMat = matRepo.count();
+        model.addAttribute("numberOfMat", numberOfMat);
+        // Count the number of invoiceitemlist
+         long numberOfInvoiceitem = invoiceItemRepo.count();
+        model.addAttribute("numberOfInvoiceitem", numberOfInvoiceitem);
         return "list-for-admin";
     }
 

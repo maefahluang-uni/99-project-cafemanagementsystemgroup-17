@@ -103,24 +103,24 @@
             <!-- Insights -->
             <ul class="insights">
                 <li>
-                    <i class="bx bx-calendar-check"></i>
+                    <i class="bx bx-bi bi-kanban"></i>
                     <span class="info">
-                        <h3>1,074</h3>
-                        <p>Paid Order</p>
+                        <h3 th:text ="${numberOfDishes}"></h3>
+                        <p>Dishes Count</p>
                     </span>
                 </li>
                 <li>
-                    <i class="bx bx-show-alt"></i>
+                    <i class="bx bx-bi bi-slack"></i>
                     <span class="info">
-                        <h3>3,944</h3>
-                        <p>Site Visit</p>
+                        <h3 th:text ="${numberOfMat}"></h3>
+                        <p>Material Count</p>
                     </span>
                 </li>
                 <li>
                     <i class="bx bx-line-chart"></i>
                     <span class="info">
-                        <h3>14,721</h3>
-                        <p>Searches</p>
+                        <h3 th:text = "${numberOfInvoiceitem}"></h3>
+                        <p>InvoiceItem Count</p>
                     </span>
                 </li>
                 <li>
