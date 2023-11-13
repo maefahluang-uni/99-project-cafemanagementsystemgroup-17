@@ -56,6 +56,16 @@ $(document).ready(function () {
         toggleCartButton();
     });
 });
+
+function toggleQuantitySection(sectionId) {
+    var section = document.getElementById(sectionId);
+    if (section.style.display === 'none') {
+        section.style.display = 'table-row'; // or 'block' if you prefer
+    } else {
+        section.style.display = 'none';
+    }
+}
+
 ///hide form ///
 // $(document).ready(function() {
 //     // Hide the form initially
