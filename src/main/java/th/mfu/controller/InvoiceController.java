@@ -61,7 +61,7 @@ public class InvoiceController {
     }
 
     @PostMapping("/confirm_cart")
-    public String confirmCart(@RequestParam("invoiceNote") String invoiceNote, Model model) {
+    public String confirmCart(@RequestParam("invoiceNote") String invoiceNote,@RequestParam("tableNumber") Integer tableNumber, Model model) {
 
         //find all invoiceitem
         var invoiceItemlist = invoiceItemRepo.findAll();
@@ -71,8 +71,9 @@ public class InvoiceController {
 
         //invoice-------------------------------------------------------------------
         var temp_invoice = new Invoice();
-        // set invoice user
-        temp_invoice.setUser(userRepo.findById((long) 1).get());
+        // set invoice user tableNumber
+        long tablenumlong = (long)tableNumber;
+        temp_invoice.setUser(userRepo.findById(tablenumlong).get());
         // set invoice date
         temp_invoice.setInvoice_date(date);
         // set invoice note
