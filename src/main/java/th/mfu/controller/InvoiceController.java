@@ -83,15 +83,11 @@ public class InvoiceController {
         // --------------------------------------------------------------------------
 
         // add all invoiceitem to invoice
-        // also calculate total price
         Integer totalprice = 0;
         for (InvoiceItem InvoiceItem : invoiceItemlist) {
 
             if (InvoiceItem.getInvoice() == null) {
                 InvoiceItem.setInvoice(invoiceRepo.findTopByOrderByIdDesc());
-                // total price = dishAmount * dish_price
-                totalprice += (InvoiceItem.getDishAmount()) *
-                        (InvoiceItem.getDishes().getDish_price());
 
                 invoiceItemRepo.save(InvoiceItem);
             }
@@ -139,9 +135,20 @@ public class InvoiceController {
     @GetMapping("/confirm-order/{id}")
     public String confirmOrderbyId (@PathVariable Long id)
     {
+        //change status to confirm
         InvoiceItem tempinvoiceitem = invoiceItemRepo.findById(id).get();
         tempinvoiceitem.setItemStatus("confirm");
+        long payId = tempinvoiceitem.getInvoice().getPayment().getId();
+        
+        //add confirm price to total price
+        Payment temppayment = paymentRepo.findById(payId).get();
+        Integer oldtotalpay = temppayment.getPay_total();
+        Integer newtotalpay = oldtotalpay + (tempinvoiceitem.getDishAmount()*tempinvoiceitem.getDishes().getDish_price());
+        temppayment.setPay_total(newtotalpay);
+
+        //save to repo
         invoiceItemRepo.save(tempinvoiceitem);
+        paymentRepo.save(temppayment);
 
         return "redirect:/admin";
     }
