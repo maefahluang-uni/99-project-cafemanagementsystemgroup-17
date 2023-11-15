@@ -14,6 +14,7 @@ public class Dishes {
     private String dish_picture;
     private Integer  dish_stock;
     private Integer  dish_price;
+    private String dishStatus;
     public Dishes(){
         
         
@@ -66,5 +67,12 @@ public class Dishes {
     public int getQuantity() {
         return 0;
     }
+    public String getDishStatus() {
+        return dishStatus;
+    }
+    public void setDishStatus(String dishStatus) {
+        this.dishStatus = dishStatus;
+    }
+    
     
 }

@@ -66,6 +66,13 @@
                 <label for="dish_picture">picture:</label>
                 <input type="text" id="dish_picture" class="form-control" th:field="*{dish_picture}" required>
             </div>
+            <div class="form-group">
+                <label for="dishStatus">Status:</label>
+                <select id="dishStatus" class="form-control" th:field="*{dishStatus}" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-warning">Confirm Update</button>
         </form>
     </div>

@@ -93,7 +93,8 @@ public class DishesController {
                 dishes.getDishtype(),
                 dishes.getDish_picture(),
                 dishes.getDish_stock(),
-                dishes.getDish_price());
+                dishes.getDish_price(),
+                dishes.getDishStatus());
         return "redirect:/admin";
     }
 

@@ -24,8 +24,9 @@ public class DishesService {
             String dishType,
             String dishPicture,
             Integer dishStock,
-            Integer dishPrice) {
-        dishesRepository.customUpdate(dishId, dishName, dishType, dishPicture, dishStock, dishPrice);
+            Integer dishPrice,
+            String dishStatus) {
+        dishesRepository.customUpdate(dishId, dishName, dishType, dishPicture, dishStock, dishPrice, dishStatus);
     }
 
     public void NumberOfthis(

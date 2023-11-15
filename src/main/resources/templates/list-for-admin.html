@@ -152,6 +152,7 @@
                                     <th>Price</th>
                                     <th>stock</th>
                                     <th>price</th>
+                                    <th>status</th>
                                     <th>delete</th>
                                     <th>update</th>
                                 </tr>
@@ -167,6 +168,7 @@
                                     <td th:text="${Dishes.dish_picture}"></td>
                                     <td th:text="${Dishes.dish_stock}"></td>
                                     <td th:text="${Dishes.dish_price}"></td>
+                                    <td th:text="${Dishes.dishStatus}"></td>
                                     <td></td>
                                     <td>
                                         <a th:href="@{/delete-dish/{id}(id=${Dishes.id})}"

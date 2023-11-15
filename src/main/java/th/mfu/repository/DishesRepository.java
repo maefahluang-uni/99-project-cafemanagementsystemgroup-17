@@ -13,14 +13,15 @@ public interface DishesRepository extends CrudRepository<Dishes, Long> {
 
         @Modifying
         @Transactional
-        @Query("UPDATE Dishes d SET d.dish_name = :dishName, d.dishtype = :dishType, d.dish_picture = :dishPicture, d.dish_stock = :dishStock, d.dish_price = :dishPrice WHERE d.id = :dishId")
+        @Query("UPDATE Dishes d SET d.dish_name = :dishName, d.dishtype = :dishType, d.dish_picture = :dishPicture, d.dish_stock = :dishStock, d.dish_price = :dishPrice, d.dishStatus = :dishStatus WHERE d.id = :dishId")
         void customUpdate(
                         @Param("dishId") Long dishId,
                         @Param("dishName") String dishName,
                         @Param("dishType") String dishType,
                         @Param("dishPicture") String dishPicture,
                         @Param("dishStock") Integer dishStock,
-                        @Param("dishPrice") Integer dishPrice);
+                        @Param("dishPrice") Integer dishPrice,
+                        @Param("dishStatus") String dishStatus);
 
         @Query("UPDATE Dishes d SET  d.dish_stock = :dishStock")
         void NumberOfthis(@Param("dishStock") Integer dishStock);
