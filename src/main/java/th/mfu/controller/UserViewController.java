@@ -49,14 +49,17 @@ public class UserViewController {
         this.materialService = materialService;
 
     }
-     /// user controller////
+
+    /// user controller////
     @GetMapping("/user")
     public String listforUser(Model model) {
-        model.addAttribute("dishes", dishesRepo.findAll());
+        // model.addAttribute("dishes", dishesRepo.findAll());
         // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
-        //only show InvoiceItem that itemStatus not null
+        // only show InvoiceItem that itemStatus not null
         model.addAttribute("invoiceitemByStatus", invoiceItemRepo.findByItemStatusIsNotNull());
+        // show active dishes
+        model.addAttribute("dishes", dishesRepo.findByDishStatus("active"));
 
         // show top 3 sale
         List<Object[]> top3PopularDishes = invoiceItemRepo.findTop3Sale();
@@ -78,4 +81,5 @@ public class UserViewController {
         }
         return "user";
     }
+    
 }

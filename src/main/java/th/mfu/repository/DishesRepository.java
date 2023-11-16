@@ -30,4 +30,6 @@ public interface DishesRepository extends CrudRepository<Dishes, Long> {
 
         Iterable<Dishes> findByDishtype(String dishtype);
 
+        Iterable<Dishes> findByDishStatus(String dishStatus);
+
 }

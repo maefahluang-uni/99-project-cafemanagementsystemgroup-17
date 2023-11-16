@@ -18,8 +18,6 @@ import th.mfu.repository.InvoiceRepository;
 import th.mfu.repository.MaterialRepository;
 import th.mfu.repository.UserRepository;
 
-
-
 @Controller
 public class MenuController {
 
@@ -80,6 +78,15 @@ public class MenuController {
     public String searchDessert(Model model) {
         model.addAttribute("dishes", dishesRepo.findByDishtype("dessert"));
 
+        // only show InvoiceItem that invoice = null
+        model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
+        return "user";
+    }
+
+    // active status ///
+    @GetMapping("/user-dishes-active")
+    public String searchActive(Model model) {
+        model.addAttribute("dishes", dishesRepo.findByDishStatus("active"));
         // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
         return "user";
