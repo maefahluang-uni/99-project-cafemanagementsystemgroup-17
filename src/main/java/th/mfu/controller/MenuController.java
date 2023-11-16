@@ -12,6 +12,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 
+import th.mfu.domain.Dishes;
 import th.mfu.repository.DishesRepository;
 import th.mfu.repository.InvoiceItemRepository;
 import th.mfu.repository.InvoiceRepository;
@@ -49,7 +50,9 @@ public class MenuController {
 
     @GetMapping("/user-search-tea")
     public String searchTea(Model model) {
-        model.addAttribute("dishes", dishesRepo.findByDishtype("tea"));
+        // model.addAttribute("dishes", dishesRepo.findByDishtype("tea"));
+        Iterable<Dishes> activeTeaDishes = dishesRepo.findByDishtypeAndDishStatus("tea", "active");
+        model.addAttribute("dishes", activeTeaDishes);
 
         // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
@@ -58,7 +61,9 @@ public class MenuController {
 
     @GetMapping("/user-search-coffee")
     public String searchCoffee(Model model) {
-        model.addAttribute("dishes", dishesRepo.findByDishtype("coffee"));
+        // model.addAttribute("dishes", dishesRepo.findByDishtype("coffee"));
+        Iterable<Dishes> activeCoffeeDishes = dishesRepo.findByDishtypeAndDishStatus("coffee", "active");
+        model.addAttribute("dishes", activeCoffeeDishes);
 
         // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
@@ -67,7 +72,9 @@ public class MenuController {
 
     @GetMapping("/user-search-smoothie")
     public String searchSmoothie(Model model) {
-        model.addAttribute("dishes", dishesRepo.findByDishtype("smoothie"));
+        // model.addAttribute("dishes", dishesRepo.findByDishtype("smoothie"));
+        Iterable<Dishes> activeSmoothieDishes = dishesRepo.findByDishtypeAndDishStatus("smoothie", "active");
+        model.addAttribute("dishes", activeSmoothieDishes);
 
         // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
@@ -76,17 +83,10 @@ public class MenuController {
 
     @GetMapping("/user-search-dessert")
     public String searchDessert(Model model) {
-        model.addAttribute("dishes", dishesRepo.findByDishtype("dessert"));
+        // model.addAttribute("dishes", dishesRepo.findByDishtype("dessert"));
+        Iterable<Dishes> activeDessertDishes = dishesRepo.findByDishtypeAndDishStatus("dessert", "active");
+        model.addAttribute("dishes", activeDessertDishes);
 
-        // only show InvoiceItem that invoice = null
-        model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
-        return "user";
-    }
-
-    // active status ///
-    @GetMapping("/user-dishes-active")
-    public String searchActive(Model model) {
-        model.addAttribute("dishes", dishesRepo.findByDishStatus("active"));
         // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
         return "user";

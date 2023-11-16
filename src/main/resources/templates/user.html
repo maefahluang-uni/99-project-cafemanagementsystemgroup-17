@@ -144,8 +144,8 @@
                 <h1 class="mt-5">Best seller</h1>
                 <table class="table">
                     <tr>
-                        
-                        
+
+
                         <th>Picture</th>
                         <th>Name</th>
                         <th>Price</th>
@@ -153,16 +153,16 @@
                     </tr>
                     <!--show list in sql and new add list-->
                     <tr th:each="Dishes : ${top3dishes}">
-                        
-                        
+
+
                         <td>
                             <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image" class="center" />
                         </td>
                         <td th:text="${Dishes.dish_name}"></td>
                         <td th:text="${Dishes.dish_price}"></td>
                         <td>
-                            <button id="selectionCartButton" type="button" class="btn btn-primary ml-auto" data-toggle="modal"
-                                    th:attr="data-target='#p'+ ${Dishes.id}">
+                            <button id="selectionCartButton" type="button" class="btn btn-primary ml-auto"
+                                data-toggle="modal" th:attr="data-target='#p'+ ${Dishes.id}">
                                 Select
                             </button>
                         </td>
@@ -181,8 +181,8 @@
             <h1 class="mt-5">Menu List</h1>
             <table class="table">
                 <tr>
-                    
-                    
+
+
                     <th>Picture</th>
                     <th>Name</th>
                     <th>Price</th>
@@ -190,16 +190,16 @@
                 </tr>
                 <!--show list in sql and new add list-->
                 <tr th:each="Dishes : ${dishes}">
-                    
-                    
+
+
                     <td>
                         <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image" class="center" />
                     </td>
                     <td th:text="${Dishes.dish_name}"></td>
                     <td th:text="${Dishes.dish_price}"></td>
                     <td>
-                        <button id="selectionCartButton" type="button" class="btn btn-primary ml-auto" data-toggle="modal"
-                                th:attr="data-target='#p'+ ${Dishes.id}">
+                        <button id="selectionCartButton" type="button" class="btn btn-primary ml-auto"
+                            data-toggle="modal" th:attr="data-target='#p'+ ${Dishes.id}">
                             Select
                         </button>
                     </td>
@@ -347,7 +347,7 @@
                 <th>User</th>
                 <th>UserNote</th>
                 <th>dishes</th>
-                <td>dishAmount</td>
+                <th>dishAmount</th>
                 <th>Note</th>
                 <th>Status</th>
             </tr>
@@ -359,7 +359,7 @@
                 <td th:text="${InvoiceItem.dishes.dish_name}"></td>
                 <td th:text="${InvoiceItem.dishAmount}"></td>
                 <td th:text="${InvoiceItem.itemNote}"></td>
-                <td th:text="${InvoiceItem.itemStatus}"></td>             
+                <td th:text="${InvoiceItem.itemStatus}"></td>
             </tr>
         </table>
     </div>
