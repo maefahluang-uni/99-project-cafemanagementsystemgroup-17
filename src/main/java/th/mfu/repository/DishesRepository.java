@@ -1,5 +1,7 @@
 package th.mfu.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -34,6 +36,11 @@ public interface DishesRepository extends CrudRepository<Dishes, Long> {
 
         Iterable<Dishes> findByDishtypeAndDishStatus(String dishtype, String dishStatus);
 
-
+        // for search
+        @Modifying
+        @Transactional
+        @Query(value = "SELECT * FROM Dishes d WHERE d.dish_name LIKE %:keyword%", nativeQuery = true)
+        List<Dishes> findByKeyword(@Param("keyword") String keyword);
+        
         
 }

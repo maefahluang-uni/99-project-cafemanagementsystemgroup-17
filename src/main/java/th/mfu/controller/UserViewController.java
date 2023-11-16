@@ -52,15 +52,18 @@ public class UserViewController {
 
     /// user controller////
     @GetMapping("/user")
-    public String listforUser(Model model) {
+    public String listforUser(Model model, String keyword) {
         // model.addAttribute("dishes", dishesRepo.findAll());
         // only show InvoiceItem that invoice = null
         model.addAttribute("invoiceitem", invoiceItemRepo.findByInvoiceIsNull());
         // only show InvoiceItem that itemStatus not null
         model.addAttribute("invoiceitemByStatus", invoiceItemRepo.findByItemStatusIsNotNull());
         // show active dishes
+        if (keyword != null) {
+            model.addAttribute("dishes", dishesRepo.findByKeyword(keyword));
+        }else{
         model.addAttribute("dishes", dishesRepo.findByDishStatus("active"));
-
+            }
         // show top 3 sale
         List<Object[]> top3PopularDishes = invoiceItemRepo.findTop3Sale();
         if (!top3PopularDishes.isEmpty() && top3PopularDishes.size() >= 3) {

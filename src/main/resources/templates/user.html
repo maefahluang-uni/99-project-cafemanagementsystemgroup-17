@@ -54,6 +54,17 @@
                     </li>
 
             </div>
+            <!-- search bar -->
+            <div>
+                <form th:action="@{/user}" method="get" class="d-flex">
+                    <div class="input-group">
+                        <input type="text" id="text-search" name="keyword" class="form-control"
+                            placeholder="Type your search...">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+            <!-- end of search bar -->
             <!-- Button to open the cart modal (separately on large screens) -->
             <button id="cartButtonLarge" type="button" class="btn btn-link ml-auto d-none d-lg-inline"
                 data-toggle="modal" data-target="#cartModal">
@@ -117,15 +128,7 @@
                 </ul>
             </div>
         </div>
-        <!-- search bar -->
-        <!-- <form class="d-flex" method="get" action="/search-dishes">
-        <input class="form-control me-2" type="text" id="keyword" name="keyword" placeholder="Search by Dish Name"
-            aria-label="Search">
-        <button class="btn btn-outline-primary" type="submit">
-            <i class="bi bi-search"></i>
-        </button>
-    </form> -->
-        <!-- end of search bar -->
+
         <!--show dishes list-->
         <div>
             <h1></h1>
