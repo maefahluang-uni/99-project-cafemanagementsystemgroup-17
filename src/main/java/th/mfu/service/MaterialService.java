@@ -1,8 +1,11 @@
 package th.mfu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import th.mfu.domain.Material;
 import th.mfu.repository.MaterialRepository;
 
 @Service
@@ -22,4 +25,8 @@ public class MaterialService {
         materialRepository.customUpdate(matId, matName, matAmount);
     }
 
+    // for search
+    public List<Material>findBykeyword(String keywordString){
+        return materialRepository.findByKeyword(keywordString);
+    }
 }

@@ -48,9 +48,17 @@ public class AdminViewController {
     }
 
     @GetMapping("/admin")
-    public String dishesListAdmin(Model model) {
-        model.addAttribute("dishes", dishesRepo.findAll());
-        model.addAttribute("materials", matRepo.findAll());
+    public String dishesListAdmin(Model model, String keyword) {
+        if (keyword != null) {
+            model.addAttribute("dishes", dishesRepo.findByKeyword(keyword));
+        } else {
+            model.addAttribute("dishes", dishesRepo.findAll());
+        }
+        if (keyword != null) {
+            model.addAttribute("materials", matRepo.findByKeyword(keyword));
+        } else {
+            model.addAttribute("materials", matRepo.findAll());
+        }
         model.addAttribute("invoice", invoiceRepo.findAll());
         model.addAttribute("payment", paymentRepo.findAll());
         model.addAttribute("invoiceitem", invoiceItemRepo.findAll());
@@ -66,11 +74,11 @@ public class AdminViewController {
         // Count the number of dishes
         long numberOfDishes = dishesRepo.count();
         model.addAttribute("numberOfDishes", numberOfDishes);
-         // Count the number of materrial
+        // Count the number of materrial
         long numberOfMat = matRepo.count();
         model.addAttribute("numberOfMat", numberOfMat);
         // Count the number of invoiceitemlist
-         long numberOfInvoiceitem = invoiceItemRepo.count();
+        long numberOfInvoiceitem = invoiceItemRepo.count();
         model.addAttribute("numberOfInvoiceitem", numberOfInvoiceitem);
         return "list-for-admin";
     }

@@ -1,5 +1,7 @@
 package th.mfu.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -17,4 +19,11 @@ public interface MaterialRepository extends CrudRepository<Material, Long> {
             @Param("matId") Long matId,
             @Param("matName") String matName,
             @Param("matAmount") Integer matAmount);
+
+
+             // for search
+        @Modifying
+        @Transactional
+        @Query(value = "SELECT * FROM Material m WHERE m.mat_name LIKE %:keyword%", nativeQuery = true)
+        List<Material> findByKeyword(@Param("keyword") String keyword);
 }
