@@ -41,6 +41,9 @@ public interface DishesRepository extends CrudRepository<Dishes, Long> {
         @Transactional
         @Query(value = "SELECT * FROM Dishes d WHERE d.dish_name LIKE %:keyword%", nativeQuery = true)
         List<Dishes> findByKeyword(@Param("keyword") String keyword);
-        
-        
+
+        // fixed bug search
+        @Query(value = "SELECT * FROM Dishes d WHERE d.dish_name LIKE %:keyword% AND d.dishStatus = :dishStatus", nativeQuery = true)
+        List<Dishes> findByKeywordAndDishStatus(@Param("keyword") String keyword,
+                        @Param("dishStatus") String dishStatus);
 }

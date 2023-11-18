@@ -60,7 +60,7 @@ public class UserViewController {
         model.addAttribute("invoiceitemByStatus", invoiceItemRepo.findByItemStatusIsNotNull());
         // show active dishes
         if (keyword != null) {
-            model.addAttribute("dishes", dishesRepo.findByKeyword(keyword));
+            model.addAttribute("dishes", dishesRepo.findByKeywordAndDishStatus(keyword , "active"));
         }else{
         model.addAttribute("dishes", dishesRepo.findByDishStatus("active"));
             }
