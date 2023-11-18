@@ -105,28 +105,28 @@
                 <li>
                     <i class="bx bx-bi bi-kanban"></i>
                     <span class="info">
-                        <h3 th:text ="${numberOfDishes}"></h3>
+                        <h3 th:text="${numberOfDishes}"></h3>
                         <p>Dishes Count</p>
                     </span>
                 </li>
                 <li>
                     <i class="bx bx-bi bi-slack"></i>
                     <span class="info">
-                        <h3 th:text ="${numberOfMat}"></h3>
+                        <h3 th:text="${numberOfMat}"></h3>
                         <p>Material Count</p>
                     </span>
                 </li>
                 <li>
                     <i class="bx bx-line-chart"></i>
                     <span class="info">
-                        <h3 th:text = "${numberOfInvoiceitem}"></h3>
+                        <h3 th:text="${numberOfInvoiceitem}"></h3>
                         <p>InvoiceItem Count</p>
                     </span>
                 </li>
                 <li>
                     <i class="bx bx-dollar-circle"></i>
                     <span class="info">
-                        <h3 th:text = "${totalsale} + 'Bath'"></h3>
+                        <h3 th:text="${totalsale} + 'Bath'"></h3>
                         <p>Total Sales</p>
                     </span>
                 </li>
@@ -292,19 +292,31 @@
                                         class="btn btn-primary mt-3 mb-3">update</a>
                                 </td>
                                 <td>
-                                    <form th:action="@{/admin_use_mat/{id}(id=${Material.id})}" method="post">
-                                        <div class="quantity-control">
-                                            <button type="button" class="btn btn-secondary quantity-button"
-                                                onclick="decrementCounter(this)">-</button>
-                                            <span class="form-control text-center quantity-display">1</span>
-                                            <button type="button" class="btn btn-secondary quantity-button"
-                                                onclick="incrementCounter(this)">+</button>
-                                            <input type="hidden" id="quantity" name="quantity" value="1">
+                                    <div class="container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-6">
+                                                <form th:action="@{/admin_use_mat/{id}(id=${Material.id})}"
+                                                    method="post" class="d-flex flex-column align-items-center">
+                                                    <div class="mb-3 d-flex align-items-center">
+                                                        <div class="quantity-control">
+                                                            <button type="button"
+                                                                class="btn btn-secondary quantity-button"
+                                                                onclick="decrementCounter(this)">-</button>
+                                                            <span
+                                                                class="form-control text-center quantity-display">1</span>
+                                                            <button type="button"
+                                                                class="btn btn-secondary quantity-button"
+                                                                onclick="incrementCounter(this)">+</button>
+                                                            <input type="hidden" id="quantity" name="quantity"
+                                                                value="1">
+                                                        </div>
+                                                    </div>
+                                                    <input class="btn btn-primary add-to-cart-button" type="submit"
+                                                        value="Use Material">
+                                                </form>
+                                            </div>
                                         </div>
-
-                                        <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit"
-                                            value="Use Material">
-                                    </form>
+                                    </div>
                                 </td>
                             </tr>
                             </td>
@@ -314,84 +326,87 @@
                     <a href="/delete-mat" class="btn btn-primary mt-3 mb-3">Delete All</a>
                     <div>
                         <!-- expense table -->
+                        <div class="orders">
+                            <div class="header">
+                                <i class="bx bx-bi bi-pie-chart-fill"></i>
+                                <h3>Expense List</h3>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Date</th>
+                                        <th>mat name</th>
+                                        <th>used amount</th>
+                                        <th>total expense</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                    <tr th:each="Expense : ${expense}">
+                                        <td th:text="${Expense.id}"></td>
+                                        <td th:text="${Expense.date}"></td>
+                                        <td th:text="${Expense.material.mat_name}"></td>
+                                        <td th:text="${Expense.matAmount}"></td>
+                                        <td th:text="${Expense.expTotal}"></td>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invoice item List -->
+                <div class="bottom-data" id="Cart">
+                    <div class="orders">
+                        <div class="header">
+                            <i class="bx bx-bi bi-basket"></i>
+                            <h3>InvoiceItem List</h3>
+                            <i class="bx bx-filter"></i>
+                            <i class="bx bx-search"></i>
+                        </div>
                         <table>
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Date</th>
-                                    <th>mat name</th>
-                                    <th>used amount</th>
-                                    <th>total expense</th>
+                                    <th>Invoice ID</th>
+                                    <th>User</th>
+                                    <th>Invoice Note</th>
+                                    <th>Dishes</th>
+                                    <th>DishAmount</th>
+                                    <th>Note</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <tr>
+                                <tr th:each="InvoiceItem : ${invoiceitem}">
+                                    <td th:text="${InvoiceItem.invoice.id}"></td>
+                                    <td th:text="${InvoiceItem.invoice.user.userName}"></td>
+                                    <td th:text="${InvoiceItem.invoice.invoice_note}"></td>
+                                    <td th:text="${InvoiceItem.dishes.dish_name}"></td>
+                                    <td th:text="${InvoiceItem.dishAmount}"></td>
+                                    <td th:text="${InvoiceItem.itemNote}"></td>
+                                    <td th:text="${InvoiceItem.itemStatus}"></td>
                                     <td>
-                                <tr th:each="Expense : ${expense}">
-                                    <td th:text="${Expense.id}"></td>
-                                    <td th:text="${Expense.date}"></td>
-                                    <td th:text="${Expense.material.mat_name}"></td>
-                                    <td th:text="${Expense.matAmount}"></td>
-                                    <td th:text="${Expense.expTotal}"></td>
-                                    
+                                        <a th:href="@{/confirm-order/{id}(id=${InvoiceItem.id})}"
+                                            class="btn btn-success mt-3 mb-3">
+                                            Confirm Order
+                                        </a>
                                     </td>
-                                </tr>
-                                </td>
+                                    <td>
+                                        <a th:href="@{/cancel-order/{id}(id=${InvoiceItem.id})}"
+                                            class="btn btn-danger mt-3 mb-3">
+                                            Cancel Order
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
-
-            <!-- Invoice item List -->
-            <div class="bottom-data" id="Cart">
-                <div class="orders">
-                    <div class="header">
-                        <i class="bx bx-bi bi-basket"></i>
-                        <h3>InvoiceItem List</h3>
-                        <i class="bx bx-filter"></i>
-                        <i class="bx bx-search"></i>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Invoice ID</th>
-                                <th>User</th>
-                                <th>Invoice Note</th>
-                                <th>Dishes</th>
-                                <th>DishAmount</th>
-                                <th>Note</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="InvoiceItem : ${invoiceitem}">
-                                <td th:text="${InvoiceItem.invoice.id}"></td>
-                                <td th:text="${InvoiceItem.invoice.user.userName}"></td>
-                                <td th:text="${InvoiceItem.invoice.invoice_note}"></td>
-                                <td th:text="${InvoiceItem.dishes.dish_name}"></td>
-                                <td th:text="${InvoiceItem.dishAmount}"></td>
-                                <td th:text="${InvoiceItem.itemNote}"></td>
-                                <td th:text="${InvoiceItem.itemStatus}"></td>
-                                <td>
-                                    <a th:href="@{/confirm-order/{id}(id=${InvoiceItem.id})}" 
-                                    class="btn btn-success mt-3 mb-3">
-                                            Confirm Order
-                                    </a>
-                                </td>
-                                <td>
-                                    <a th:href="@{/cancel-order/{id}(id=${InvoiceItem.id})}" 
-                                    class="btn btn-danger mt-3 mb-3">
-                                        Cancel Order
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </main>
     </div>
     <!--java script here -->

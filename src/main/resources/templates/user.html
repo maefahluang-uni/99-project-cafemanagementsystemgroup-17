@@ -273,9 +273,6 @@
                                             <!-- Provide a default value for Roast when not applicable -->
                                             <input type="hidden" name="sweetness" value="None">
                                         </div>
-
-
-
                                         <div th:if="${Dishes.dishtype == 'coffee'}">
                                             <label>Roast:</label>
                                             <div class="radio-buttons">
@@ -306,12 +303,9 @@
                                                 onclick="incrementCounter(this)">+</button>
                                             <input type="hidden" id="quantity" name="quantity" value="1">
                                         </div>
-
                                         <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit"
                                             value="Add to Cart">
                                 </form>
-
-
                                 <table>
                                     <form action="#" th:action="@{/add-to-cart/{id}}" modelAttributes="newinvoiceitem"
                                         method="post">
@@ -319,10 +313,7 @@
                                     </form>
                                 </table>
                             </div>
-
-
                         </div>
-
                         <table>
                             <form action="#" th:action="@{/add-to-cart/{id}}" modelAttributes="newinvoiceitem"
                                 method="post">
@@ -336,9 +327,6 @@
     </div>
     </div>
     </div>
-
-
-
 
     <!-- show confirm/cancel InvoiceItem list -->
     <div class="container" id="Cart">
