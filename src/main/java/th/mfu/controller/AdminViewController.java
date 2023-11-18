@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import th.mfu.domain.Expense;
 import th.mfu.domain.Payment;
 import th.mfu.repository.DishesRepository;
+import th.mfu.repository.ExpenseRepository;
 import th.mfu.repository.InvoiceItemRepository;
 import th.mfu.repository.InvoiceRepository;
 import th.mfu.repository.MaterialRepository;
@@ -29,13 +31,16 @@ public class AdminViewController {
     UserRepository userRepo;
     @Autowired
     MaterialRepository matRepo;
+    @Autowired
+    ExpenseRepository expRepo;
 
     private final DishesService dishesService;
     private final MaterialService materialService;
 
     public AdminViewController(DishesRepository dishesRepo, InvoiceRepository invoiceRepo,
             InvoiceItemRepository invoiceItemRepo, PaymentRepository paymentRepo, UserRepository userRepo,
-            DishesService dishesService, MaterialRepository matRepo, MaterialService materialService) {
+            DishesService dishesService, MaterialRepository matRepo, MaterialService materialService,
+            ExpenseRepository expRepo) {
         this.dishesRepo = dishesRepo;
         this.invoiceRepo = invoiceRepo;
         this.invoiceItemRepo = invoiceItemRepo;
@@ -44,6 +49,7 @@ public class AdminViewController {
         this.dishesService = dishesService;
         this.matRepo = matRepo;
         this.materialService = materialService;
+        this.expRepo = expRepo;
 
     }
 
@@ -62,12 +68,17 @@ public class AdminViewController {
         model.addAttribute("invoice", invoiceRepo.findAll());
         model.addAttribute("payment", paymentRepo.findAll());
         model.addAttribute("invoiceitem", invoiceItemRepo.findAll());
+        model.addAttribute("expense", expRepo.findAll());
 
-        // total sale
+        // total = sale-expense
         Integer totalsale = 0;
         Iterable<Payment> paymentlist = paymentRepo.findAll();
         for (Payment payment : paymentlist) {
             totalsale += payment.getPay_total();
+        }
+        Iterable<Expense> expenseList = expRepo.findAll();
+        for (Expense expense : expenseList) {
+            totalsale -= expense.getExpTotal();
         }
         model.addAttribute("totalsale", totalsale);
 

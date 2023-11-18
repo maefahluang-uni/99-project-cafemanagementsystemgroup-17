@@ -27,22 +27,22 @@ INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dis
 INSERT IGNORE INTO Dishes (id, dish_name, dishtype, dish_picture, dish_stock,dish_price,dishStatus) VALUES (20, 'Peach Smoothie', 'smoothie', 'Peach Smoothie.png', 50,55,"active");
 
 --mat
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (1, 'milk', 20);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (2, 'greenTea leaf', 30);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (3, 'OolongTea leaf', 40);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (4, 'JasmineTea leaf', 50);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (5, 'TaiwaneseTea leaf', 70);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (6, 'mango', 50);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (7, 'peach', 70);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (8, 'coffee bean', 20);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (9, 'coffee powder', 60);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (10, 'yogurt', 70);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (11, 'ice cube', 90);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (12, 'apple', 50);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (13, 'pineapple', 10);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (14, 'banana', 2);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (15, 'strawberry', 6);
-INSERT IGNORE INTO Material (id, mat_name, mat_amount) VALUES (16, 'sugar', 8);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (1, 'milk', 20, 80);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (2, 'greenTea leaf', 30, 60);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (3, 'OolongTea leaf', 40, 55);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (4, 'JasmineTea leaf', 50, 60);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (5, 'TaiwaneseTea leaf', 70, 70);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (6, 'mango', 50, 80);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (7, 'peach', 70, 100);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (8, 'coffee bean', 20, 60);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (9, 'coffee powder', 60, 60);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (10, 'yogurt', 70, 100);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (11, 'ice cube', 90, 20);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (12, 'apple', 50, 40);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (13, 'pineapple', 10, 50);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (14, 'banana', 2, 35);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (15, 'strawberry', 6, 90);
+INSERT IGNORE INTO Material (id, mat_name, mat_amount, matPrice) VALUES (16, 'sugar', 8, 30);
 
 -- user table
 INSERT IGNORE INTO user (id, userName) VALUES (1, 'table01');

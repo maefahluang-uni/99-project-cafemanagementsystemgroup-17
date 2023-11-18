@@ -11,6 +11,7 @@ public class Material {
     private Long id;
     private String mat_name;
     private Integer mat_amount;
+    private Integer matPrice;
 
     public Material(Long id, String mat_name, Integer mat_amount) {
         this.id = id;
@@ -42,6 +43,14 @@ public class Material {
 
     public void setMat_amount(Integer mat_amount) {
         this.mat_amount = mat_amount;
+    }
+
+    public Integer getMatPrice() {
+        return matPrice;
+    }
+
+    public void setMatPrice(Integer matPrice) {
+        this.matPrice = matPrice;
     }
 
     
