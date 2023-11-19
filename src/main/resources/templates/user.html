@@ -60,7 +60,7 @@
                     <div class="input-group">
                         <input type="text" id="text-search" name="keyword" class="form-control"
                             placeholder="Type your search...">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-dark">Search</button>
                     </div>
                 </form>
             </div>
@@ -100,7 +100,7 @@
                                     <td th:text="${InvoiceItem.itemNote}"></td>
                                     <td>
                                         <a th:href="@{/delete-cart/{id}(id=${InvoiceItem.id})}"
-                                            class="btn btn-primary mt-3 mb-3">Delete</a>
+                                        class="btn btn-dark">Delete</a>
                                     </td>
                                 </tr>
                             </table>
@@ -116,7 +116,7 @@
                                         <option value="4">Table 4</option>
                                         <option value="5">Table 5</option>
                                     </select>
-                                    <button class="btn btn-success mt-3 mb-3" type="submit">Checkout</button>
+                                    <button class="btn btn-dark mt-3 mb-3" type="submit">Checkout</button>
                                 </form>
                             </div>
                             <div id="cart-notification" class="alert alert-success" role="alert" style="display: none;">
@@ -294,14 +294,14 @@
                                         </div>
                                         <br>
                                         <div class="quantity-control">
-                                            <button type="button" class="btn btn-secondary quantity-button"
+                                            <button type="button" class="btn btn-dark quantity-button"
                                                 onclick="decrementCounter(this)">-</button>
                                             <span class="form-control text-center quantity-display">1</span>
-                                            <button type="button" class="btn btn-secondary quantity-button"
+                                            <button type="button" class="btn btn-dark quantity-button"
                                                 onclick="incrementCounter(this)">+</button>
                                             <input type="hidden" id="quantity" name="quantity" value="1">
                                         </div>
-                                        <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit"
+                                        <input class="btn btn-dark mt-3 mb-3 add-to-cart-button" type="submit"
                                             value="Add to Cart">
                                 </form>
                                 <table>
