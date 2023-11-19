@@ -276,8 +276,6 @@
                         </thead>
                         <tbody>
                             <a href="/add-mat/" class="btn btn-primary mt-3 mb-3">Add New Material</a>
-                            <tr>
-                                <td>
                             <tr th:each="Material : ${materials}">
                                 <td th:text="${Material.id}"></td>
                                 <td th:text="${Material.mat_name}"></td>
@@ -292,40 +290,30 @@
                                         class="btn btn-primary mt-3 mb-3">update</a>
                                 </td>
                                 <td>
-                                    <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-md-6">
-                                                <form th:action="@{/admin_use_mat/{id}(id=${Material.id})}"
-                                                    method="post" class="d-flex flex-column align-items-center">
-                                                    <div class="mb-3 d-flex align-items-center">
-                                                        <div class="quantity-control">
-                                                            <button type="button"
-                                                                class="btn btn-secondary quantity-button"
-                                                                onclick="decrementCounter(this)">-</button>
-                                                            <span
-                                                                class="form-control text-center quantity-display">1</span>
-                                                            <button type="button"
-                                                                class="btn btn-secondary quantity-button"
-                                                                onclick="incrementCounter(this)">+</button>
-                                                            <input type="hidden" id="quantity" name="quantity"
-                                                                value="1">
-                                                        </div>
-                                                    </div>
-                                                    <input class="btn btn-primary add-to-cart-button" type="submit"
-                                                        value="Use Material">
-                                                </form>
-                                            </div>
+                                    <form th:action="@{/admin_use_mat/{id}(id=${Material.id})}" method="post"
+                                        class="d-flex flex-column align-items-center">
+                                        <div class="mb-3 d-flex quantity-control">
+                                            <button type="button" class="btn btn-secondary quantity-button"
+                                                onclick="decrementCounter(this)">-</button>
+                                            <span class="form-control text-center quantity-display">1</span>
+                                            <button type="button" class="btn btn-secondary quantity-button"
+                                                onclick="incrementCounter(this)">+</button>
+                                            <input type="hidden" id="quantity" name="quantity" value="1">
                                         </div>
-                                    </div>
+                                        <input class="btn btn-primary add-to-cart-button" type="submit"
+                                            value="Use Material">
+                                    </form>
                                 </td>
-                            </tr>
-                            </td>
                             </tr>
                         </tbody>
                     </table>
                     <a href="/delete-mat" class="btn btn-primary mt-3 mb-3">Delete All</a>
+                </div>
+            </div>
+
+
+                    <!-- expense table -->
                     <div>
-                        <!-- expense table -->
                         <div class="orders">
                             <div class="header">
                                 <i class="bx bx-bi bi-pie-chart-fill"></i>
