@@ -133,12 +133,30 @@
 .nav-link:hover::before {
     transform-origin: bottom left;
     transform: scaleX(1);
-    background-color: #007bff; /* Change the color as needed */
+    background-color: #000000; /* Change the color as needed */
 }
 
 .bg-custom {
     background-color: #F0E4D8;
 
+}
+.custom-modal-header {
+    background-color: #F0E4D8 ;
+}
+.custom-input {
+    background-color: #F6F0F1;
+    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+    border-radius: 3px; /* Adjust the corner radius for a softer appearance */
+    padding: 5px; /* Adjust padding for better spacing */
+
+}
+.custom-select {
+    background-color: #F6F0F1;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 6px;
+    width: 100px;
+    /* Add more styling properties if needed */
 }
 
 

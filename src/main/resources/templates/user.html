@@ -60,7 +60,7 @@
                     <div class="input-group">
                         <input type="text" id="text-search" name="keyword" class="form-control"
                             placeholder="Type your search...">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-dark">Search</button>
                     </div>
                 </form>
             </div>
@@ -78,13 +78,16 @@
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" style="background-color: #F0E4D8;">
                         <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
                         </button>
+                        
+                        
+                        
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="background-color: #F6F0F1;">
                         <!-- Add your cart content here -->
                         <div class="container" id="Cart">
                             <h1 class="mt-1">Your Cart List</h1>
@@ -100,23 +103,24 @@
                                     <td th:text="${InvoiceItem.itemNote}"></td>
                                     <td>
                                         <a th:href="@{/delete-cart/{id}(id=${InvoiceItem.id})}"
-                                            class="btn btn-primary mt-3 mb-3">Delete</a>
+                                            class="btn btn-dark mt-3 mb-3">Delete</a>
                                     </td>
                                 </tr>
                             </table>
                             <div class="modal-footer">
                                 <form action="/confirm_cart" method="post">
-                                    <label for="invoiceNote">Note To Staff</label>
-                                    <input type="text" id="invoiceNote" name="invoiceNote" required>
-                                    <label for="tableNumber">Select Table Number</label>
-                                    <select id="tableNumber" name="tableNumber" required>
+                                    <label for="invoiceNote"><b>Note To Staff : </b></label>
+                                    <input type="text" id="invoiceNote" name="invoiceNote" class="custom-input">
+                                    <label for="tableNumber"><b>Select Table Number : </b></label>
+                                    <select id="tableNumber" name="tableNumber" required="" class="custom-select">
                                         <option value="1">Table 1</option>
                                         <option value="2">Table 2</option>
                                         <option value="3">Table 3</option>
                                         <option value="4">Table 4</option>
                                         <option value="5">Table 5</option>
                                     </select>
-                                    <button class="btn btn-success mt-3 mb-3" type="submit">Checkout</button>
+                                    
+                                    <button class="btn btn-dark mt-3 mb-3" type="submit">Checkout</button>
                                 </form>
                             </div>
                             <div id="cart-notification" class="alert alert-success" role="alert" style="display: none;">
@@ -220,10 +224,13 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="selectionCartLabel" th:text="${Dishes.dish_name}"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-
+                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
                             </button>
+                            
+                            
+                            
+                            
                         </div>
                         <div class="modal-body">
                             <!-- Add your cart content here -->
@@ -234,14 +241,11 @@
                                         <img th:src="@{'images/' + ${Dishes.dish_picture}}" alt="Dish Image"
                                             class="center" />
                                     </td>
-                                    <label for="quantity">Quantity:</label>
-
-
                                     <td>
                                         <!-- Sweetness, Type, Roast, and Add fields conditionally based on dishtype -->
                                         <div
                                             th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee' or Dishes.dishtype == 'smoothie'}">
-                                            <label>Sweetness:</label>
+                                            <label><b>Sweetness:</b></label>
                                             <div class="radio-buttons">
                                                 <label><input type="radio" name="sweetness" value="0%" required>
                                                     0%</label>
@@ -252,7 +256,7 @@
                                             </div>
                                         </div>
                                         <div th:if="${Dishes.dishtype == 'tea' or Dishes.dishtype == 'coffee'}">
-                                            <label>Type:</label>
+                                            <label><b>Type:</b></label>
                                             <div class="radio-buttons">
                                                 <label><input type="radio" name="type" value="Hot" required>
                                                     Hot</label>
@@ -272,7 +276,7 @@
                                             <input type="hidden" name="sweetness" value="None">
                                         </div>
                                         <div th:if="${Dishes.dishtype == 'coffee'}">
-                                            <label>Roast:</label>
+                                            <label><b>Roast:</b></label>
                                             <div class="radio-buttons">
                                                 <label><input type="radio" name="roast" value="Light" required>
                                                     Light</label>
@@ -281,10 +285,10 @@
                                                 <label><input type="radio" name="roast" value="Dark" required>
                                                     Dark</label>
                                             </div>
-                                            <label for="add">Add:</label>
+                                            <label for="add"><b>Add:</b></label>
                                             <select name="add" id="add">
                                                 <option value="None">None</option>
-                                                <option value="Shot +$10">Shot +$10</option>
+                                                <option value="Shot +฿10">Shot +฿10</option>
                                             </select>
                                         </div>
                                         <div th:unless="${Dishes.dishtype == 'coffee'}">
@@ -293,6 +297,8 @@
                                             <input type="hidden" name="add" value="None">
                                         </div>
                                         <br>
+                                        <label for="quantity"><b>Quantity:</b></label>
+                                    <br>
                                         <div class="quantity-control">
                                             <button type="button" class="btn btn-secondary quantity-button"
                                                 onclick="decrementCounter(this)">-</button>
@@ -301,7 +307,7 @@
                                                 onclick="incrementCounter(this)">+</button>
                                             <input type="hidden" id="quantity" name="quantity" value="1">
                                         </div>
-                                        <input class="btn btn-primary mt-3 mb-3 add-to-cart-button" type="submit"
+                                        <input class="btn btn-dark mt-3 mb-3 add-to-cart-button" type="submit"
                                             value="Add to Cart">
                                 </form>
                                 <table>
