@@ -297,8 +297,8 @@
                                             <div class="col-md-6">
                                                 <form th:action="@{/admin_use_mat/{id}(id=${Material.id})}"
                                                     method="post" class="d-flex flex-column align-items-center">
-                                                    <div class="mb-3 d-flex align-items-center">
-                                                        <div class="quantity-control">
+                                                    <div class="mb-3 d-flex quantity-control">
+                                                        
                                                             <button type="button"
                                                                 class="btn btn-secondary quantity-button"
                                                                 onclick="decrementCounter(this)">-</button>
@@ -309,7 +309,7 @@
                                                                 onclick="incrementCounter(this)">+</button>
                                                             <input type="hidden" id="quantity" name="quantity"
                                                                 value="1">
-                                                        </div>
+                                                        
                                                     </div>
                                                     <input class="btn btn-primary add-to-cart-button" type="submit"
                                                         value="Use Material">
@@ -319,8 +319,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            </td>
-                            </tr>
+
                         </tbody>
                     </table>
                     <a href="/delete-mat" class="btn btn-primary mt-3 mb-3">Delete All</a>
