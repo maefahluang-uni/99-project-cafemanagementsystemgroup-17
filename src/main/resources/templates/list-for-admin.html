@@ -38,14 +38,14 @@
                 <a href="#invoice"><i class="bx bx-bi bi-receipt-cutoff"></i>Invoice</a>
             </li>
             <li>
+                <a href="#Cart"><i class="bx bx-bi bi-basket"></i>InvoiceItem</a>
+            </li>
+            <li>
                 <a href="#pay"><i class="bx bx-bi bi-credit-card"></i>Payment</a>
             </li>
             <li>
-                <a href="#Cart"><i class="bx bx-bi bi-basket"></i>InvoiceItem</a>
+                <a href="#Expense"><i class="bx bx-bi bi-graph-down"></i>Expense</a>
             </li>
-            <!-- <li>
-                <a href="#"><i class="bx bx-cog"></i>Settings</a>
-            </li> -->
         </ul>
         <ul class="side-menu">
             <li>
@@ -188,74 +188,6 @@
                 </div>
             </div>
 
-            <!-- invoice List -->
-            <div class="bottom-data" id="invoice">
-                <div class="orders">
-                    <div class="header">
-                        <i class="bx bx-bi bi-receipt-cutoff"></i>
-                        <h3>Invoice List</h3>
-                        <i class="bx bx-filter"></i>
-                        <i class="bx bx-search"></i>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Date</th>
-                                <th>note</th>
-                                <th>user ID</th>
-                                <th>payment ID</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                            <tr th:each="Invoice : ${invoice}">
-                                <td th:text="${Invoice.id}"></td>
-                                <td th:text="${Invoice.invoice_date}"></td>
-                                <td th:text="${Invoice.invoice_note}"></td>
-                                <td th:text="${Invoice.user.id}"></td>
-                                <td th:text="${Invoice.payment.id}"></td>
-                            </tr>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- payment List -->
-            <div class="bottom-data" id="pay">
-                <div class="orders">
-                    <div class="header">
-                        <i class="bx bx-bi bi-credit-card"></i>
-                        <h3>Payment List</h3>
-                        <i class="bx bx-filter"></i>
-                        <i class="bx bx-search"></i>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Date</th>
-                                <th>Total Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                            <tr th:each="Payment : ${payment}">
-                                <td th:text="${Payment.id}"></td>
-                                <td th:text="${Payment.pay_Date}"></td>
-                                <td th:text="${Payment.pay_total}"></td>
-                            </tr>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
             <!-- Mat List -->
             <div class="bottom-data" id="mat">
                 <div class="orders">
@@ -318,89 +250,159 @@
                         </tbody>
                     </table>
                     <a href="/delete-mat" class="btn btn-primary mt-3 mb-3">Delete All</a>
-                    <div>
-                        <!-- expense table -->
-                        <div class="orders">
-                            <div class="header">
-                                <i class="bx bx-bi bi-pie-chart-fill"></i>
-                                <h3>Expense List</h3>
-                            </div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Date</th>
-                                        <th>mat name</th>
-                                        <th>used amount</th>
-                                        <th>total expense</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                    <tr th:each="Expense : ${expense}">
-                                        <td th:text="${Expense.id}"></td>
-                                        <td th:text="${Expense.date}"></td>
-                                        <td th:text="${Expense.material.mat_name}"></td>
-                                        <td th:text="${Expense.matAmount}"></td>
-                                        <td th:text="${Expense.expTotal}"></td>
-                                        </td>
-                                    </tr>
-                                    </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
+            </div>
 
-                <!-- Invoice item List -->
-                <div class="bottom-data" id="Cart">
-                    <div class="orders">
-                        <div class="header">
-                            <i class="bx bx-bi bi-basket"></i>
-                            <h3>InvoiceItem List</h3>
-                            <i class="bx bx-filter"></i>
-                            <i class="bx bx-search"></i>
-                        </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Invoice ID</th>
-                                    <th>User</th>
-                                    <th>Invoice Note</th>
-                                    <th>Dishes</th>
-                                    <th>DishAmount</th>
-                                    <th>Note</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="InvoiceItem : ${invoiceitem}">
-                                    <td th:text="${InvoiceItem.invoice.id}"></td>
-                                    <td th:text="${InvoiceItem.invoice.user.userName}"></td>
-                                    <td th:text="${InvoiceItem.invoice.invoice_note}"></td>
-                                    <td th:text="${InvoiceItem.dishes.dish_name}"></td>
-                                    <td th:text="${InvoiceItem.dishAmount}"></td>
-                                    <td th:text="${InvoiceItem.itemNote}"></td>
-                                    <td th:text="${InvoiceItem.itemStatus}"></td>
-                                    <td>
-                                        <a th:href="@{/confirm-order/{id}(id=${InvoiceItem.id})}"
-                                            class="btn btn-success mt-3 mb-3">
-                                            Confirm Order
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a th:href="@{/cancel-order/{id}(id=${InvoiceItem.id})}"
-                                            class="btn btn-danger mt-3 mb-3">
-                                            Cancel Order
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <!-- invoice List -->
+            <div class="bottom-data" id="invoice">
+                <div class="orders">
+                    <div class="header">
+                        <i class="bx bx-bi bi-receipt-cutoff"></i>
+                        <h3>Invoice List</h3>
+                        <i class="bx bx-filter"></i>
+                        <i class="bx bx-search"></i>
                     </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>note</th>
+                                <th>user ID</th>
+                                <th>payment ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                            <tr th:each="Invoice : ${invoice}">
+                                <td th:text="${Invoice.id}"></td>
+                                <td th:text="${Invoice.invoice_date}"></td>
+                                <td th:text="${Invoice.invoice_note}"></td>
+                                <td th:text="${Invoice.user.id}"></td>
+                                <td th:text="${Invoice.payment.id}"></td>
+                            </tr>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+
+            <!-- Invoice item List -->
+            <div class="bottom-data" id="Cart">
+                <div class="orders">
+                    <div class="header">
+                        <i class="bx bx-bi bi-basket"></i>
+                        <h3>InvoiceItem List</h3>
+                        <i class="bx bx-filter"></i>
+                        <i class="bx bx-search"></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Invoice ID</th>
+                                <th>User</th>
+                                <th>Invoice Note</th>
+                                <th>Dishes</th>
+                                <th>DishAmount</th>
+                                <th>Note</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="InvoiceItem : ${invoiceitem}">
+                                <td th:text="${InvoiceItem.invoice.id}"></td>
+                                <td th:text="${InvoiceItem.invoice.user.userName}"></td>
+                                <td th:text="${InvoiceItem.invoice.invoice_note}"></td>
+                                <td th:text="${InvoiceItem.dishes.dish_name}"></td>
+                                <td th:text="${InvoiceItem.dishAmount}"></td>
+                                <td th:text="${InvoiceItem.itemNote}"></td>
+                                <td th:text="${InvoiceItem.itemStatus}"></td>
+                                <td>
+                                    <a th:href="@{/confirm-order/{id}(id=${InvoiceItem.id})}"
+                                        class="btn btn-primary mt-3 mb-3">
+                                        Confirm
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/cancel-order/{id}(id=${InvoiceItem.id})}"
+                                        class="btn btn-primary mt-3 mb-3">
+                                        Cancel
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- payment List -->
+            <div class="bottom-data" id="pay">
+                <div class="orders">
+                    <div class="header">
+                        <i class="bx bx-bi bi-credit-card"></i>
+                        <h3>Payment List</h3>
+                        <i class="bx bx-filter"></i>
+                        <i class="bx bx-search"></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                            <tr th:each="Payment : ${payment}">
+                                <td th:text="${Payment.id}"></td>
+                                <td th:text="${Payment.pay_Date}"></td>
+                                <td th:text="${Payment.pay_total}"></td>
+                            </tr>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- expense table -->
+            <div class="bottom-data" id="Expense">
+                <div class="orders">
+                    <div class="header">
+                        <i class="bx bx-bi bi-graph-down"></i>
+                        <h3>Expense List</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>mat name</th>
+                                <th>used amount</th>
+                                <th>total expense</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                            <tr th:each="Expense : ${expense}">
+                                <td th:text="${Expense.id}"></td>
+                                <td th:text="${Expense.date}"></td>
+                                <td th:text="${Expense.material.mat_name}"></td>
+                                <td th:text="${Expense.matAmount}"></td>
+                                <td th:text="${Expense.expTotal}"></td>
+                                </td>
+                            </tr>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </main>
     </div>
     <!--java script here -->
