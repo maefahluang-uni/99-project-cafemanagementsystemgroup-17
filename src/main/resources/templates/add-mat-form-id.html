@@ -52,7 +52,12 @@
                 <input type="text" id="mat_amount" class="form-control" th:field="*{mat_amount}" required>
             </div>
 
-            <button type="submit" class="btn btn-warning">Confirm Order</button>
+            <div class="form-group">
+                <label for="matPrice">Price:</label>
+                <input type="text" id="matPrice" class="form-control" th:field="*{matPrice}" required>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Confirm</button>
         </form>
     </div>
 </body>

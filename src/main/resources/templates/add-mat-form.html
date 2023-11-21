@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Cafe</title>
+    <title>Add Material</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         /* Custom CSS for yellow and white theme */
@@ -49,7 +49,12 @@
                 <input type="text" id="mat_amount" class="form-control" th:field="*{mat_amount}" required>
             </div>
 
-            <button type="submit" class="btn btn-warning">Confirm Order</button>
+            <div class="form-group">
+                <label for="mat_amount">Amount:</label>
+                <input type="text" id="mat_amount" class="form-control" th:field="*{matPrice}" required>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Confirm</button>
         </form>
     </div>
 </body>

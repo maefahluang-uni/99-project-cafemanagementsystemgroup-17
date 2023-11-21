@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Cafe</title>
+    <title>Add Dish</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         /* Custom CSS for yellow and white theme */
@@ -36,7 +36,7 @@
 
 <body>
     <div class="container">
-        <h1 class="mt-4">Add Cafe</h1>
+        <h1 class="mt-4">Add Dish</h1>
 
         <form th:action="@{/admin_saveDishes}" th:object="${dishes}" method="post" class="mt-4">
             <div class="form-group">
@@ -63,7 +63,14 @@
                 <label for="dish_picture">picture:</label>
                 <input type="text" id="dish_picture" class="form-control" th:field="*{dish_picture}" required>
             </div>
-            <button type="submit" class="btn btn-warning">Confirm Order</button>
+            <div class="form-group">
+                <label for="dishStatus">Status:</label>
+                <select id="dishStatus" class="form-control" th:field="*{dishStatus}" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-warning">Confirm</button>
         </form>
     </div>
 </body>

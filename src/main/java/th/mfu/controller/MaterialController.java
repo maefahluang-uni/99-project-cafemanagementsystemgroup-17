@@ -85,7 +85,8 @@ public class MaterialController {
     public String updateMat(@ModelAttribute("materials") Material materials, @RequestParam("id") Long id) {
         materialService.updateMat(id,
                 materials.getMat_name(),
-                materials.getMat_amount());
+                materials.getMat_amount(),
+                materials.getMatPrice());
         return "redirect:/admin";
     }
 

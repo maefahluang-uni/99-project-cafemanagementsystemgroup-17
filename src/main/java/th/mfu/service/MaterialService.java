@@ -21,8 +21,9 @@ public class MaterialService {
     public void updateMat(
             Long matId,
             String matName,
-            Integer matAmount) {
-        materialRepository.customUpdate(matId, matName, matAmount);
+            Integer matAmount,
+            Integer matPrice) {
+        materialRepository.customUpdate(matId, matName, matAmount, matPrice);
     }
 
     // for search
