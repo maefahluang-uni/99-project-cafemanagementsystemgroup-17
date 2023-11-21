@@ -34,15 +34,15 @@ group's member's
 
 
 ```
-# 2.แอดมิน add/update/delete dish
+# 2.staff - add/update/delete dish
 ```
 zasdfg
 ```
-# 3.แอดมินอัพเดท add/update/delete material
+# 3.staff - add/update/delete material
 ```
 sefef
 ```
-# 4.แอดมิน use mat
+# 4.staff - use material
 ```
 agaga
 ```
