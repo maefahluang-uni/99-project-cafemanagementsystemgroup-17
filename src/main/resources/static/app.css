@@ -158,6 +158,11 @@
     width: 100px;
     /* Add more styling properties if needed */
 }
+/* Set the size of the logo */
+.navbar-brand img {
+    width: 10%; /* Adjust the width as needed */
+    height: 5%; /* Maintain aspect ratio */
+}
 
 
 

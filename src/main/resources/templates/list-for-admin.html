@@ -43,9 +43,9 @@
             <li>
                 <a href="#Cart"><i class="bx bx-bi bi-basket"></i>InvoiceItem</a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#"><i class="bx bx-cog"></i>Settings</a>
-            </li>
+            </li> -->
         </ul>
         <ul class="side-menu">
             <li>
@@ -78,14 +78,14 @@
                 <span class="count">12</span>
             </a>
             <a href="#" class="profile">
-                <img src="images/logo.png" />
+                <img src="images/MAKARAH CAEF-logos_black.png" />
             </a>
         </nav>
 
         <!-- End of Navbar -->
 
         <main>
-            <div class="header">
+            <!-- <div class="header">
                 <div class="left">
                     <h1>Dashboard</h1>
                     <ul class="breadcrumb">
@@ -98,7 +98,7 @@
                     <i class="bx bx-cloud-download"></i>
                     <span>Download CSV</span>
                 </a>
-            </div>
+            </div> -->
 
             <!-- Insights -->
             <ul class="insights">
@@ -297,19 +297,13 @@
                                             <div class="col-md-6">
                                                 <form th:action="@{/admin_use_mat/{id}(id=${Material.id})}"
                                                     method="post" class="d-flex flex-column align-items-center">
-                                                    <div class="mb-3 d-flex align-items-center">
-                                                        <div class="quantity-control">
-                                                            <button type="button"
-                                                                class="btn btn-secondary quantity-button"
-                                                                onclick="decrementCounter(this)">-</button>
-                                                            <span
-                                                                class="form-control text-center quantity-display">1</span>
-                                                            <button type="button"
-                                                                class="btn btn-secondary quantity-button"
-                                                                onclick="incrementCounter(this)">+</button>
-                                                            <input type="hidden" id="quantity" name="quantity"
-                                                                value="1">
-                                                        </div>
+                                                    <div class="mb-3 d-flex align-items quantity-control">
+                                                        <button type="button" class="btn btn-secondary quantity-button"
+                                                            onclick="decrementCounter(this)">-</button>
+                                                        <span class="form-control text-center quantity-display">1</span>
+                                                        <button type="button" class="btn btn-secondary quantity-button"
+                                                            onclick="incrementCounter(this)">+</button>
+                                                        <input type="hidden" id="quantity" name="quantity" value="1">
                                                     </div>
                                                     <input class="btn btn-primary add-to-cart-button" type="submit"
                                                         value="Use Material">
