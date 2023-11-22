@@ -38,18 +38,17 @@ public class MaterialController {
     @Autowired
     ExpenseRepository expRepo;
 
-    private final DishesService dishesService;
     private final MaterialService materialService;
 
     public MaterialController(DishesRepository dishesRepo, InvoiceRepository invoiceRepo,
             InvoiceItemRepository invoiceItemRepo, PaymentRepository paymentRepo, UserRepository userRepo,
-            DishesService dishesService, MaterialRepository matRepo, MaterialService materialService, ExpenseRepository expRepo) {
+            MaterialRepository matRepo, MaterialService materialService,
+            ExpenseRepository expRepo) {
         this.dishesRepo = dishesRepo;
         this.invoiceRepo = invoiceRepo;
         this.invoiceItemRepo = invoiceItemRepo;
         this.paymentRepo = paymentRepo;
         this.userRepo = userRepo;
-        this.dishesService = dishesService;
         this.matRepo = matRepo;
         this.materialService = materialService;
         this.expRepo = expRepo;
@@ -110,12 +109,11 @@ public class MaterialController {
         // create date
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
-        expense.setDate(date); 
+        expense.setDate(date);
         expense.setExpTotal(totalexp);
         expense.setMatAmount(quantity);
 
         expRepo.save(expense);
-        
 
         return "redirect:/admin";
     }

@@ -125,20 +125,19 @@ public class DishesController {
             // There is sufficient stock, so add the item to the cart
             InvoiceItem invoiceitem = new InvoiceItem();
 
-
             // set itemNote
             String note = "none";
             String typetemp = dish.getDishtype();
 
             switch (typetemp) {
                 case "coffee":
-                    note = "Sweetness: "+sweetness+" Type: "+type+" Roast: "+roast+" Add: "+add;
+                    note = "Sweetness: " + sweetness + " Type: " + type + " Roast: " + roast + " Add: " + add;
                     break;
                 case "tea":
-                    note = "Sweetness: "+sweetness+" Type: "+type;
+                    note = "Sweetness: " + sweetness + " Type: " + type;
                     break;
-                case "smoothie": 
-                    note = "Sweetness: "+sweetness;
+                case "smoothie":
+                    note = "Sweetness: " + sweetness;
                     break;
                 default:
                     System.out.println("error naja");

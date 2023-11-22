@@ -5,13 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 class LoginController {
-	@GetMapping("/login")
-	String login() {
-		return "login";
-	}
+    @GetMapping("/login")
+    String login() {
+        return "login";
+    }
 }
-    // @GetMapping("/login?logout")
-    // public String logoutSuccess() {
-    //     return "logout-success"; // You can define a custom logout success template
-    // }
-
+// @GetMapping("/login?logout")
+// public String logoutSuccess() {
+// return "logout-success"; // You can define a custom logout success template
+// }

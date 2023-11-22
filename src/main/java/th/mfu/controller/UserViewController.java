@@ -49,8 +49,7 @@ public class UserViewController {
         this.materialService = materialService;
 
     }
-
-    /// user controller////
+ 
     @GetMapping("/user")
     public String listforUser(Model model, String keyword) {
         // model.addAttribute("dishes", dishesRepo.findAll());
@@ -60,10 +59,10 @@ public class UserViewController {
         model.addAttribute("invoiceitemByStatus", invoiceItemRepo.findByItemStatusIsNotNull());
         // show active dishes
         if (keyword != null) {
-            model.addAttribute("dishes", dishesRepo.findByKeywordAndDishStatus(keyword , "active"));
-        }else{
-        model.addAttribute("dishes", dishesRepo.findByDishStatus("active"));
-            }
+            model.addAttribute("dishes", dishesRepo.findByKeywordAndDishStatus(keyword, "active"));
+        } else {
+            model.addAttribute("dishes", dishesRepo.findByDishStatus("active"));
+        }
         // show top 3 sale
         List<Object[]> top3PopularDishes = invoiceItemRepo.findTop3Sale();
         if (!top3PopularDishes.isEmpty() && top3PopularDishes.size() >= 3) {

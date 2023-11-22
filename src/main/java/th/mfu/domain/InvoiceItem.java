@@ -80,5 +80,4 @@ public class InvoiceItem {
         this.itemStatus = itemStatus;
     }
 
-    
 }

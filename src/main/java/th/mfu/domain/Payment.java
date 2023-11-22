@@ -1,4 +1,5 @@
 package th.mfu.domain;
+
 import java.sql.Date;
 
 import javax.persistence.Entity;
@@ -14,13 +15,13 @@ public class Payment {
     private Date pay_Date;
     private Integer pay_total;
 
+    public Payment() {
+    }
+
     public Payment(Long id, Date pay_Date, Integer pay_total) {
         this.id = id;
         this.pay_Date = pay_Date;
         this.pay_total = pay_total;
-    }
-
-        public Payment() {
     }
 
     public Long getId() {

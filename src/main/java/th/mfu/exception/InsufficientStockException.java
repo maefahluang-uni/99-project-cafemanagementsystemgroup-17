@@ -9,4 +9,3 @@ public class InsufficientStockException extends RuntimeException {
         super("Insufficient stock for dish with ID " + dishId);
     }
 }
-

@@ -9,6 +9,7 @@ import th.mfu.domain.InvoiceItem;
 
 public interface InvoiceItemRepository extends CrudRepository<InvoiceItem, Long> {
     Iterable<InvoiceItem> findByInvoiceIsNull();
+
     Iterable<InvoiceItem> findByItemStatusIsNotNull();
 
     @Query("SELECT SUM(i.dishAmount) AS totalAmount, i.dishes " +

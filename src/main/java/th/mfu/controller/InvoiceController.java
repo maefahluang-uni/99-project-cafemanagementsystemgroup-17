@@ -61,18 +61,19 @@ public class InvoiceController {
     }
 
     @PostMapping("/confirm_cart")
-    public String confirmCart(@RequestParam("invoiceNote") String invoiceNote,@RequestParam("tableNumber") Integer tableNumber, Model model) {
+    public String confirmCart(@RequestParam("invoiceNote") String invoiceNote,
+            @RequestParam("tableNumber") Integer tableNumber, Model model) {
 
-        //find all invoiceitem
+        // find all invoiceitem
         var invoiceItemlist = invoiceItemRepo.findAll();
-        //create date
+        // create date
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
 
-        //invoice-------------------------------------------------------------------
+        // invoice-------------------------------------------------------------------
         var temp_invoice = new Invoice();
         // set invoice user tableNumber
-        long tablenumlong = (long)tableNumber;
+        long tablenumlong = (long) tableNumber;
         temp_invoice.setUser(userRepo.findById(tablenumlong).get());
         // set invoice date
         temp_invoice.setInvoice_date(date);
@@ -93,7 +94,7 @@ public class InvoiceController {
             }
         }
 
-        //payment-------------------------------------------------------------------
+        // payment-------------------------------------------------------------------
         var temp_payment = new Payment();
         temp_payment.setPay_Date(date);
         temp_payment.setPay_total(totalprice);
@@ -110,7 +111,7 @@ public class InvoiceController {
 
         return "redirect:/user";
     }
-    
+
     // deleted in cart ///
     @GetMapping("/delete-cart/{id}")
     public String deletedIncart(@PathVariable Long id) {
@@ -133,33 +134,32 @@ public class InvoiceController {
     }
 
     @GetMapping("/confirm-order/{id}")
-    public String confirmOrderbyId (@PathVariable Long id)
-    {
-        //change status to confirm
+    public String confirmOrderbyId(@PathVariable Long id) {
+        // change status to confirm
         InvoiceItem tempinvoiceitem = invoiceItemRepo.findById(id).get();
         tempinvoiceitem.setItemStatus("confirm");
         long payId = tempinvoiceitem.getInvoice().getPayment().getId();
-        
-        //add confirm price to total price
+
+        // add confirm price to total price
         Payment temppayment = paymentRepo.findById(payId).get();
         Integer oldtotalpay = temppayment.getPay_total();
-        Integer newtotalpay = oldtotalpay + (tempinvoiceitem.getDishAmount()*tempinvoiceitem.getDishes().getDish_price());
+        Integer newtotalpay = oldtotalpay
+                + (tempinvoiceitem.getDishAmount() * tempinvoiceitem.getDishes().getDish_price());
         temppayment.setPay_total(newtotalpay);
 
-        //save to repo
+        // save to repo
         invoiceItemRepo.save(tempinvoiceitem);
         paymentRepo.save(temppayment);
 
         return "redirect:/admin";
     }
 
-        @GetMapping("/cancel-order/{id}")
-    public String cancelOrderbyId (@PathVariable Long id)
-    {
+    @GetMapping("/cancel-order/{id}")
+    public String cancelOrderbyId(@PathVariable Long id) {
         InvoiceItem tempinvoiceitem = invoiceItemRepo.findById(id).get();
         tempinvoiceitem.setItemStatus("cancel");
         invoiceItemRepo.save(tempinvoiceitem);
-        
+
         return "redirect:/admin";
     }
 }

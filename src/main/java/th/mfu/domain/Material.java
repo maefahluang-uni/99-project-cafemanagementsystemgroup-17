@@ -1,4 +1,5 @@
 package th.mfu.domain;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,13 +14,14 @@ public class Material {
     private Integer mat_amount;
     private Integer matPrice;
 
+    public Material() {
+    }
+
     public Material(Long id, String mat_name, Integer mat_amount) {
         this.id = id;
         this.mat_name = mat_name;
         this.mat_amount = mat_amount;
     }
-
-    public Material(){}
 
     public Long getId() {
         return id;
@@ -53,5 +55,4 @@ public class Material {
         this.matPrice = matPrice;
     }
 
-    
 }

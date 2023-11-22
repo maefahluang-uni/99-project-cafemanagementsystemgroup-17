@@ -21,7 +21,6 @@ public interface MaterialRepository extends CrudRepository<Material, Long> {
                         @Param("matAmount") Integer matAmount,
                         @Param("matPrice") Integer matPrice);
 
-        // for search
         @Modifying
         @Transactional
         @Query(value = "SELECT * FROM Material m WHERE m.mat_name LIKE %:keyword%", nativeQuery = true)

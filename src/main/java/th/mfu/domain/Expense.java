@@ -17,11 +17,12 @@ public class Expense {
     private Date date;
     private Integer expTotal;
     private Integer matAmount;
-    
+
     @ManyToOne(cascade = CascadeType.MERGE)
     private Material material;
 
-    public Expense(){}
+    public Expense() {
+    }
 
     public Long getId() {
         return id;
@@ -63,5 +64,4 @@ public class Expense {
         this.material = material;
     }
 
-    
 }

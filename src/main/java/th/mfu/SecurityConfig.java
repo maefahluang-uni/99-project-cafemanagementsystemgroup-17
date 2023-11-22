@@ -26,14 +26,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeRequests(authorize -> {
-                authorize.antMatchers("/").permitAll();
-                authorize.antMatchers("/admin").hasRole("ADMIN");
-            })
-            .httpBasic()
-            .and()
-            .formLogin()
+                .csrf(csrf -> csrf.disable())
+                .authorizeRequests(authorize -> {
+                    authorize.antMatchers("/").permitAll();
+                    authorize.antMatchers("/admin").hasRole("ADMIN");
+                })
+                .httpBasic()
+                .and()
+                .formLogin()
                 .loginPage("/login") // Specify your custom login page URL
                 .permitAll(); // Allow all users to access the custom login page
 

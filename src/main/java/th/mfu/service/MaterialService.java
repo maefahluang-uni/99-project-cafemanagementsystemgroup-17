@@ -27,7 +27,7 @@ public class MaterialService {
     }
 
     // for search
-    public List<Material>findBykeyword(String keywordString){
+    public List<Material> findBykeyword(String keywordString) {
         return materialRepository.findByKeyword(keywordString);
     }
 }
