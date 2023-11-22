@@ -28,7 +28,7 @@ group's member's
 3.staff เข้าไปที่ /admin
     - username: "admin" pass: "1234"
     - ไปที่แถบ InvoiceItem List
-    - กด confirm order ที่ลูกค้าสั่งมา (จะมีการคำนวนราคาและแสดงใน payment list)
+    - กด confirm order ที่ลูกค้าสั่งมา (จะมีการคำนวนราคาและแสดงใน payment list, และบริเวณ /admin หน้าแรก)
 
 4.customer รีเฟรชหน้าร้านค้า เพื่อดูสถาณะของ order ได้ที่ confirm/cancel receipt บริเวณด้านล่าง
 
@@ -36,15 +36,49 @@ group's member's
 ```
 # 2.staff - add/update/delete dish
 ```
-zasdfg
+1.staff เข้าไปที่ /admin
+    - username: "admin" pass: "1234"
+    - ไปที่แถบ Menu List
+
+2.add dish
+    - กดปุ่ม Add new dishes 
+    - กรอกข้อมูลแล้วกด confirm
+
+3.update dish
+    - กดปุ่ม update หลัง dishes ที่ต้องการแก้ไข
+    - กรอกข้อมูลและกด confirm
+
+4.delete dish 
+    - กดปุ่ม delete หลัง dishes ที่ต้องการลบ
+    - ไม่สามารถลบได้หากเป็นรายการอาหารที่มีข้อมูลอยู่ใน invoiceitem เพราะติด fk constrain
 ```
 # 3.staff - add/update/delete material
 ```
-sefef
+1.staff เข้าไปที่ /admin
+    - username: "admin" pass: "1234"
+    - ไปที่แถบ Material List
+
+2.add material
+    - กดปุ่ม Add new material
+    - กรอกข้อมูลแล้วกด confirm
+
+3.update material
+    - กดปุ่ม update หลัง material ที่ต้องการแก้ไข
+    - กรอกข้อมูลและกด confirm
+
+4.delete material
+    - กดปุ่ม delete หลัง material ที่ต้องการลบ
+    - ไม่สามารถลบได้หากเป็นรายการที่มีข้อมูลอยู่ใน Expense List เพราะติด fk constrain
 ```
 # 4.staff - use material
 ```
-agaga
+1.staff เข้าไปที่ /admin
+    - username: "admin" pass: "1234"
+    - ไปที่แถบ Menu List
+
+2.use material
+    - เลือกจำนวนที่ต้องการใช้ และกดปุ่ม use material หลัง material ที่ต้องการใช้
+    - จะมีสรุปรายจ่ายในแถบ Expense, และบริเวณ /admin หน้าแรก
 ```
 
 
