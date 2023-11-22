@@ -81,4 +81,10 @@ group's member's
     - จะมีสรุปรายจ่ายในแถบ Expense, และบริเวณ /admin หน้าแรก
 ```
 
-testtest
+URL:https://lab-cd-hgkayqprna-uc.a.run.app/
+
+UserQR
+![Alt text](https://cdn.discordapp.com/attachments/1094640869396717608/1176808442938273822/CafeUser_2.png?ex%253D65703744%2526is%253D655dc244%2526hm%253Df6e9786cdf0af71e615047ee48b93e139bb582b1fd537d98c53b02e9ad343f9f%2526)
+
+AdminQR
+![Alt text](https://cdn.discordapp.com/attachments/1094640869396717608/1176816756447248384/CafeAdmin.png?ex%253D65703f02%2526is%253D655dca02%2526hm%253D3de3517aaa01fb323b901240c8138b867c5fbf76c1704c49d9692c6746343419%2526)
