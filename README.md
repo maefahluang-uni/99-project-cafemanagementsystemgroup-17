@@ -13,7 +13,7 @@ group's member
 ```
 # Link to Project on google cloud
 
-Customer url: https://lab-cd-hgkayqprna-uc.a.run.app/user
+Customer url: https://project-cafe-17-mzwduxknra-uc.a.run.app/user
 
 Customer QR code:
 
@@ -22,7 +22,7 @@ Customer QR code:
 </p>
 
 
-Staff url: https://lab-cd-hgkayqprna-uc.a.run.app/admin
+Staff url: https://project-cafe-17-mzwduxknra-uc.a.run.app/admin
 
 Staff QR code:
 
