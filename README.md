@@ -1,8 +1,6 @@
 # Project-cafemanagementsystemgroup-17
-
-
 ```
-group's member's
+group's member
 
 6531503002 Korawich Thisarg. 
 
@@ -13,6 +11,25 @@ group's member's
 6531503093 Osathi Jantrasri.
 
 ```
+# Link to Project on google cloud
+
+Customer url: https://lab-cd-hgkayqprna-uc.a.run.app/user
+
+Customer QR code:
+
+<p align="center">
+  <img src="src\main\resources\static\images\QRuser.png" width="500" title="hover text">
+</p>
+
+
+Staff url: https://lab-cd-hgkayqprna-uc.a.run.app/admin
+
+Staff QR code:
+
+<p align="center">
+  <img src="src\main\resources\static\images\QRAdmin.png" width="500" title="hover text">
+</p>
+
 
 # 1.customer/staff ระบบสั่งอาหาร
 ```
@@ -81,10 +98,3 @@ group's member's
     - จะมีสรุปรายจ่ายในแถบ Expense, และบริเวณ /admin หน้าแรก
 ```
 
-URL:https://lab-cd-hgkayqprna-uc.a.run.app/
-
-UserQR
-![Alt text](https://cdn.discordapp.com/attachments/1094640869396717608/1176808442938273822/CafeUser_2.png?ex%253D65703744%2526is%253D655dc244%2526hm%253Df6e9786cdf0af71e615047ee48b93e139bb582b1fd537d98c53b02e9ad343f9f%2526)
-
-AdminQR
-![Alt text](https://cdn.discordapp.com/attachments/1094640869396717608/1176816756447248384/CafeAdmin.png?ex%253D65703f02%2526is%253D655dca02%2526hm%253D3de3517aaa01fb323b901240c8138b867c5fbf76c1704c49d9692c6746343419%2526)
