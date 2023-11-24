@@ -322,16 +322,18 @@
                                 <td th:text="${InvoiceItem.itemNote}"></td>
                                 <td th:text="${InvoiceItem.itemStatus}"></td>
                                 <td>
+                                <div th:if="${InvoiceItem.itemStatus == null}">
                                     <a th:href="@{/confirm-order/{id}(id=${InvoiceItem.id})}"
                                         class="btn btn-primary mt-3 mb-3">
                                         Confirm
                                     </a>
-                                </td>
-                                <td>
+                                
+                                
                                     <a th:href="@{/cancel-order/{id}(id=${InvoiceItem.id})}"
                                         class="btn btn-primary mt-3 mb-3">
                                         Cancel
                                     </a>
+                                </div>
                                 </td>
                             </tr>
                         </tbody>
