@@ -1,18 +1,14 @@
 # Project-cafemanagementsystemgroup-17
-```
+
 group's member
+| ID            | Name              |  Github account                          |
+| :------------ | :-------------    | :-----------                             |
+|6531503002     | Korawich Thisarg  | https://github.com/Korawich22            |
+|6531503055     | Poonyawat Khomlek | https://github.com/poonyawat0931         |
+|6531503085     | Sutapat Chucham   | https://github.com/531503085Sutapat                                        |
+|6531503093     | Osathi Jantrasri  | https://github.com/Osathi                |
+|6531503122     | Waranchaya Chairin| https://github.com/Waranchaya-Chairin                                         |
 
-6531503002 Korawich Thisarg. 
-
-6531503055 Poonyawat Khomlek.
-
-6531503085 Sutapat Chucham.
-
-6531503093 Osathi Jantrasri.
-
-6531503122 Waranchaya Chairin
-
-```
 # Link to Project on google cloud
 
 Customer url: https://project-cafe-17-mzwduxknra-uc.a.run.app/user
