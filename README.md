@@ -10,6 +10,8 @@ group's member
 
 6531503093 Osathi Jantrasri.
 
+6531503122 Waranchaya Chairin
+
 ```
 # Link to Project on google cloud
 
