@@ -26,7 +26,6 @@ import th.mfu.repository.MaterialRepository;
 import th.mfu.repository.PaymentRepository;
 import th.mfu.repository.UserRepository;
 import th.mfu.service.DishesService;
-import th.mfu.service.MaterialService;
 
 @Controller
 public class DishesController {
@@ -44,11 +43,10 @@ public class DishesController {
     MaterialRepository matRepo;
 
     private final DishesService dishesService;
-    private final MaterialService materialService;
 
     public DishesController(DishesRepository dishesRepo, InvoiceRepository invoiceRepo,
             InvoiceItemRepository invoiceItemRepo, PaymentRepository paymentRepo, UserRepository userRepo,
-            DishesService dishesService, MaterialRepository matRepo, MaterialService materialService) {
+            DishesService dishesService, MaterialRepository matRepo) {
         this.dishesRepo = dishesRepo;
         this.invoiceRepo = invoiceRepo;
         this.invoiceItemRepo = invoiceItemRepo;
@@ -56,7 +54,6 @@ public class DishesController {
         this.userRepo = userRepo;
         this.dishesService = dishesService;
         this.matRepo = matRepo;
-        this.materialService = materialService;
 
     }
 

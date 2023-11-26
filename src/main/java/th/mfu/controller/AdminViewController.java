@@ -14,8 +14,6 @@ import th.mfu.repository.InvoiceRepository;
 import th.mfu.repository.MaterialRepository;
 import th.mfu.repository.PaymentRepository;
 import th.mfu.repository.UserRepository;
-import th.mfu.service.DishesService;
-import th.mfu.service.MaterialService;
 
 @Controller
 public class AdminViewController {
@@ -34,21 +32,16 @@ public class AdminViewController {
     @Autowired
     ExpenseRepository expRepo;
 
-    private final DishesService dishesService;
-    private final MaterialService materialService;
-
     public AdminViewController(DishesRepository dishesRepo, InvoiceRepository invoiceRepo,
             InvoiceItemRepository invoiceItemRepo, PaymentRepository paymentRepo, UserRepository userRepo,
-            DishesService dishesService, MaterialRepository matRepo, MaterialService materialService,
+            MaterialRepository matRepo,
             ExpenseRepository expRepo) {
         this.dishesRepo = dishesRepo;
         this.invoiceRepo = invoiceRepo;
         this.invoiceItemRepo = invoiceItemRepo;
         this.paymentRepo = paymentRepo;
         this.userRepo = userRepo;
-        this.dishesService = dishesService;
         this.matRepo = matRepo;
-        this.materialService = materialService;
         this.expRepo = expRepo;
 
     }
