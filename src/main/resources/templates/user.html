@@ -35,6 +35,10 @@
                             data-target="#cartModal">Cart</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" id="Status" type="button" data-toggle="modal"
+                            data-target="#status">Receipt</a>
+                    </li>
+                    <li class="nav-item">
                         <a th:href="@{/user}" class="nav-link">All</a>
                     </li>
                     <li class="nav-item">
@@ -55,13 +59,17 @@
             <div>
                 <form th:action="@{/user}" method="get" class="d-flex">
                     <div class="input-group">
-                        <input type="text" id="text-search" name="keyword" class="form-control"
-                            placeholder="search..." >
+                        <input type="text" id="text-search" name="keyword" class="form-control" placeholder="search...">
                         <button type="submit" class="btn btn-dark">Search</button>
                     </div>
                 </form>
             </div>
             <!-- end of search bar -->
+            <!-- Button to open order status  (separately on large screens) -->
+            <button th:id="statusButtonLarge" type="button" class="btn btn-link ml-auto d-none d-lg-inline"
+                data-toggle="modal" data-target="#status">
+                <i class="bi bi-calendar-check"></i>
+            </button>
             <!-- Button to open the cart modal (separately on large screens) -->
             <button id="cartButtonLarge" type="button" class="btn btn-link ml-auto d-none d-lg-inline"
                 data-toggle="modal" data-target="#cartModal">
@@ -80,9 +88,9 @@
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"></span>
                         </button>
-                        
-                        
-                        
+
+
+
                     </div>
                     <div class="modal-body" style="background-color: #F6F0F1;">
                         <!-- Add your cart content here -->
@@ -164,8 +172,8 @@
                         <td th:text="${Dishes.dish_name}"></td>
                         <td th:text="${Dishes.dish_price}"></td>
                         <td>
-                            <button id="selectionCartButton" class="btn btn-dark" type="button" data-toggle="modal" 
-                            th:attr="data-target='#p'+ ${Dishes.id}">Select</button>
+                            <button id="selectionCartButton" class="btn btn-dark" type="button" data-toggle="modal"
+                                th:attr="data-target='#p'+ ${Dishes.id}">Select</button>
                         </td>
                     </tr>
                 </table>
@@ -198,12 +206,12 @@
                     </td>
                     <td th:text="${Dishes.dish_name}"></td>
                     <td th:text="${Dishes.dish_price}"></td>
-                    
-                        <td>
-                            <button id="selectionCartButton" class="btn btn-dark" type="button" data-toggle="modal" 
+
+                    <td>
+                        <button id="selectionCartButton" class="btn btn-dark" type="button" data-toggle="modal"
                             th:attr="data-target='#p'+ ${Dishes.id}">Select</button>
-                        </td>
-                    
+                    </td>
+
 
             </table>
             <table>
@@ -223,10 +231,10 @@
                             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"></span>
                             </button>
-                            
-                            
-                            
-                            
+
+
+
+
                         </div>
                         <div class="modal-body">
                             <!-- Add your cart content here -->
@@ -294,7 +302,7 @@
                                         </div>
                                         <br>
                                         <label for="quantity"><b>Quantity:</b></label>
-                                    <br>
+                                        <br>
                                         <div class="quantity-control">
                                             <button type="button" class="btn btn-secondary quantity-button"
                                                 onclick="decrementCounter(this)">-</button>
@@ -329,32 +337,47 @@
     </div>
 
     <!-- show confirm/cancel InvoiceItem list -->
-    <div class="container" id="Cart">
-        <h1 class="mt-5">confirm/cancel receipt</h1>
-        <table class="table">
-            <tr>
-                <th>Invoice ID</th>
-                <th>Total price</th>
-                <th>User</th>
-                <th>UserNote</th>
-                <th>dishes</th>
-                <th>dishAmount</th>
-                <th>Note</th>
-                <th>Status</th>
-            </tr>
-            <tr th:each="InvoiceItem : ${invoiceitemByStatus}">
-                <td th:text="${InvoiceItem.invoice.id}"></td>
-                <td th:text="${InvoiceItem.invoice.payment.pay_total}"></td>
-                <td th:text="${InvoiceItem.invoice.user.userName}"></td>
-                <td th:text="${InvoiceItem.invoice.invoice_note}"></td>
-                <td th:text="${InvoiceItem.dishes.dish_name}"></td>
-                <td th:text="${InvoiceItem.dishAmount}"></td>
-                <td th:text="${InvoiceItem.itemNote}"></td>
-                <td th:text="${InvoiceItem.itemStatus}"></td>
-            </tr>
-        </table>
-    </div>
+    <div class="modal fade bd-example-modal-lg" id="status" tabindex="-1" role="dialog"
+        aria-labelledby="statusCartLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="statusLabel">Receipt</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-body">
 
+                        <table class="table">
+                            <tr>
+                                <th>Invoice ID</th>
+                                <th>Total price</th>
+                                <th>User</th>
+                                <th>UserNote</th>
+                                <th>dishes</th>
+                                <th>dishAmount</th>
+                                <th>Note</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr th:each="InvoiceItem : ${invoiceitemByStatus}">
+                                <td th:text="${InvoiceItem.invoice.id}"></td>
+                                <td th:text="${InvoiceItem.invoice.payment.pay_total}"></td>
+                                <td th:text="${InvoiceItem.invoice.user.userName}"></td>
+                                <td th:text="${InvoiceItem.invoice.invoice_note}"></td>
+                                <td th:text="${InvoiceItem.dishes.dish_name}"></td>
+                                <td th:text="${InvoiceItem.dishAmount}"></td>
+                                <td th:text="${InvoiceItem.itemNote}"></td>
+                                <td th:text="${InvoiceItem.itemStatus}"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Add Bootstrap JS and Popper.js for Bootstrap functionality -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>

@@ -11,7 +11,9 @@
 .bi-cart3 {
     color: black;
 }
-
+.bi-calendar-check {
+    color: black;
+}
 .product-form {
     display: flex;
     flex-direction: column;
